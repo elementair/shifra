@@ -1,0 +1,551 @@
+var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the current tab
+
+function showTab(n) {
+  // This function will display the specified tab of the form ...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  // ... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+
+/*
+* 
+**************************************
+*
+pason 1
+*
+**************************************
+*
+*/
+
+  if (n == (x.length - 6)) {
+
+    console.log('----------------------------------------------------------------');
+    console.log('paso 1 completado');
+    
+  }else {
+    document.getElementById("nextBtn").innerHTML = "continuar";
+  }
+  /*
+  * 
+  **************************************
+  *
+  PASO 2 Obteniendo Horas disponibles
+  *
+  **************************************
+  *
+  */
+ 
+  if (n == (x.length - 5)) {
+
+    console.log('----------------------------------------------------------------');
+    console.log('paso 2 completado');
+    console.log('Obtener la lista de horas disponibles en el dia seleccionado');
+
+    var resultado="ninguno";
+
+    // var deacuerdo   = $('.deacuerdo').val();
+    var dia = $('.dia').val();
+    var id = $('.id').val();
+    var options='';
+    var empleadoid='';
+
+    console.log(dia);
+
+    var datos = {"dia":dia, "id":id};
+
+        console.log(datos);
+        $.ajax({
+        url:"ajax/hora.ajax.php",
+        type:"POST",
+        data: datos
+         }).done(function(respuesta){
+            console.log(respuesta);
+
+             if (respuesta.estado === "ok") {
+              console.log(respuesta.dia);
+              console.log(respuesta.select);
+              console.log(respuesta.contenido);
+              console.log('empleado'+respuesta.empleado);
+
+              options=respuesta.contenido;
+              // empleadoid=respuesta.empleado;
+
+              document.getElementById('dia_cita').value = respuesta.dia;
+
+              // $(".respuestaEmp").empty();
+
+              // $(".respuestaEmp").append(options);
+
+              $(".respuestaEmp").html(respuesta.select);
+
+              $(".hora").html(JSON.stringify(options));
+
+              $(".idempleado").html(respuesta.empleado);
+
+              // obtener_localstorage();
+            }
+
+    });
+
+  }else {
+
+    document.getElementById("nextBtn").innerHTML = "continuar";
+
+  }
+/*
+* 
+**************************************
+*
+Paso 3 Obteniendo lista de epmleados 
+*
+**************************************
+*
+*/
+ if (n == (x.length - 4)) {
+
+  console.log('----------------------------------------------------------------');
+  console.log('paso 3 completado');
+  console.log('con este evento voy obtener la lista de empleados disponibles');
+
+    var resultado="ninguno";
+    var hora= $('.hora').val();
+    var dia = $('.dia').val();
+    var id = $('.id').val();
+
+    document.getElementById('hora_cita').value = hora;
+
+    console.log(hora);
+    console.log(dia);
+    console.log(id);
+
+        var datos = {"hora":hora, "dia":dia, "id":id};
+
+        console.log(datos);
+        $.ajax({
+        url:"ajax/empleado.ajax.php",
+        type:"POST",
+        data: datos
+         }).done(function(respuesta){
+            console.log(respuesta);
+
+             if (respuesta.estado === "ok") {
+
+              console.log(respuesta.dia);
+              console.log(respuesta.select);
+              console.log(respuesta.contenido);
+              console.log('empleado'+respuesta.empleado);
+
+              options=respuesta.contenido;
+              // empleadoid=respuesta.empleado;
+
+              document.getElementById('dia_cita').value = respuesta.dia;
+                  
+              // $(".respuestaEmp").empty();
+
+              // $(".respuestaEmp").append(options);
+
+              $(".respuestalistaEmp").html(respuesta.select);
+
+              $(".empleadolista").html(JSON.stringify(options));
+
+              $(".idempleado").html(respuesta.empleado);
+
+              console.log(JSON.stringify(options));
+
+              // obtener_localstorage();
+            }
+
+    });
+
+  }else {
+
+    document.getElementById("nextBtn").innerHTML = "continuar";
+
+  }
+   if (n == (x.length - 3)) {
+
+    console.log('----------------------------------------------------------------');
+    console.log('paso 4 completado');
+    
+  }else {
+    document.getElementById("nextBtn").innerHTML = "continuar";
+  }
+
+
+
+  // if (n == (x.length - 2)) {
+
+  //   console.log('----------------------------------------------------------------');
+  //   console.log('paso 5 completado');
+  //   var resultado="ninguno";
+  //   // var payment= $('.metodo').val();
+
+  //   // var payment = '';
+
+  //   // $("input[name='opcion_pago']").on('change', function() {
+  //   //     payment = $(this).val();
+  //   //     console.log(payment);
+  //   // });
+
+  //   var payment=''; 
+  //       for (payment=0;i<document.formcitas.opcion_pago.length; payment++){ 
+  //           if (document.formcitas.opcion_pago[payment].checked) 
+  //             break; 
+  //       } 
+  //       payment = document.formcitas.opcion_pago[payment].value 
+    
+
+ 
+
+  //   // document.getElementById('hora_cita').value = hora;
+
+  //   // console.log('Obtenido por la clase metodo', payment);
+  
+
+  //       var datos = {"metodo":payment};
+  //        document.getElementById('payment_metod').value = payment;
+
+  //       console.log(datos); 
+  //       $.ajax({
+  //       url:"ajax/metodo.ajax.php",
+  //       type:"POST",
+  //       data: datos
+  //        }).done(function(respuesta){
+  //           console.log(respuesta);
+
+  //            if (respuesta.estado === "ok") {
+
+  //             console.log(respuesta.metodopago);
+              
+
+  //             document.getElementById('payment_metod').value = respuesta.metodopago;
+                  
+
+  //           }
+
+  //   });
+    
+  // }else {
+  //   document.getElementById("nextBtn").innerHTML = "continuar";
+  // }
+
+  if (n == (x.length - 1)) {
+
+   var payment=''; 
+      for (payment=0;i<document.formcitas.opcion_pago.length; payment++){ 
+          if (document.formcitas.opcion_pago[payment].checked) 
+            break; 
+      } 
+      payment = document.formcitas.opcion_pago[payment].value 
+  
+
+    // document.getElementById('hora_cita').value = hora;
+
+    // console.log('Obtenido por la clase metodo', payment);
+
+    document.getElementById('payment_metod').value = payment;
+
+    console.log(payment); 
+
+    console.log('----------------------------------------------------------------');
+    console.log('Con este evento voy ha proceder con el pago seleccionado');
+    console.log('paso 6 completado');
+    // console.log('Debo obtener el metodo de pago');
+
+    document.getElementById("nextBtn").innerHTML = "Pagar";
+    document.getElementsByName("siguiente").attr('name', 'pagar');
+
+    var total      = $(".valorTotalPago").html();
+    var impuesto   = $(".valorTotalImpuesto").html();
+    var subtotal   = $(".valorSubtotal").html();
+    var n_servicio = $(".valorNombre").html();
+    var precio     = $(".valorPrecio").html();
+    var duracion   = $(".valorDuracion").html();
+    var id_servicio= $(".valorId").html();
+
+    // var dia  =$(".valorDia").html();
+    // var hora =$(".valorHora").html();
+
+    var datos = new FormData();
+
+    datos.append("total",total);
+    datos.append("impuesto",impuesto);
+    datos.append("subtotal",subtotal);
+    datos.append("n_servicio",n_servicio);
+    datos.append("precio",precio);
+    datos.append("duracion",duracion);
+    datos.append("id_servicio",id_servicio);
+
+
+    $.ajax({
+      url:"ajax/citas.ajax.php",
+      method:"POST",
+      data:datos,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success:function(respuesta){
+
+       
+        // window.location = respuesta;
+
+        console.log("respuesta",respuesta);
+       
+
+  
+
+        }
+    })
+  } else {
+    document.getElementById("nextBtn").innerHTML = "continuar";
+  }
+
+
+
+  // ... and run a function that displays the correct step indicator:
+  fixStepIndicator(n)
+}
+
+function nextPrev(n) {
+
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm()) {;
+
+    // swal({
+    //   title:'Hola mundo!',
+    //   text:"No has seleccionado  o completado un campo requerido",
+    //   type:'success'
+    //   })
+
+    swal("Algo salio mal", "No has seleccionado  o completado un campo requerido!", "warning");
+      return false;
+
+  }
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form... :
+
+  if (currentTab >= x.length) {
+
+   var obtube_payment = $('.obtube_payment').val();
+       // console.log(obtube_payment);
+    //...the form gets submitted:
+    // document.getElementById("regForm").submit();
+    // swal("Cita Agendada", "Revisa tu correo, te hemos mandando una notificación!", "success");
+    // document.getElementById("regForm").  submit();
+    // 
+   if(obtube_payment=="paypal"){
+    console.log("METODO:",obtube_payment);
+    var total      = $(".valorTotalPago").html();
+    var impuesto   = $(".valorTotalImpuesto").html();
+    var subtotal   = $(".valorSubtotal").html();
+    var n_servicio = $(".valorNombre").html();
+    var precio     = $(".valorPrecio").html();
+    var duracion   = $(".valorDuracion").html();
+    var id_servicio= $(".valorId").html();
+ 
+
+
+
+    //==============================================================
+    //		Obtenemos mas datos para el procedimiento de citas.
+    //==============================================================
+    
+    var duracion=document.getElementsByName("duracion")[0].value;
+    var nomServicio=document.getElementsByName("nombre_serv")[0].value;
+    var diaCita=document.getElementsByName("booking_arrival_date")[0].value;
+    var horaCita=document.getElementsByName("booking_treatment")[0].value;
+    var usuarioTipo=document.getElementsByName("usuario")[0].value;
+    var idCliente=document.getElementsByName("id_cliente")[0].value;
+    var nomCliente=document.getElementsByName("nombre")[0].value;
+    var telefono=document.getElementsByName("telefono")[0].value;
+    var email=document.getElementsByName("email")[0].value;
+    var opcionPago=document.getElementsByName("opcion_pago")[0].value;
+    var terminos=document.getElementsByName("terminos")[0].value;
+
+
+   
+
+       
+
+        var datos = new FormData();
+
+        datos.append("total",total);
+        datos.append("impuesto",impuesto);
+        datos.append("subtotal",subtotal);
+        datos.append("n_servicio",n_servicio);
+        datos.append("precio",precio);
+        datos.append("duracion",duracion);
+        datos.append("id_servicio",id_servicio);
+
+        //==============================================================
+        //		datos para el envio de email.
+        //==============================================================
+
+        datos.append("nomServicio", nomServicio);
+        datos.append("diaCita", diaCita);
+        datos.append("horaCita", horaCita);
+        datos.append("usuarioTipo", usuarioTipo);
+        datos.append("idCliente", idCliente);
+        datos.append("nomCliente", nomCliente);
+        datos.append("telefono", telefono);
+        datos.append("email", email);
+        datos.append("opcionPago", opcionPago);
+        datos.append("terminos", terminos);
+        // console.log("METODO:",opcionPago);
+
+        $.ajax({
+          url:"ajax/citas.ajax.php",
+          method:"POST",
+          data:datos,
+          cache: false,
+          contentType: false,
+          processData: false,
+          success:function(respuesta){
+            console.log("respuesta",respuesta);
+            // window.location = respuesta;
+
+          }
+
+        })
+
+        return false;
+      }
+
+      else if(obtube_payment=="tarjeta"){
+
+           console.log("METODO:",obtube_payment);
+
+
+         // Conekta.setPublicKey("tuapikeypublica");
+        Conekta.setPublicKey("key_FeoHBaTV8fzsqm39WP7vdbA");
+
+        var conektaSuccessResponseHandler= function(token){
+
+            $("#conektaTokenId").val(token.id);
+
+            jsPay();
+        };
+
+        var conektaErrorResponseHandler =function(response){
+            var $form=$("#card-form");
+
+            alert(response.message_to_purchaser);
+        }
+
+        $(document).ready(function(){
+
+            $("#card-form").submit(function(e){
+                e.preventDefault();
+
+                var $form=$("#card-form");
+
+                Conekta.Token.create($form,conektaSuccessResponseHandler,conektaErrorResponseHandler);
+            })
+
+        })
+
+        function jsPay(){
+            let params=$("#card-form").serialize();
+            let url="../conekta/pay.php";
+
+            $.post(url,params,function(data){
+                if(data=="1"){
+                    alert("Se realizo el pago :D");
+                    jsClean();
+                }else{
+                    alert(data)
+                }
+
+            })
+
+        }
+
+        function jsClean(){
+            $(".form-control").prop("value","");
+            $("#conektaTokenId").prop("value","");
+        }
+    }
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+}
+
+function validateForm() {
+  // This function deals with validation of the form fields
+  var x, y, i, valid = true;
+  x = document.getElementsByClassName("tab");
+  y = x[currentTab].getElementsByTagName("input");
+  // A loop that checks every input field in the current tab:
+  for (i = 0; i < y.length; i++) {
+    // If a field is empty...
+    if (y[i].value == "") {
+      // add an "invalid" class to the field:
+      y[i].className += " invalid";
+      // and set the current valid status to false:
+      valid = false;
+
+    }
+
+    if (y[i].value == "paypal" && !($('input[name="opcion_pago"]').is(':checked') )) {
+         y[i].className += " invalid";
+          // and set the current valid status to false:
+          valid = false;
+     }
+
+     if (y[i].value == "tarjeta" && !($('input[name="opcion_pago"]').is(':checked') )) {
+         y[i].className += " invalid";
+          // and set the current valid status to false:
+          valid = false;
+
+     }
+
+     if (y[i].value == "deacuerdo" && !($('input[name="terminos"]').is(':checked') )) {
+         y[i].className += " invalid";
+          // and set the current valid status to false:
+          valid = false;
+     }
+  }
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    document.getElementsByClassName("step")[currentTab].className += " finish";
+  }
+  return valid; // return the valid status
+}
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i, x = document.getElementsByClassName("step");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace("active", "");
+  }
+  //... and adds the "active" class to the current step:
+  x[n].className += " active";
+}
+
+// function obtener_localstorage(){
+
+//   let Id_obten=localStorage.getItem("servicioId");
+//   console.log(Id_obten);
+// }
+/*
+**************************************
+*
+http://jsfiddle.net/Amit12x/K9LpL/699/
+*
+**************************************
+*
+*/
+
+
+ 
+

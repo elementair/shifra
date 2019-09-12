@@ -658,12 +658,12 @@ class consulta {
 
     public function registra_cita(){
         require_once "../config/ruta.php";
-        require '../lib/PHPMailerAutoload.php';
-        require ("../lib/class.phpmailer.php");
+        require_once ("../lib/PHPMailerAutoload.php");
+        require_once ("../lib/class.phpmailer.php");
         $conexion = new Conexion();
         $conexion->selecciona_base_datos();
         $link = $conexion->link;
-        $ruta_base = $ruta_universal.'sistema/calendario/';
+        $ruta_base = $ruta_universal_calendario;
 
         $date= date('Y-m-j H:i:s');
         $fecha = strtotime ( '-6 hour' , strtotime ($date) ) ;
@@ -693,7 +693,7 @@ class consulta {
                            '".$_POST['nomCliente']."',
                            '".$_POST['email']."',
                            '".$_POST['telefono']."',
-                           '".$_POST['opcion_pago']."',
+                           '".$_POST['opcionPago']."',
                            '".$_POST['precio']."',
                            '".$fecha."',
                            '".$_POST['n_servicio']."',
@@ -701,7 +701,7 @@ class consulta {
                            '".$final."',
                            '',
                            '1',
-                           '".$_POST['empleado']."',
+                           'empleado 1',
                            'cabina 1',
                            '1')";
 

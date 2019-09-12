@@ -16,7 +16,7 @@ function showTab(n) {
 * 
 **************************************
 *
-pason 1
+paso 1
 *
 **************************************
 *
@@ -237,7 +237,7 @@ Paso 3 Obteniendo lista de epmleados
   if (n == (x.length - 1)) {
 
    var payment=''; 
-      for (payment=0;i<document.formcitas.opcion_pago.length; payment++){ 
+      for (payment=0;payment<document.formcitas.opcion_pago.length; payment++){ 
           if (document.formcitas.opcion_pago[payment].checked) 
             break; 
       } 
@@ -304,9 +304,6 @@ Paso 3 Obteniendo lista de epmleados
   } else {
     document.getElementById("nextBtn").innerHTML = "continuar";
   }
-
-
-
   // ... and run a function that displays the correct step indicator:
   fixStepIndicator(n)
 }
@@ -337,143 +334,139 @@ function nextPrev(n) {
   if (currentTab >= x.length) {
 
    var obtube_payment = $('.obtube_payment').val();
-       // console.log(obtube_payment);
+     
     //...the form gets submitted:
     // document.getElementById("regForm").submit();
     // swal("Cita Agendada", "Revisa tu correo, te hemos mandando una notificación!", "success");
     // document.getElementById("regForm").  submit();
     // 
    if(obtube_payment=="paypal"){
-    console.log("METODO:",obtube_payment);
-    var total      = $(".valorTotalPago").html();
-    var impuesto   = $(".valorTotalImpuesto").html();
-    var subtotal   = $(".valorSubtotal").html();
-    var n_servicio = $(".valorNombre").html();
-    var precio     = $(".valorPrecio").html();
-    var duracion   = $(".valorDuracion").html();
-    var id_servicio= $(".valorId").html();
- 
+
+      console.log("METODO:",obtube_payment);
+
+      var total      = $(".valorTotalPago").html();
+      var impuesto   = $(".valorTotalImpuesto").html();
+      var subtotal   = $(".valorSubtotal").html();
+      var n_servicio = $(".valorNombre").html();
+      var precio     = $(".valorPrecio").html();
+      var duracion   = $(".valorDuracion").html();
+      var id_servicio= $(".valorId").html();
+
+      //==============================================================
+      //		Obtenemos mas datos para el procedimiento de citas.
+      //==============================================================
+      
+      var duracion=document.getElementsByName("duracion")[0].value;
+      var nomServicio=document.getElementsByName("nombre_serv")[0].value;
+      var diaCita=document.getElementsByName("booking_arrival_date")[0].value;
+      var horaCita=document.getElementsByName("booking_treatment")[0].value;
+      var usuarioTipo=document.getElementsByName("usuario")[0].value;
+      var idCliente=document.getElementsByName("id_cliente")[0].value;
+      var nomCliente=document.getElementsByName("nombre")[0].value;
+      var telefono=document.getElementsByName("telefono")[0].value;
+      var email=document.getElementsByName("email")[0].value;
+      // var opcionPago= obtube_payment;
+      var terminos=document.getElementsByName("terminos")[0].value;
+
+      var datos = new FormData();
+
+      datos.append("total",total);
+      datos.append("impuesto",impuesto);
+      datos.append("subtotal",subtotal);
+      datos.append("n_servicio",n_servicio);
+      datos.append("precio",precio);
+      datos.append("duracion",duracion);
+      datos.append("id_servicio",id_servicio);
+
+      //==============================================================
+      //		datos para el envio de email.
+      //==============================================================
+
+      datos.append("nomServicio", nomServicio);
+      datos.append("diaCita", diaCita);
+      datos.append("horaCita", horaCita);
+      datos.append("usuarioTipo", usuarioTipo);
+      datos.append("idCliente", idCliente);
+      datos.append("nomCliente", nomCliente);
+      datos.append("telefono", telefono);
+      datos.append("email", email);
+      datos.append("opcionPago", obtube_payment);
+      datos.append("terminos", terminos);
+      // console.log("METODO:",opcionPago);
+
+      $.ajax({
+        url:"ajax/citas.ajax.php",
+        method:"POST",
+        data:datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success:function(respuesta){
+          // console.log("respuesta",respuesta);
+          window.location = respuesta;
+
+        }
+
+      })
+
+      return false;
+    }
+
+    else if(obtube_payment=="tarjeta"){
+
+         console.log("METODO:",obtube_payment);
 
 
+       // Conekta.setPublicKey("tuapikeypublica");
+      Conekta.setPublicKey("key_FeoHBaTV8fzsqm39WP7vdbA");
 
-    //==============================================================
-    //		Obtenemos mas datos para el procedimiento de citas.
-    //==============================================================
-    
-    var duracion=document.getElementsByName("duracion")[0].value;
-    var nomServicio=document.getElementsByName("nombre_serv")[0].value;
-    var diaCita=document.getElementsByName("booking_arrival_date")[0].value;
-    var horaCita=document.getElementsByName("booking_treatment")[0].value;
-    var usuarioTipo=document.getElementsByName("usuario")[0].value;
-    var idCliente=document.getElementsByName("id_cliente")[0].value;
-    var nomCliente=document.getElementsByName("nombre")[0].value;
-    var telefono=document.getElementsByName("telefono")[0].value;
-    var email=document.getElementsByName("email")[0].value;
-    var opcionPago=document.getElementsByName("opcion_pago")[0].value;
-    var terminos=document.getElementsByName("terminos")[0].value;
+      var conektaSuccessResponseHandler= function(token){
 
+          $("#conektaTokenId").val(token.id);
 
-   
+          jsPay();
+      };
 
-       
+      var conektaErrorResponseHandler =function(response){
+          var $form=$("#card-form");
 
-        var datos = new FormData();
-
-        datos.append("total",total);
-        datos.append("impuesto",impuesto);
-        datos.append("subtotal",subtotal);
-        datos.append("n_servicio",n_servicio);
-        datos.append("precio",precio);
-        datos.append("duracion",duracion);
-        datos.append("id_servicio",id_servicio);
-
-        //==============================================================
-        //		datos para el envio de email.
-        //==============================================================
-
-        datos.append("nomServicio", nomServicio);
-        datos.append("diaCita", diaCita);
-        datos.append("horaCita", horaCita);
-        datos.append("usuarioTipo", usuarioTipo);
-        datos.append("idCliente", idCliente);
-        datos.append("nomCliente", nomCliente);
-        datos.append("telefono", telefono);
-        datos.append("email", email);
-        datos.append("opcionPago", opcionPago);
-        datos.append("terminos", terminos);
-        // console.log("METODO:",opcionPago);
-
-        $.ajax({
-          url:"ajax/citas.ajax.php",
-          method:"POST",
-          data:datos,
-          cache: false,
-          contentType: false,
-          processData: false,
-          success:function(respuesta){
-            console.log("respuesta",respuesta);
-            // window.location = respuesta;
-
-          }
-
-        })
-
-        return false;
+          alert(response.message_to_purchaser);
       }
 
-      else if(obtube_payment=="tarjeta"){
+      var $form=$("#card-form");
 
-           console.log("METODO:",obtube_payment);
+      Conekta.Token.create($form,conektaSuccessResponseHandler,conektaErrorResponseHandler);
 
+      // $(document).ready(function(){
 
-         // Conekta.setPublicKey("tuapikeypublica");
-        Conekta.setPublicKey("key_FeoHBaTV8fzsqm39WP7vdbA");
+      //     $("#card-form").submit(function(e){
+      //         e.preventDefault();
 
-        var conektaSuccessResponseHandler= function(token){
+      //     })
 
-            $("#conektaTokenId").val(token.id);
+      // })
 
-            jsPay();
-        };
+      function jsPay(){
+          let params=$("#card-form").serialize();
+          let url="../conekta/pay.php";
 
-        var conektaErrorResponseHandler =function(response){
-            var $form=$("#card-form");
+          $.post(url,params,function(data){
+              if(data=="1"){
+                  alert("Se realizo el pago :D");
+                  jsClean();
+              }else{
+                  alert(data);
+                  console.log(data);
+              }
 
-            alert(response.message_to_purchaser);
-        }
+          })
 
-        $(document).ready(function(){
+      }
 
-            $("#card-form").submit(function(e){
-                e.preventDefault();
-
-                var $form=$("#card-form");
-
-                Conekta.Token.create($form,conektaSuccessResponseHandler,conektaErrorResponseHandler);
-            })
-
-        })
-
-        function jsPay(){
-            let params=$("#card-form").serialize();
-            let url="../conekta/pay.php";
-
-            $.post(url,params,function(data){
-                if(data=="1"){
-                    alert("Se realizo el pago :D");
-                    jsClean();
-                }else{
-                    alert(data)
-                }
-
-            })
-
-        }
-
-        function jsClean(){
-            $(".form-control").prop("value","");
-            $("#conektaTokenId").prop("value","");
-        }
+      function jsClean(){
+          $(".form-control").prop("value","");
+          $("#conektaTokenId").prop("value","");
+      }
     }
   }
   // Otherwise, display the correct tab:

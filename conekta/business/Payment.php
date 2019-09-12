@@ -8,7 +8,7 @@ class Payment{
     private $UserDB="root";
     private $PassDB="";
     private $ServerDB="localhost";
-    private $DataBaseDB="pagocurso";
+    private $DataBaseDB="creactiv_shifra";
 
     public function __construct($token,$card,$name,$description,$total,$email){
 

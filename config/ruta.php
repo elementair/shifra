@@ -1,7 +1,6 @@
 <?php
 	/* Rutas universales */
 
-
     if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off'
         || $_SERVER['SERVER_PORT'] == 443) {
 
@@ -18,10 +17,11 @@
 
 
     $ruta_universal = "http://localhost/shifra/";
-
-    $ruta_universal_calendario = $ruta_universal."calendario/";
-
     $ruta_universal_sistema = $ruta_universal."sistema/";
+
+    $ruta_universal_calendario = $ruta_universal_sistema."calendario/";
+
+    
 
     /* Ruta citas activas*/
 

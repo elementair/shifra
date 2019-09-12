@@ -1,7 +1,7 @@
 <!-- FORMULARIO INICIAR CITA -->
 <?php
 
-	$display='block';
+	$display='none';
 ?>
 <div class="modal fade" id="Modal_formulario_cita" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg" role="document">
@@ -116,8 +116,6 @@
 						        		}
 									?>
 
-
-
 								</div>
 								<span class="view-more">ver mas...</span>
 						   	</div>
@@ -132,7 +130,7 @@
 									<?php
 									$valor_grupo_servicios_id=$id_grupo_servicios;
 									if ($valor_grupo_servicios_id==-1) {
-										$servicios=mysqli_query($link,"SELECT s.id ,s.nombre AS 'nombre_serv',s.descripcion,s.caracteristicas,s.archivo,s.duracion,s.precio,s.status,s.subgrupo_servicios_id, ss.nombre, gs.nombre, gs.id AS 'grupo_servicio_id' from((servicios as s left outer join subgrupo_servicios as ss on subgrupo_servicios_id=ss.id) left outer join grupo_servicios as gs on ss.grupo_servicios_id=gs.id) ");
+										$servicios=mysqli_query($link,"SELECT s.id ,s.nombre AS 'nombre_serv',s.descripcion,s.caracteristicas,s.archivo,s.duracion,s.precio,s.status,s.subgrupo_servicios_id, ss.nombre, gs.nombre, gs.id AS 'grupo_servicio_id' from((servicios as s left outer join subgrupo_servicios as ss on subgrupo_servicios_id=ss.id) left outer join grupo_servicios as gs on ss.grupo_servicios_id=gs.id) ");	
 									}else{
 										$servicios=mysqli_query($link,"SELECT s.id,s.nombre AS 'nombre_serv',s.descripcion,s.caracteristicas,s.archivo,s.duracion,s.precio,s.status,s.subgrupo_servicios_id, ss.nombre, gs.nombre, gs.id AS 'grupo_servicio_id' from((servicios as s left outer join subgrupo_servicios as ss on subgrupo_servicios_id=ss.id) left outer join grupo_servicios as gs on ss.grupo_servicios_id=gs.id) where gs.id=$valor_grupo_servicios_id");
 									}
@@ -141,8 +139,8 @@
 									foreach ($servicios as $res) {
 									?>
 									<div class="panel panel-default">
-							          	<div class="panel-heading" style="display: flex;">
-
+							          	<div class="panel-heading" style="display: flex;">	
+ 
 										<div class="col-xs-12 col-md-10">
 
 								            	<h5 class="panel-title">

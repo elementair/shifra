@@ -56,18 +56,21 @@ left outer join servicios_empleados as ss on s.id=ss.servicios_id)
 left outer join empleados as e on e.id=ss.empleados_id)
 left outer join empleados_rol as er on er.empleados_id=e.id) WHERE  e.status=1 servicios_id=".$obtener_id." AND ".$obtener_dia_letra."= 1");
 
+ $capsula_select='';
+$capsula_select='<select name="empleado"  id="empleado" class="form-control empleadolista" required >';
+
 foreach ($empleados as $empleado) {
-    $capsula_select='';
-    $capsula_select='<select name="empleado"  id="empleado" class="form-control empleadolista" required disabled>';
+   
+
     $nombre_empleado=$empleado['enombre'];
-    $estado_empleado=$empleado['estatus'];
-    echo echo "<script>console.log( 'Debug Objects: " . $nombre_empleado . "' );</script>";
+    // $estado_empleado=$empleado['estatus'];
+    // echo "<script>console.log( 'Debug Objects: " . $nombre_empleado . "' );</script>";
 
     for($i=0; $i<$empleado['eid']; $i++){
 
 
         $contenido1=$array[$i];
-        echo $i;
+        // echo $i;
 
         $citas_ocupados = mysqli_query($link,'SELECT empleados_id, nombre_empleado, fecha, hora_inicio, hora_fin, duracion FROM control_citas WHERE fecha="'.$obtener_fecha.'"');
 
@@ -80,6 +83,7 @@ foreach ($empleados as $empleado) {
 
     }
 }
+$capsula_select='';
 
 header('Content-Type: application/json');
     //Guardamos los datos en un array
@@ -92,6 +96,7 @@ header('Content-Type: application/json');
     'select'    => $capsula_select,
     // 'empleado'  => $empleado_seleccionado,
     'contenido' => $resultado
+    
     );
 
 //Devolvemos el array pasado a JSON como objeto

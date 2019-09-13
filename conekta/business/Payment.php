@@ -5,10 +5,10 @@ class Payment{
     private $ApiKey="key_SyeqL6dsrsDtM18RkBnreA";
     private $ApiVersion="2.0.0";
 
-    private $UserDB="root";
-    private $PassDB="";
-    private $ServerDB="localhost";
-    private $DataBaseDB="creactiv_shifra";
+    private $UserDB     ="root";
+    private $PassDB     ="";
+    private $ServerDB   ="localhost";
+    private $DataBaseDB ="creactiv_shifra";
 
     public function __construct($token,$card,$name,$description,$total,$email){
 
@@ -37,6 +37,7 @@ class Payment{
         $this->Save();
 
         return true;
+        
 
     }
 

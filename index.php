@@ -22,7 +22,6 @@ $etiqueta="INICIAR";
 $SesionModal="#Modal_formulario_login";
 $img_inicio_ruta="img/svg/icono_ingresar.svg";
 $ruta_base=$ruta_universal.'sistema/';
-
 /*
 * 
 **************************************
@@ -32,7 +31,6 @@ Control session
 **************************************
 *
 */
-
 require_once ('./servicio/controlSession.php');
 
 $grupo_servicios=mysqli_query($link,"SELECT id, nombre, descripcion, archivo FROM grupo_servicios WHERE status=1;");
@@ -329,7 +327,8 @@ MOSTRAR MENSAJES DE CONFIRMACION DE ACCIONES
 	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	  <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
-        <script type="text/javascript" src="https://cdn.conekta.io/js/latest/conekta.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.conekta.io/js/latest/conekta.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script type="bootstrap/js/bootstrap.min.js"></script>
@@ -398,18 +397,18 @@ MOSTRAR MENSAJES DE CONFIRMACION DE ACCIONES
 
 	$(function () {
 
-	    	$('.view-more').click(function () {
-	        	$('.intervalo .panel-default:hidden').slice(0, 10).show();
-	        	if ($('.intervalo .panel-default').length == $('.intervalo .panel-default:visible').length) {
-	            	$('.intervalo .view-more').hide('fast');
-	        	}
+    	$('.view-more').click(function () {
+        	$('.intervalo .panel-default:hidden').slice(0, 10).show();
+        	if ($('.intervalo .panel-default').length == $('.intervalo .panel-default:visible').length) {
+            	$('.intervalo .view-more').hide('fast');
+        	}
 		});
 
 		$('.view-more-cita').click(function () {
-	        	$('.table-responsive .filas:hidden').slice(0, 5).show();
-	        	if ($('.table-responsive .filas').length == $('.table-responsive .filas:visible').length) {
-	            	$('.table-responsive .view-more-citas').hide('fast');
-	        	}
+        	$('.table-responsive .filas:hidden').slice(0, 5).show();
+        	if ($('.table-responsive .filas').length == $('.table-responsive .filas:visible').length) {
+            	$('.table-responsive .view-more-citas').hide('fast');
+        	}
 		});
 
 	});
@@ -463,14 +462,14 @@ MOSTRAR MENSAJES DE CONFIRMACION DE ACCIONES
 	</script>
 
 	<script>
-		$('#myTabPay li').click(function (e) {
+		// $('#myTabPay li').click(function (e) {
 		 // e.preventDefault();
-		    $(this).find('a').tab('show');
+		    // $(this).find('a').tab('show');
 		 // $(this).tab('show');
-		     $(this).closest('ul').find('input[type="checkbox"]').prop('checked','');
-		     $(this).closest('li').find('input[type="checkbox"]').prop('checked','checked');
+		     // $(this).closest('ul').find('input[type="checkbox"]').prop('checked','');
+		     // $(this).closest('li').find('input[type="checkbox"]').prop('checked','checked');
 		   
-		});
+		// });
 		/*
 		* 
 		**************************************

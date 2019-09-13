@@ -18,6 +18,7 @@
 		<div class="row">
 		<div class="form">
 		<form name="formcitas" id="regForm" action="envio_correo_cita.php" method="POST">
+			   <input type="hidden" name="conektaTokenId" id="conektaTokenId" value="">	
 
 			<!-- =============================
 				STEP 1  SELECCIONAR SERVICIO
@@ -507,7 +508,9 @@
 				            <br>
 				            <div class="card well">
 					            <div class="card-body">
+
 				                  	<div class="row">
+
 				                        <div class="col-md-6">
 				                            <label>
 				                                	Nombre del tarjetahabiente
@@ -589,6 +592,7 @@
 				<div class="form-group">
 
 	        		<input class="obtube_payment" type="text" id="payment_metod" value=""  style="display:<?php echo $display;?>" >
+
 		       	</div>
 
 				<div class="terminos">

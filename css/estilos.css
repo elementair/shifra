@@ -159,44 +159,46 @@ body{
 	font-family: Montserrat-Regular;
 }
 
-
+.nav-tabs > li > a {
+    padding: 10px 10px !important;
+    text-transform: capitalize !important;
+}
 .checkmark2{
-width: -moz-min-content;
-width: min-content;
- white-space: nowrap;
-   line-height:1em;
-   position:relative;
-   outline: none;
-   overflow: visible;
-   cursor: pointer;
-   border: 1px solid #999;
-border: rgb(162,131,86,.3) 1px solid;
-   border-bottom:rgb(162,131,86,.3) 1px solid;
-   -webkit-box-shadow: 0 1px 2px rgb(162,131,86,.3);
-   -moz-box-shadow: 0 1px 2px rgb(162,131,86,.3);
-   box-shadow: 0 1px 2px rgb(162,131,86,.3);
-   background: -moz-linear-gradient(
+	width: -moz-min-content;
+	width: min-content;
+ 	white-space: nowrap;
+   	line-height:1em;
+   	position:relative;
+   	outline: none;
+   	overflow: visible;
+   	cursor: pointer;
+   	border: 1px solid #999;
+	border: rgb(162,131,86,.3) 1px solid;
+   	border-bottom:rgb(162,131,86,.3) 1px solid;
+   	-webkit-box-shadow: 0 1px 2px rgb(162,131,86,.3);
+   	-moz-box-shadow: 0 1px 2px rgb(162,131,86,.3);
+   	box-shadow: 0 1px 2px rgb(162,131,86,.3);
+    background: -moz-linear-gradient(
       center top,
       rgba(255, 255, 255, .1) 0%,
       rgba(0, 0, 0, .1) 100%
-   );
-   background: -webkit-gradient(
+    );
+    background: -webkit-gradient(
       linear,
       center bottom,
       center top,
       from(rgb(162,131,85)),
       to(rgb(162,131,86))
-   );
-   -moz-user-select: none;
-   -webkit-user-select:none;
-   -khtml-user-select: none;
-   user-select: none;
-   margin-bottom: 10px;
+    );
+   	-moz-user-select: none;
+   	-webkit-user-select:none;
+   	-khtml-user-select: none;
+   	user-select: none;
+   	margin-bottom: 10px;
 	font-size: 15px;
 	border-radius: 13px;
 	padding: 3px 8px;
 	color: #fff;
-
 }
 
 .watsWeb{

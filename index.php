@@ -483,13 +483,19 @@ MOSTRAR MENSAJES DE CONFIRMACION DE ACCIONES
         
         var chboxs = document.getElementsByName("c1");
         var vis = "none";
+        var value="0";
+       
 	        for(var i=0;i<chboxs.length;i++) { 
 	            if(chboxs[i].checked){
 	             vis = "block";
+	             value="";
 	                break;
 	            }
 	        }
 	        document.getElementById(box).style.display = vis;
+	        document.getElementById("rfc").value=value;
+	        document.getElementById("razonSocial").value=value;
+         	
 	    
 	    
 	    }

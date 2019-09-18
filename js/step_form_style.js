@@ -236,7 +236,11 @@ Paso 3 Obteniendo lista de epmleados
 
   if (n == (x.length - 1)) {
 
-   var payment=''; 
+  var payment=''; 
+  var rfc= $('.rfc').val();
+  var razonSocial = $('.razonSocial').val();
+  var cfdi = $('.cfdi').val();
+
       for (payment=0;payment<document.formcitas.opcion_pago.length; payment++){ 
           if (document.formcitas.opcion_pago[payment].checked) 
             break; 
@@ -250,7 +254,13 @@ Paso 3 Obteniendo lista de epmleados
 
     document.getElementById('payment_metod').value = payment;
 
-    console.log(payment); 
+
+
+
+    console.log(payment);
+    console.log(rfc); 
+    console.log(razonSocial); 
+    console.log(cfdi);  
 
     console.log('----------------------------------------------------------------');
     console.log('Con este evento voy ha proceder con el pago seleccionado');
@@ -280,7 +290,18 @@ Paso 3 Obteniendo lista de epmleados
     datos.append("precio",precio);
     datos.append("duracion",duracion);
     datos.append("id_servicio",id_servicio);
-
+    /*
+    * 
+    **************************************
+    *
+    facturación
+    *
+    **************************************
+    *
+    */
+    datos.append("rfc",rfc);
+    datos.append("razonSocial",razonSocial);
+    datos.append("cfdi",cfdi);
 
     $.ajax({
       url:"ajax/citas.ajax.php",
@@ -348,6 +369,7 @@ function nextPrev(n) {
       var duracion   = $(".valorDuracion").html();
       var id_servicio= $(".valorId").html();
 
+
       //==============================================================
       //		Obtenemos mas datos para el procedimiento de citas.
       //==============================================================
@@ -364,6 +386,10 @@ function nextPrev(n) {
       // var opcionPago= obtube_payment;
       var terminos=document.getElementsByName("terminos")[0].value;
 
+      var rfc= $('.rfc').val();
+      var razonSocial = $('.razonSocial').val();
+      var cfdi = $('.cfdi').val();
+
       var datos = new FormData();
 
       datos.append("total",total);
@@ -373,6 +399,9 @@ function nextPrev(n) {
       datos.append("precio",precio);
       datos.append("duracion",duracion);
       datos.append("id_servicio",id_servicio);
+      datos.append("rfc",rfc);
+      datos.append("razonSocial",razonSocial);
+      datos.append("cfdi",cfdi);
 
       //==============================================================
       //		datos para el envio de email.
@@ -418,6 +447,7 @@ function nextPrev(n) {
       var duracion   = $(".valorDuracion").html();
       var id_servicio= $(".valorId").html();
 
+
       //==============================================================
       //    Obtenemos mas datos para el procedimiento de citas.
       //==============================================================
@@ -433,6 +463,12 @@ function nextPrev(n) {
       var email=document.getElementsByName("email")[0].value;
       // var opcionPago= obtube_payment;
       var terminos=document.getElementsByName("terminos")[0].value;
+
+      var rfc= $('.rfc').val();
+      var razonSocial = $('.razonSocial').val();
+      var cfdi = $('.cfdi').val();
+
+
 
       // CONTINUAMOS AQUI
 
@@ -482,6 +518,7 @@ function nextPrev(n) {
                   datos.append("duracion",duracion);
                   datos.append("id_servicio",id_servicio);
 
+
                   //==============================================================
                   //    datos para el envio de email.
                   //==============================================================
@@ -497,6 +534,9 @@ function nextPrev(n) {
                   datos.append("opcionPago", obtube_payment);
                   datos.append("terminos", terminos);
                   // console.log("METODO:",opcionPago);
+                  datos.append("rfc",rfc);
+                  datos.append("razonSocial",razonSocial);
+                  datos.append("cfdi",cfdi);
 
                   $.ajax({
                     url:"ajax/citas.ajaxConekta.php",
@@ -507,7 +547,8 @@ function nextPrev(n) {
                     processData: false,
                     success:function(respuesta){
                       // console.log("respuesta",respuesta);
-                      console.log("Se guardo la cita :D");
+                      // console.log("Se guardo la cita :D");
+                      // window.location = "index.php#citas";
                       
 
                     }
@@ -515,7 +556,8 @@ function nextPrev(n) {
                   })
                  
                   console.log("estoy en data 1");
-                  alert("Se realizo el pago :D");
+                  // swal("Wow!", "Tu cita se hiso exitosamente. revisa tu correo, te hemos mandado un correo.", "success");
+                  window.location.href = 'index.php?mensaje=cita_ajendada';
                   jsClean();
 
               }else{
@@ -556,6 +598,7 @@ function validateForm() {
       valid = false;
 
     }
+  
 
     if (y[i].value == "paypal" && !($('input[name="opcion_pago"]').is(':checked') )) {
          y[i].className += " invalid";

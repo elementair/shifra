@@ -32,6 +32,11 @@ class AjaxCarrito{
     public $opcionPago;
     public $terminos;
 
+    public $rfc;
+    public $razonSocial;
+    public $cfdi;
+
+
  	public function ajaxEnviarPaypal(){
 
 		$datos = new consulta();
@@ -56,6 +61,10 @@ class AjaxCarrito{
 				"email"=>$this->email,
 				"opcionPago"=>$this->opcionPago,
 				"terminos"=>$this->terminos,
+
+				"rfc"=>$this->rfc,
+				"razonSocial"=>$this->razonSocial,
+				"cfdi"=>$this->cfdi,
 			);
 
 		 $respuesta = Paypal::mdlPagoPaypal($datospay);
@@ -88,6 +97,10 @@ if(isset($_POST["total"])){
     $paypal->email= $_POST["email"];
     $paypal->opcionPago= $_POST["opcionPago"];
 	$paypal->terminos= $_POST["terminos"];
+
+	$paypal->rfc= $_POST["rfc"];
+    $paypal->razonSocial= $_POST["razonSocial"];
+	$paypal->cfdi= $_POST["cfdi"];
 
 	$paypal-> ajaxEnviarPaypal();
 

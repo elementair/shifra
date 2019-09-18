@@ -208,7 +208,7 @@
 						STEP 2  DIA
 			===============================-->
 
-			<div class="tab"><h3><span>2</span>Seleccione el Dia:</h3><br>
+			<div class="tab"><h3><span>2</span>Seleccione el Día:</h3><br>
 				<div class="col-sm-12 col-md-12">
 					<div class="form-group">
 					<input id="idxhora" class="form-control id" name="id_xhora" type="text" style="display:<?php echo $display;?>">
@@ -253,7 +253,7 @@
 						STEP 4 EMPLEADO
 			===============================-->
 
-			<div class="tab"><h3><span>4</span>¿Quien te atedendera?:</h3><br>
+			<div class="tab"><h3><span>4</span>¿Quien te atenderá?:</h3><br>
 				<div class="col-md-12">
 
 					<!-- SCRIPT PARA CACHAR LOS DATOS DEL USUARIO LOGUEADO -->
@@ -371,7 +371,7 @@
 
 				            	<option value="nada"><p>Seleccionar usuario</p></option>
 				            	<option value="<?php echo $usuario_session; ?>">Usar datos de mi cuenta</option>
-				            	<option value="<?php echo $usuario; ?>">ingresar Manualmente </option>
+				            	<option value="<?php echo $usuario; ?>">Ingresar manualmente</option>
 
 				        	</select>
 
@@ -435,11 +435,12 @@
 					  	</table>
 
 					</div>
+					¿forma de pago?:
+
 
 				</div>
 
-				¿forma de pago?:
-
+				
 			
 			    <div class="col-md-12">
 				     
@@ -458,7 +459,7 @@
 			      	</div>
 
 			      	<div class="tab-content">
-				        <div class="tab-pane active" id="paypal">PayPal content
+				        <div class="tab-pane active" id="paypal">
 
 
 							<!-- <div id="paypal" class="tab-pane fade in active"> -->
@@ -485,7 +486,7 @@
 
 							<!-- </div> -->
 				        </div>
-				        <div class="tab-pane" id="tarjeta">tarjeta Content
+				        <div class="tab-pane" id="tarjeta">
 				        <!-- <div id="tarjeta" class="tab-pane fade"> -->
 
 				    		<div class="img_pagos">
@@ -513,7 +514,7 @@
 
 				                        <div class="col-md-6">
 				                            <label>
-				                                	Nombre del tarjetahabiente
+				                                	Nombre del Tarjeta-habiente
 				                            </label>
 				                            <input value="Fulanito Pérez" data-conekta="card[name]" class="form-control" name="name" id="name"  type="text" >
 				                        </div>
@@ -544,17 +545,17 @@
 
 				                  	</div>
               	                    <div class="row">
-				                        <div class="col-md-4">
+				                       <!--  <div class="col-md-4">
 				                            <label><span>Email</span></label>
 				                            <input class="form-control" type="text" name="email" id="email" maxlength="200" value="prueba@gmail.com">
+				                        </div> -->
+				                        <div class="col-md-4">
+				                            <!-- <label>Concepto</label> -->
+				                            <input class="form-control" type="text" name="description" id="description" maxlength="100" value="" style="display:<?php echo $display;?>" >
 				                        </div>
 				                        <div class="col-md-4">
-				                            <label>Concepto</label>
-				                            <input class="form-control" type="text" name="description" id="description" maxlength="100" value="papitas">
-				                        </div>
-				                        <div class="col-md-4">
-				                            <label>Monto</label>
-				                            <input class="form-control" type="number" name="total" id="total" value="30">
+				                            <!-- <label>Monto</label> -->
+				                            <input class="form-control" type="number" name="total" id="total" value=""  style="display:<?php echo $display;?>" >
 				                        </div>
 				                    </div>
 				                    <br>
@@ -565,23 +566,83 @@
 				                           </button>
 				                        </div>
 				                    </div> -->
-				                  	
-
+				                  
 				                </div>
 
 				            </div>
 						</div>
-						<div class="col-sm-12 col-md-4">
-				        	
 						
-						  	<input type="checkbox" name="c1" onclick="showMe('contenido_factura')">Solicitar Factura
 						
-							<div id="contenido_factura" style="display:none">
-							  este texto se ocultara
-							</div>
-						</div>
 			      	</div>
 			    </div>
+
+			  	<!--
+				* 
+				**************************************
+				*
+				Solicitar Factura
+				*
+				**************************************
+				*
+				-->
+
+				<div class="col-md-12">
+
+				  	<input class="opcion_factura" style="width: auto !important; margin-right: 5px;" type="checkbox" name="c1" onclick="showMe('contenido_factura')">Solicitar Factura
+				
+					<div class="contenido_factura" id="contenido_factura" style="display:none">
+
+						<div class="col-sm-12 col-md-4">
+							<div class="form-group">
+						 	 	<input id="rfc" class="campo rfc" type="text" name="rfc" value="0" placeholder="R.F.C.">
+						 	</div>
+						</div>
+
+						<div class="col-sm-12 col-md-4">
+							<div class="form-group">
+                        		<input id="razonSocial" class="campo razonSocial" type="text" name="razonSocial" value="0" placeholder="Razón Social">
+                        	</div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+							<div class="form-group">
+                    			<select id="cfdi" class="campo cfdi" name="cfdi">
+                            		<option value="D01">D01 - Honorarios médicos, dentales y gastos hospitalarios.</option>
+                            		<option value="D02">D02 - Gastos médicos por incapacidad o discapacidad</option>
+                            		<option value="D03">D03 - Gastos funerales.</option>
+                            		<option value="D04">D04 - Donativos.</option>
+                            		<option value="D05">D05 - Intereses reales efectivamente pagados por créditos hipotecarios (casa habitación).</option>
+                            		<option value="D06">D06 - Aportaciones voluntarias al SAR.</option>
+                            		<option value="D07">D07 - Primas por seguros de gastos médicos.</option>
+                            		<option value="D08">D08 - Gastos de transportación escolar obligatoria.</option>
+                            		<option value="D09">D09 - Depósitos en cuentas para el ahorro, primas que tengan como base planes de pensiones.</option>
+                            		<option value="D10">D10 - Pagos por servicios educativos (colegiaturas)</option>
+                            		<option value="G01">G01 - Adquisición de mercancías</option>
+                            		<option value="G02">G02 - Devoluciones, descuentos o bonificaciones</option>
+                            		<option value="G03">G03 - Gastos en general</option>
+                            		<option value="I01">I01 - Construcciones</option>
+                            		<option value="I02">I02 - Mobiliario y equipo de oficina por inversiones</option>
+                            		<option value="I03">I03 - Equipo de transporte</option>
+                            		<option value="I04">I04 - Equipo de computo y accesorios</option>
+                            		<option value="I05">I05 - Dados, troqueles, moldes, matrices y herramental</option>
+                            		<option value="I06">I06 - Comunicaciones telefónicas</option>
+                            		<option value="I07">I07 - Comunicaciones satelitales</option>
+                            		<option value="I08">I08 - Otra maquinaria y equipo</option>
+                            		<option value="P01">P01 - Por definir</option>
+                    			</select>
+                    		</div>
+                    	</div>
+					</div>
+				</div>
+				<!--
+				* 
+				**************************************
+				*
+				fin solicitud de factura
+				*
+				**************************************
+				*
+				-->
 			</div>
 
 			<!-- =============================
@@ -630,7 +691,7 @@
 					No hay devoluciones. Sin excepción.
 					<br><br>
 
-					Es mi decisión libre aceptar el servicio que he adquirido, deslindando a ANDARES SPA & MEDICAL CENTER S DE RL DE CV  de cualquier responsabilidad Civil, contractual y extracontractual que surja durante la realización de los servicios así como el pago de cualquier indemnización.
+					Es mi decisión libre aceptar el servicio que he adquirido, deslindando a ANDARES SPA & MEDICAL CENTER S DE RL DE CV  de cualquier responsabilidad Civil, contractual y extra contractual que surja durante la realización de los servicios así como el pago de cualquier indemnización.
 
 				</div>
 

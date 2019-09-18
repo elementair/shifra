@@ -31,6 +31,10 @@ class AjaxCarrito{
     public $opcionPago;
     public $terminos;
 
+    public $rfc;
+    public $razonSocial;
+    public $cfdi;
+
  	public function gudardarCita(){
 
 		$datos = new consulta();
@@ -68,6 +72,10 @@ if(isset($_POST["total"])){
     $paypal->email= $_POST["email"];
     $paypal->opcionPago= $_POST["opcionPago"];
 	$paypal->terminos= $_POST["terminos"];
+
+	$paypal->rfc= $_POST["rfc"];
+    $paypal->razonSocial= $_POST["razonSocial"];
+	$paypal->cfdi= $_POST["cfdi"];
 
 	$paypal-> gudardarCita();
 

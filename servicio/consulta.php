@@ -681,7 +681,7 @@ class consulta {
         // y la formateamos con la funcion _formatear
         $final = _formatear($end);
 
-        $consulta = "INSERT INTO control_citas (servicio_id, nombre_servicio, precio, duracion, fecha, hora_inicio, hora_fin, cliente_id, nombre_usuario, email, telefono, opcion_pago, total, fecha_operacion, title, start, end, url, empleados_id, nombre_empleado, nombre_cabina, status)
+        $consulta = "INSERT INTO control_citas (servicio_id, nombre_servicio, precio, duracion, fecha, hora_inicio, hora_fin, cliente_id, nombre_usuario, email, telefono, opcion_pago, total, fecha_operacion, title, start, end, url, empleados_id, nombre_empleado, nombre_cabina, rfc, razon_social, cfdi, status)
                     VALUES('".$_POST['id_servicio']."',
                            '".$_POST['n_servicio']."',
                            '".$_POST['precio']."',
@@ -703,6 +703,9 @@ class consulta {
                            '1',
                            'empleado 1',
                            'cabina 1',
+                            '".$_POST['rfc']."',
+                           '".$_POST['razonSocial']."',
+                           '".$_POST['cfdi']."',
                            '1')";
 
         $link->query($consulta);

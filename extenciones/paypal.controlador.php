@@ -42,6 +42,10 @@ class Paypal{
 		$opcionPago	= $datospay["opcionPago"];
 		$terminos	= $datospay["terminos"];
 
+		$rfc		= $datospay["rfc"];
+		$razonSocial	= $datospay["razonSocial"];
+		$cfdi	= $datospay["cfdi"];
+
 		$item = new Item();
 		// $variosItem = array();
 

@@ -322,8 +322,10 @@ $(".capturar_valor" ).click(function() {
                     if (key=='recibe_nombre') {
                         nomb="nombre_serv";
                         dato="nombre servicio";
-                        contenido +=' <input type="text" name="' +nomb+'" value="' +respuesta[key]+'">';
+                        contenido +=' <input type="text" id="' +nomb+'" name="' +nomb+'" value="' +respuesta[key]+'">';
                         contenido2 +=' <tr> <td>' +dato+'</td> <td> <span class="valorNombre" valor="0">'+respuesta[key]+'</span></td> <tr>';
+
+                        document.getElementById('description').value = respuesta[key];
 
                     }else if (key=='recibe_duracion') {
                         nomb="duracion";
@@ -354,6 +356,9 @@ $(".capturar_valor" ).click(function() {
                         contenido2 +=' <tr> <td> Subtotal </td> <td>$ <span class="valorSubtotal" valor="0">' +subtotal+'</span></td> <tr>';
                         contenido2 +=' <tr> <td> Impuesto </td> <td>$ <span class="valorTotalImpuesto" valor="0">' +calcularImpuesto+'</span></td>';
                         contenido2 +=' <tr> <td> Total    </td> <td>$ <span class="valorTotalPago" valor="0">' +valorTotal+'</span></td><tr>';
+
+                        document.getElementById('total').value = valorTotal;
+
                     }else if (key=='recibe_id') {
                         nomb="deacuerdo";
                         dato="deacuerdo";
@@ -621,3 +626,4 @@ function almacenar_localstorage(dato){
     localStorage.setItem("servicioId", id);
 
 }
+

@@ -1,11 +1,9 @@
 <?php
-
 if (file_exists('../config/conexion.php')) {
       require_once('../config/conexion.php');
 }else{
       require_once('./config/conexion.php');
 }
-
 
 class consulta {
 
@@ -20,8 +18,6 @@ class consulta {
             $productos_append[$key]['producto_id'] = $producto['producto_id'];
             $productos_append[$key]['cantidad'] = $producto['cantidad'];
             $producto_result = $this->obten_producto_por_id($producto_id);
-
-
             $productos_append[$key]['foto'] = $producto_result[0]['foto'];
             $productos_append[$key]['descripcion'] = $producto_result[0]['descripcion'];
 
@@ -155,7 +151,7 @@ class consulta {
         $link = $conexion->link;
 
         $consulta ="SELECT * FROM clientes WHERE c_electronico='$correo'";
-// echo($consulta);
+        // echo($consulta);
         $resultado = $link->query($consulta);
         $n_registros = $resultado->num_rows;
 

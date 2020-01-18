@@ -21,9 +21,13 @@
 		    	MAPA
 		    	<hr>
 		    	<ul>
-		    		<li><a href="index?pagina=politicas">Politicas de privacidad</a></li>
-		    		<!-- <li>Políticas de Uso</li> -->
-		    		<li><a href="index?pagina=terminos">Términos & condiciones</a></li>
+		    		<li>
+						<a href="index?pagina=politicas">Politicas de privacidad</a>
+					</li>
+		
+		    		<li>
+						<a href="index?pagina=terminos">Términos & condiciones</a>
+					</li>
 		    	</ul>
 		    </div>
 		    <div class="col-md-3 col-sm-6 col-xs-12 ft_contacto">
@@ -36,5 +40,5 @@
 		    </div>
 	  	</div>
 	</div>
-	<div class="ft_pie_pagina">© COPYRIGHT 2018, Sitio Web Desarrollado por <strong>CreActiv Media.</strong></div>
+	<div class="ft_pie_pagina">© COPYRIGHT 2020, Sitio Web Desarrollado por <strong>CreActiv Media.</strong></div>
 </footer>

@@ -135,9 +135,9 @@ if (isset($_POST['from']))
                                         </div>
 
                                 </div>
-                                   <!--  <div class="pull-right form-inline"><br>
-                                        <button class="btn btn-info" data-toggle='modal' data-target='#add_evento'>Añadir Evento</button>
-                                    </div> -->
+                                <div class="pull-right form-inline"><br>
+                                    <button class="btn btn-info" data-toggle='modal' data-target='#add_evento'>Añadir Cita</button>
+                                </div>
 
                 </div><hr>
 
@@ -275,50 +275,48 @@ if (isset($_POST['from']))
         }(jQuery));
     </script>
 
-<!-- <div class="modal fade" id="add_evento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Agregar nuevo evento</h4>
-      </div>
-      <div class="modal-body">
-        <form action="" method="post">
-                    <label for="from">Inicio</label>
-                    <div class='input-group date' id='from'>
-                        <input type='text' id="from" name="hora_inicio" class="form-control" readonly />
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                    </div>
+    <div class="modal fade" id="add_evento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Agendar cita</h4>
+          </div>
+          <div class="modal-body">
+            <form action="" method="post">
 
-                    <br>
+                <label for="tipo">Servicio</label>
+                <select class="form-control" name="nombre_usuario" id="tipo">
+                    <option value="event-info">Ritual imperial</option>
+                    <option value="event-success">Shifra armonía</option>
+                    <option value="event-important">Masajes reductivos</option>
+                    <option value="event-warning">Contorno de ojos</option>
+                    <option value="event-special">Especial</option>
+                </select>
 
-                    <label for="to">Final</label>
-                    <div class='input-group date' id='to'>
-                        <input type='text' name="hora_final" id="to" class="form-control" readonly />
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                    </div>
+                <br>
 
-                    <br>
+                <label for="to">Fecha</label>
 
-                    <label for="tipo">Tipo de evento</label>
-                    <select class="form-control" name="nombre_usuario" id="tipo">
-                        <option value="event-info">Informacion</option>
-                        <option value="event-success">Exito</option>
-                        <option value="event-important">Importantante</option>
-                        <option value="event-warning">Advertencia</option>
-                        <option value="event-special">Especial</option>
-                    </select>
+                <div class='input-group date' id='to'>
+                    <input type='text' name="fecha" id="to" class="form-control" readonly />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                </div>
 
-                    <br>
+                <br>
 
+                <label for="title">Hora</label>
+                <input type="text" required  name="hora" class="form-control" id="title" placeholder="Introduce la Hora">
+                
+                <br>
 
-                    <label for="title">Título</label>
-                    <input type="text" required autocomplete="off" name="duracion" class="form-control" id="title" placeholder="Introduce un título">
+                <label for="title">Cliente</label>
+                <input type="text" required name="cliente" class="form-control" id="title" placeholder="Introduce el nombre del cliente">
 
-                    <br>
+                <br>
 
 
-                    <label for="body">Evento</label>
-                    <textarea id="body" name="nombre_servicio" required class="form-control" rows="3"></textarea>
+                <label for="body">Resumen</label>
+                <textarea id="body" name="nombre_servicio" required class="form-control" rows="3"></textarea>
 
                 <script type="text/javascript">
                     $(function () {
@@ -333,14 +331,15 @@ if (isset($_POST['from']))
 
                     });
                 </script>
-      </div>
-      <div class="modal-footer">
+            </div>
+            
+        <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
           <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Agregar</button>
         </form>
     </div>
   </div>
 </div>
-</div> -->
+</div>
 </body>
 </html>

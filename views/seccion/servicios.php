@@ -8,10 +8,10 @@
 
     	<!-- <input type="hidden" id="cacharId"> -->
         <ul class="list-unstyled components contenedor_ser " id="myBtnContainer">
-
         	<li class="active menuServicios" >
-
-            	<strong><a href="index?pagina=servicios"><font color="#000">SERVICIOS</font></a></strong>
+            	<strong><a href="index?pagina=servicios">
+                <font color="#000">SERVICIOS</font></a>
+                </strong>
             </li>
             <?php
 
@@ -23,7 +23,8 @@
 
 			<li class="menuServicios">
 
-                <a href="index?pagina=servicios&grupo_servicios_id=<?php echo $id; ?>"><font color="#000"><?php echo '&nbsp;&nbsp;'.$nombre[0]; ?></font>
+                <a href="index?pagina=servicios&grupo_servicios_id=<?php echo $id; ?>">
+                <font color="#000"><?php echo '&nbsp;&nbsp;'.$nombre[0]; ?></font>
                 </a>
 
             </li>
@@ -64,13 +65,7 @@
                 }
                 ?>
 
-                <!-- <p>Revisa todos nuestros servicios asi como las promociones que tenemos para tí, preciona el boton menu servicio para desplegar el menu.</p> -->
-
-                <!-- <p>SHIFRA SPA<code>#Agradecemos tu preferencia</code>.</p> -->
-
-
-                <!-- <input type="search" class="searchbar" placeholder="Buscar por Nombre">
-					<p>Buscar Producto por grupo</p> -->
+              
             </div>
 
             <div class="cont_p_serv col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
@@ -99,11 +94,6 @@
 					$nombre_subgrupo      = $servicio['nombre_subgrupo'];
                     $subgrupo_servicios_id=$servicio['subgrupo_servicios_id'];
                     $nombre_grupo         = $servicio['nombre_grupo'];
-
-
-
-
-                    if ($subgrupo_servicios_id==$id_subgrupo_id){
 
 			    ?>
 
@@ -135,7 +125,6 @@
 
                                 </label>
 
-
                               <!--   <button class="btnAgendaInd" type="btn btn-danger" style="border-radius: 10px; color: #000; margin-top: -10px;" data-toggle="modal" data-target="#Modal_formulario_cita_individual">AGENDAR</button> -->
 
                             </div>
@@ -152,7 +141,7 @@
 			    <?php
                     }
 
-                    }
+                    
                 }
                 ?>
 

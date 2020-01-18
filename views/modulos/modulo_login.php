@@ -18,6 +18,7 @@
       		 <ul class="nav nav-tabs">
 			    <li class="active"><a data-toggle="tab" href="#perfil">Perfil</a></li>
 			    <li><a data-toggle="tab" href="#listacitas">Citas</a></li>
+				<li><a data-toggle="tab" href="#prepagos">Prepagos</a></li>
 			    <li><a data-toggle="tab" href="#editarperfil"><span class="glyphicon glyphicon-cog"></span></a></li>
 			  </ul>
 
@@ -265,10 +266,113 @@
 				    </div>
 				
 			    </div>
-			    
-			 </div>
 
-			
+				<div id="prepagos" class="tab-pane fade">
+
+
+				<table class="table lista_citas">
+							 
+							<thead class="thead-dark">
+								<tr>
+									<th><span class="glyphicon glyphicon-time"></span> Reguitro</th>
+									<th><span class="glyphicon glyphicon-flag"></span> Servicio</th>
+									<th><span class="glyphicon glyphicon-calendar"></span> Día</th>
+									<th><span class="glyphicon glyphicon-time"></span> inicio</th>
+									<th><span class="glyphicon glyphicon-time"></span> fin</th>
+									<th><span class="glyphicon glyphicon-time"></span> Duración</th>
+									<th><span class="glyphicon glyphicon-bell"></span> Estado</th>
+								</tr>
+							</thead>
+							
+							<tbody>
+								
+
+							 	<?php							 
+							 	$contador=1;
+				      			$citas=mysqli_query($link,'SELECT cliente_id, nombre_servicio, fecha, fecha_operacion,hora_inicio, hora_fin, duracion, total, email, status FROM control_citas WHERE cliente_id="'.$id_cliente.'" ORDER BY fecha_operacion desc');
+
+						      	foreach ($citas as $cita) {
+
+									$nombre   = $cita["nombre_servicio"];
+									$fecha_operacion   = $cita["fecha_operacion"];
+									$fecha    = $cita["fecha"];
+									$horai     = explode(" ",$cita["hora_inicio"]);
+									$horaf     = explode(" ",$cita["hora_fin"]);
+									$duracion = $cita["duracion"];
+									$total    = $cita["total"];
+									$estado   = $cita["status"];
+
+									$date = date_create($fecha_operacion );
+									$final_fecha = date_format($date, 'H:i - d/m/Y');
+
+									$estilo_estado='';
+									$contenido_estado='';
+									/*==============================================================
+											Obtenemos la fecha actual
+									==============================================================*/
+									$fecha_actual = new DateTime();
+									$fecha_actual->modify('-6 hours');
+									$fecha_actual->modify('0 minute');
+									$fecha_actual->modify('0 second');
+									
+									$fecha_entrada = $cita["hora_fin"];
+
+
+									/*==============================================================
+											mostramos las citas pendientes y caducadas 
+									==============================================================*/
+									// 01/04/2019 18:30 29/03/2019 15:18
+									if($fecha_actual->format('d/m/Y H:i') < $fecha_entrada)
+									{
+										$estilo_estado='agendado';
+										$contenido_estado='pendiente';
+										
+									}
+									else{
+										
+										$estilo_estado='caducado';
+										$contenido_estado='caducado';
+										
+									}
+									// var_dump($fecha_actual->format('d/m/Y H:i'));
+									/*==============================================================
+											mostramos las citas que se esten atendiendo.
+									==============================================================*/
+									if($fecha_actual->format('d/m/Y H:i') > $cita["hora_inicio"] AND $fecha_actual->format('d/m/Y H:i') < $fecha_entrada){
+
+										$estilo_estado='atendiendo';
+										$contenido_estado='en proceso';
+
+									}
+
+								?>
+								<tr class="filas">
+									<td><span style="font-size:.8em; color:orange;"><?php echo $final_fecha; ?><span></td>
+									<td><?php echo $nombre; ?></td>
+									<td><?php echo $fecha; ?></td>
+									<td><?php echo date("g:i a",strtotime($horai[1])); ?></td>
+									<td><?php echo date("g:i a",strtotime($horaf[1])); ?></td>
+									<td><?php echo $duracion.'min'; ?></td>
+									<td><span class="<?php echo $estilo_estado; ?>" title="<?php echo $fecha_actual->format('d/m/Y H:i').$fecha_entrada;  ?>"><?php echo $contenido_estado; ?></span></td>
+								</tr>
+								
+								<?php  $contador += 1; } ?>
+								
+							</tbody>
+							
+						
+						
+						</table>
+						<p class="view-style">Estas son tus ultimas 5 citas, 
+						<span class="view-more-cita"> ver mas...</span>
+
+						</p>
+
+						
+
+				</div>
+
+			 </div>
 	    	<div class="col-sm-12 modal-footer">
 	    	<div class="form">
 		        <form name="index" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">

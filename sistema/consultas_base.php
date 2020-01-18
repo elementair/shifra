@@ -37,6 +37,13 @@ class consultas_base{
     public $tipo_grupal_columnas = array('tipo_grupal'=>false );
     public $tipo_subgrupal_columnas = array('tipo_subgrupal'=>false );
 
+    //  Prepagos
+    public $prepagos_columnas = array('prepagos'=>false );
+    public $prepagos_cantidad_columnas = array('prepagos_cantidad'=>false );
+    public $prepagos_servicios_columnas = array('prepagos_servicios'=>false );
+    public $tipo_prepago_columnas = array('tipo_prepago'=>false );
+    public $categoria_prepago_columnas = array('categoria_prepago'=>false );
+
     //    Seccion Index
     public $slider_inicio_columnas = array('slider_inicio'=>false );
     public $video_inicio_columnas = array('video_inicio'=>false );
@@ -50,7 +57,6 @@ class consultas_base{
     // Control citas
     
     public $control_cita_columnas = array('control_citas'=>false );
-
     public $estructura_bd;
 
     public function __construct(){
@@ -457,6 +463,95 @@ class consultas_base{
             'whatsapp'=>array('tipo'=>'text','cols'=>6,'requerido'=>'required',
                 'vista'=>array('alta','modifica')),
             'email_contacto'=>array('tipo'=>'text','cols'=>6,'requerido'=>'required',
+                'vista'=>array('alta','modifica')),
+            'status'=>array('tipo'=>'checkbox','cols'=>6,'vista'=>array('alta','modifica')));
+
+        /*
+        * 
+        **************************************
+        *
+        Prepagos
+        *
+        **************************************
+        *
+        */
+       // Tipo Prepago
+        $this->estructura_bd['tipo_prepago']['columnas_select'] = $this->tipo_prepago_columnas;
+        $this->estructura_bd['tipo_prepago']['where_filtro_or'] = true;
+        $this->estructura_bd['tipo_prepago']['campos'] = array(
+             'nombre'=>array('tipo'=>'text','cols'=>6,'requerido'=>'required',
+                'vista'=>array('alta','modifica')),
+            'status'=>array('tipo'=>'checkbox','cols'=>6,'vista'=>array('alta','modifica')));
+
+        // Categorias Prepago
+        $this->estructura_bd['categoria_prepago']['columnas_select'] = $this->categoria_prepago_columnas;
+        $this->estructura_bd['categoria_prepago']['where_filtro_or'] = true;
+        $this->estructura_bd['categoria_prepago']['campos'] = array(
+            'nombre'=>array('tipo'=>'text','cols'=>6,'requerido'=>'required',
+                'vista'=>array('alta','modifica')),
+            'descripcion'=>array('tipo'=>'text','cols'=>6,'requerido'=>'required',
+                'vista'=>array('alta','modifica')),
+            'status'=>array('tipo'=>'checkbox','cols'=>6,'vista'=>array('alta','modifica')));
+       
+        //prepagos
+        $this->estructura_bd['prepagos']['columnas_select'] = $this->prepagos_columnas;
+        $this->estructura_bd['prepagos']['where_filtro_or'] = true;
+        $this->estructura_bd['prepagos']['campos'] = array(
+           
+            'categoria_prepago_id'=>array(
+                'tipo'=>'select','cols'=>12,'requerido'=>'required',
+                'tabla_foranea'=>'categoria_prepago','vista'=>array('alta','modifica')),
+            'tipo_prepago_id'=>array(
+                'tipo'=>'select','cols'=>12,'requerido'=>'required',
+                'tabla_foranea'=>'tipo_prepago','vista'=>array('alta','modifica')),
+            'clientes_id'=>array(
+                'tipo'=>'select','cols'=>12,'requerido'=>'required',
+                'tabla_foranea'=>'clientes','vista'=>array('alta','modifica')),
+            'folio'=>array('tipo'=>'text','cols'=>12,'requerido'=>'required',
+                'vista'=>array('alta','modifica')),
+            'fecha_alta'=>array('tipo'=>'fecha','cols'=>12,'requerido'=>'required',
+                'vista'=>array('alta','modifica')),
+            'nombre'=>array('tipo'=>'text','cols'=>12,'requerido'=>'required',
+                'vista'=>array('alta','modifica')),
+            'status'=>array('tipo'=>'checkbox','cols'=>6,'vista'=>array('alta','modifica')));
+
+        //prepagos_servicios
+        $this->estructura_bd['prepagos_servicios']['columnas_select'] = $this->prepagos_servicios_columnas;
+        $this->estructura_bd['prepagos_servicios']['where_filtro_or'] = true;
+        $this->estructura_bd['prepagos_servicios']['campos'] = array(
+            'prepagos_id'=>array(
+                'tipo'=>'select','cols'=>12,'requerido'=>'required',
+                'tabla_foranea'=>'prepagos','vista'=>array('alta','modifica')),
+            'servicios_id'=>array(
+                'tipo'=>'select','cols'=>12,'requerido'=>'required',
+                'tabla_foranea'=>'servicios','vista'=>array('alta','modifica')),
+             'folio'=>array('tipo'=>'text','cols'=>12,'requerido'=>'required',
+                'vista'=>array('alta','modifica')),
+             'cupon'=>array('tipo'=>'text','cols'=>12,'requerido'=>'required',
+                'vista'=>array('alta','modifica')),
+             'fecha_vencimiento'=>array('tipo'=>'fecha','cols'=>12,'requerido'=>'required',
+                'vista'=>array('alta','modifica')),
+             'nombre'=>array('tipo'=>'text','cols'=>12,'requerido'=>'required',
+                'vista'=>array('alta','modifica')),
+            'status'=>array('tipo'=>'checkbox','cols'=>6,'vista'=>array('alta','modifica')));
+
+        //prepagos_cantidad
+        $this->estructura_bd['prepagos_cantidad']['columnas_select'] = $this->prepagos_cantidad_columnas;
+        $this->estructura_bd['prepagos_cantidad']['where_filtro_or'] = true;
+        $this->estructura_bd['prepagos_cantidad']['campos'] = array(
+            
+            'prepagos_id'=>array(
+                'tipo'=>'select','cols'=>12,'requerido'=>'required',
+                'tabla_foranea'=>'prepagos','vista'=>array('alta','modifica')),
+            'cantidad'=>array('tipo'=>'text','cols'=>12,'requerido'=>'required',
+                'vista'=>array('alta','modifica')),
+            'folio'=>array('tipo'=>'text','cols'=>12,'requerido'=>'required',
+                'vista'=>array('alta','modifica')),
+            'cupon'=>array('tipo'=>'text','cols'=>12,'requerido'=>'required',
+                'vista'=>array('alta','modifica')),
+             'fecha_vencimiento'=>array('tipo'=>'fecha','cols'=>12,'requerido'=>'required',
+                'vista'=>array('alta','modifica')),
+             'nombre'=>array('tipo'=>'text','cols'=>12,'requerido'=>'required',
                 'vista'=>array('alta','modifica')),
             'status'=>array('tipo'=>'checkbox','cols'=>6,'vista'=>array('alta','modifica')));
 

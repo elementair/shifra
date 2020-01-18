@@ -18,36 +18,84 @@
 		<div class="row">
 		<div class="form">
 		<form name="formcitas" id="regForm" action="envio_correo_cita.php" method="POST">
-			   <input type="hidden" name="conektaTokenId" id="conektaTokenId" value="">	
+		   <input type="hidden" name="conektaTokenId" id="conektaTokenId" value="">	
 
 			<!-- =============================
 				STEP 1  SELECCIONAR SERVICIO
 			===============================-->
 
 			<div class="tab"><h3><span>1</span>Selecciona tu servicio:</h3><br>
-				<div class="col-md-12">
-				 	<div class="form-group">
-			        		<ul class="nav nav-tabs opciones">
+			<!-- 	<div class="col-md-12">
+
+					<div class="anuncio">
+
+						<div class="form-group">
+							<center>
+								<div class="col-xs-12  col-md-6  col-md-offset-3">	
+
+									<a class="btn_paso1" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><h3>¡Tengo un servicio!<br> <small>Certificado | Prepago</small></h3></a>
+									
+								</div>
+														
+								<div class="col-xs-12 col-md-6 col-md-offset-3">	
+									<a class="btn_paso1"><h3>Escoger un servicio</h3></a>
+								</div>
+
+
+								<div class="row">
+								  <div class="col-md-8 col-md-offset-2">
+								    <div class="collapse multi-collapse" id="multiCollapseExample1">
+								      <div class="card card-body">
+											
+				                            <label>
+				                                	Ingresa el cupon:
+				                            </label>
+				                           
+				                            <div class="input-group">
+												<input type="search" class="form-control">
+												<span class="input-group-btn">
+													<a class="btn buscar">Buscar</a>
+												</span>
+											</div>
+				                            						                            
+			                            </div>
+			                        </div>
+
+							      </div>
+							    </div>
+							</center>
+						</div>
+						
+						</div>
+					</div> -->
+
+				 	<!-- <div class="form-group elige_elprecio"> -->
+		        		<ul class="nav nav-tabs opciones">
 							<li class="active"><a data-toggle="tab" href="#Todos">TODOS</a></li>
 							<?php
 							$contador=1;
+
 							foreach ($grupo_servicios as $grupo) {
+
 								$id_grupo_servicios = $grupo["id"];
 								$nombre_grupo_servicio=explode(" ",$grupo['nombre']);
+
+								if($contador <= 5){
 							?>
-							<li><a data-toggle="tab" href="#<?php echo 'menu-'.$contador; ?>"><?php  echo $nombre_grupo_servicio[0]; ?></a></li>
+							<li><a data-toggle="tab" href="#<?php echo 'menu-'.$contador; ?>"><?php echo $nombre_grupo_servicio[0]; ?></a></li>
 							<?php
+							}
 
 								$contador+=1;
 							}
 							?>
+							<li style="background: #cec813;"><a data-toggle="tab" href="#<?php echo 'menu-16'; ?>"><span class="glyphicon glyphicon-asterisk"></span>Certificado|Prepago</a></li>
 						</ul>
 						<div class="tab-content">
 							<div id="Todos" class="tab-pane fade in active">
 						    		<div class="panel-group intervalo" id="accordion1">
 
 						    			<input type="text" name="intervalo_horas" id="resultado" style="display:none">
-
 							   		<?php
 									$valor_grupo_servicios_id=0;
 
@@ -74,11 +122,16 @@
 
 						        		<div class="panel panel-default">
 										<div class="panel-heading" style="display: flex;">
+											
 											<div class="col-xs-12 col-md-10">
-												<h5 class="panel-title" style="left: 0;">
-												<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#<?php echo 'accordion0_'.$cont; ?>"><?php echo $res['nombre_serv']; ?></a>
+												
+												
+												<h5 class="panel-title" ><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#<?php echo 'accordion0_'.$cont; ?>">
+												<?php echo $res['nombre_serv']; ?></a>
 												</h5>
+												
 											</div>
+											
 										</div>
 
 										<div id="<?php echo 'accordion0_'.$cont; ?>" class="panel-collapse collapse">
@@ -106,7 +159,7 @@
 															<span class="checkmark" title="seleccionar y continuar" >seleccionar</span>
 														</label>
 
-							             				 </div>
+							             				</div>
 						              				</div>
 						            			</div>
 						          			</div>
@@ -124,7 +177,7 @@
 						    	$cont2=3;
 							foreach ($grupo_servicios as $grupo) {
 								$id_grupo_servicios = $grupo["id"];
-							?>
+								?>
 						    	<div id="<?php echo 'menu-'.$id_grupo_servicios?>" class="tab-pane fade">
 								<div class="panel-group intervalo" id="accordion<?php echo $id_grupo_servicios.'0'; ?>">
 
@@ -153,7 +206,7 @@
 
 							          	</div>
 
-							          <div id="<?php echo 'accordion'.$id_grupo_servicios.'_'.$cont2; ?>" class="panel-collapse collapse">
+							          	<div id="<?php echo 'accordion'.$id_grupo_servicios.'_'.$cont2; ?>" class="panel-collapse collapse">
 
 							            	<div class="panel-body desc_individual">
 
@@ -183,13 +236,13 @@
 					             					</div>
 
 
-							               	</div>
-							                	<br>
+							               		</div>
+							                		<br>
 							            	</div>
-							          </div>
-								</div>
+							          	</div>
+									</div>
 								<?php
-							        	$cont2++;
+						        	$cont2++;
 								}
 								?>
 
@@ -198,6 +251,114 @@
 						<?php
 						}
 						?>
+						<div id="<?php echo 'menu-16'?>" class="tab-pane fade">
+							<div class="panel-group intervalo" id="accordion<?php echo '60'; ?>">
+
+
+								<?php
+								/*
+								* 
+								**************************************
+								*
+								0 = No muestra nada
+								1 = cliente logueado
+								*
+								**************************************
+								*
+								*/
+								// $tipo_permiso = 0;
+
+								// if($_SESSION['session_valida'] == 1){
+
+								// 	$tipo_permiso = 1
+								// 	}else{
+								// 	$tipo_permiso = 0;
+
+								// }
+										
+								$prepagos=mysqli_query($link, "SELECT c.id AS 'cliente_id', c.nombre, c.c_electronico AS 'correo', p.id, p.clientes_id, p.tipo_prepago_id, ps.prepagos_id, ps.folio AS 'folio', ps.cupon AS 'cupon', ps.servicios_id AS 'servicio_id'
+								 FROM ((clientes AS c 
+									LEFT OUTER JOIN prepagos p ON p.clientes_id=c.id)
+									LEFT OUTER JOIN prepagos_servicios ps ON ps.prepagos_id=p.id) 
+									WHERE p.tipo_prepago_id=2;");
+
+								$servicios=mysqli_query($link,"SELECT s.id,s.nombre AS 'nombre_serv',s.descripcion,s.caracteristicas,s.archivo,s.duracion,s.precio,s.status,s.subgrupo_servicios_id, ss.nombre, gs.nombre, gs.id AS 'grupo_servicio_id' FROM((servicios AS s 
+									LEFT OUTER JOIN subgrupo_servicios AS ss ON subgrupo_servicios_id=ss.id) 
+									LEFT OUTER JOIN grupo_servicios AS gs ON ss.grupo_servicios_id=gs.id) 
+									WHERE gs.id=$valor_grupo_servicios_id");
+
+								// $clientes=mysqli_query($link,"SELECT id, nombre, archivo, c_electronico, telefono, modo, fecha FROM clientes");
+								
+								if(isset($_POST["c_electronico"])){
+
+									$servicios_id = "";
+									$folio = "";
+									$cupon = "";
+
+									foreach ($prepagos as $prepago) {
+
+										$servicios_id = $prepago["servicio_id"];
+										$folio = $prepago["folio"];
+										$cupon = $prepago["cupon"];
+										$correo = $prepago["correo"];
+
+										if(isset($_POST["c_electronico"]) && isset($_POST["c_electronico"])==$correo){
+
+										?>
+
+										<div class="panel panel-default">
+								          	<div class="panel-heading" style="display: flex;">	
+
+											<div class="col-xs-12 col-md-10">
+
+									            	<h5 class="panel-title">
+									              		<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion<?php echo '60'; ?>" href="#<?php echo 'accordion6_6'; ?>"> <?php echo 	$servicios_id.', '.$folio.', '.$cupon; ?>									              			
+									              		</a>
+
+									            	</h5>
+
+									        	</div>
+
+								          	</div>
+								 
+										</div> 
+										<?php
+										
+										}
+										else{
+
+										}
+
+										}
+									}else {
+
+									?>
+										<p>No tienes servicios por Certificado|prepago</p>
+										<small>intenta iniciando sesion</small>
+
+									<?php
+
+									}
+
+								?>
+								
+
+								
+								<!--<div class="panel panel-default">
+						          	<div class="panel-heading" style="display: flex;">	
+
+									<div class="col-xs-12 col-md-10">
+
+							            	<h5 class="panel-title">
+							              		<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion<?php echo '60'; ?>" href="#<?php echo 'accordion6_6'; ?>">Servio x de ejemplo</a>
+
+							            	</h5>
+
+							        	</div>
+
+						          	</div>
+						 
+							</div> -->
 					</div>
 
 					</div>
@@ -237,7 +398,6 @@
 						<!-- <input type="text" id="id_ser" value=""> -->
 		        		<input type="text" id="dia_cita" value=""  style="display:<?php echo $display;?>" >
 					   	<div class="respuestaEmp">
-
 
 						</div>
 
@@ -292,8 +452,8 @@
 
 						</div>
 
-			     		    	<select name="empleado"  id="empleado" class="form-control empleadolista" required disabled>
-			     		    		<!-- traer consulta de empleados cachados -->
+		     		    	<select name="empleado"  id="empleado" class="form-control empleadolista" required disabled>
+	     		    			<!-- traer consulta de empleados cachados -->
 		            			<option value="MAGALYS">MAGALYS</option>
 				            	<option value="TETE">TETE</option>
 				        	</select>
@@ -435,8 +595,8 @@
 					  	</table>
 
 					</div>
-					¿forma de pago?:
 
+					¿forma de pago?:
 
 				</div>
 
@@ -448,17 +608,30 @@
 			      	<div id="tab" class="btn-group btn-group-justified" data-toggle="buttons">
 
 
-				        <a style="width: 50%;" href="#paypal" class="btn btn-default active" data-toggle="tab">
+				        <a style="width: 33.3%;" href="#paypal" class="btn btn-default active" data-toggle="tab">
 					        <input id="metodo_1" type="radio" name="opcion_pago" value="paypal"  required/>PayPal		   
 					    </a>
 
-				        <a style="width: 50%;" href="#tarjeta" class="btn btn-default" data-toggle="tab">		    
+				        <a style="width: 33.3%;" href="#tarjeta" class="btn btn-default" data-toggle="tab">		    
 				        	<input id="metodo_2" type="radio" name="opcion_pago" value="tarjeta"  required/>Tarjeta    
 				       	</a>
-				       
+				       	<a style="width: 33.3%;" href="#regalo_prepago" class="btn btn-default" data-toggle="tab">		    
+				        	<input id="metodo_3" type="radio" name="opcion_pago" value="regalo_prepago"  required/>C.Regalo | Prepago.
+				       	</a>
+				     
+		
 			      	</div>
 
 			      	<div class="tab-content">
+			      		<!--
+						* 
+						**************************************
+						*
+						Metod de Pago: PAYPAL
+						*
+						**************************************
+						*
+						-->
 				        <div class="tab-pane active" id="paypal">
 
 
@@ -486,6 +659,15 @@
 
 							<!-- </div> -->
 				        </div>
+				        <!--
+						* 
+						**************************************
+						*
+						Metod de Pago: TARJETA
+						*
+						**************************************
+						*
+						-->
 				        <div class="tab-pane" id="tarjeta">
 				        <!-- <div id="tarjeta" class="tab-pane fade"> -->
 
@@ -570,6 +752,57 @@
 				                </div>
 
 				            </div>
+						</div>
+						<!--
+						* 
+						**************************************
+						*
+						Metod de Pago: CERTIFICADO O PREPAGO
+						*
+						**************************************
+						*
+						-->
+						
+						<div class="tab-pane" id="regalo_prepago">
+
+							<div class="card well">
+					            <div class="card-body">
+
+				                  	<div class="row">
+
+				                        <div class="col-md-12">
+				                        	<h3>Comprueba tu saldo disponible</h3>
+				                            <label>
+				                                	Ingresa el Folio del Certificado/Prepago:
+				                            </label>
+				                            <button>Verificar</button>
+				                            <input value="321321" class="form-control" name="name" id="name"  type="text" required>
+				                        </div>
+
+				                        
+				                  	</div>
+				                  	<div class="row">
+				                  		<div class="col-md-12">
+				                  			<br>
+				                  			<h3>RESUMEN</h3>
+				                  			<p><span>Saldo Disponible: </span> $4,000.00</p>
+				                  			<small style="color:red">saldo disponible al 11/11/2019</small>
+				                  			<br>
+				                  			<div class="alert alert-primary" role="alert">
+											  Tienes saldo disponible para cubrir el total de tu servicio elegido. 
+											  <br><span>has clic en continuar para usar tu saldo</span>
+											</div>
+				                  		</div>
+				                  	</div>
+
+				                  
+				                  
+				                </div>
+
+				            </div>
+
+
+							
 						</div>
 						
 						

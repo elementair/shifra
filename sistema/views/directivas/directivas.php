@@ -12,7 +12,6 @@ class Directivas{
 	return $html;
 	}
 
-
 	public function head_lista(){
 		$etiqueta = str_replace('_', ' ', SECCION);
 		$etiqueta = strtolower($etiqueta);
@@ -573,16 +572,6 @@ public function upload_file($cols=12, $campo=false, $ln=false){
         return $html;
 
     }
-
-
-
-
-
-
-
-
-
-
     public function input_select_columnas($tabla, $id, $cols, $disabled, $columnas,$link){
 
         $modelo = new modelos($link);
@@ -1218,8 +1207,6 @@ public function upload_file($cols=12, $campo=false, $ln=false){
     		}
 		return $html;
 
-
-
         // <li>
         //   <a href='#' class='dropdown-toggle' data-toggle='dropdown'>
         //     ".ucfirst($etiqueta_menu)."<b class='caret'></b>
@@ -1228,7 +1215,6 @@ public function upload_file($cols=12, $campo=false, $ln=false){
         //     ".$submenu."
         //   </ul>
         // </li>
-
 
 	}
     public function reporte_campo(){

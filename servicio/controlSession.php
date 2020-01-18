@@ -9,6 +9,12 @@
 /**********************************************************************************
  * INGRESAR
  **********************************************************************************/
+$id_cliente ='';
+$nombre_cliente ='';
+$c_electronico= '';
+$c_electronico_cliente = '';
+$telefono_cliente =''; 
+$modo_cliente = ''; 
 $res_id="";
 
 if(isset($_POST['btnEntrar'])){
@@ -237,11 +243,17 @@ if(isset($_GET['mensaje'])){
  **********************************************************************************/
 
 if(isset($_SESSION['session_valida'])){
-    if($_SESSION['session_valida'] ==  1){
+
+    if($_SESSION['session_valida'] == 1){
         $etiqueta ="VER MI PERFIL";
-        
+        $archivo_cliente = '';
         $SesionModal="#Modal_salir";
+        if (isset($_SESSION['c_electronico'])){
+
+        
         $clientes=mysqli_query($link,"SELECT id, nombre, archivo, c_electronico, telefono, modo, fecha FROM clientes WHERE c_electronico='".$_SESSION['c_electronico']."'");
+
+
 
 
         foreach ($clientes as $cliente) {
@@ -251,6 +263,7 @@ if(isset($_SESSION['session_valida'])){
             $telefono_cliente = $cliente["telefono"];
             $archivo_cliente = $cliente["archivo"];
             $modo_cliente = $cliente["modo"];
+            }
         }
         if ($modo_cliente=='directo') {
             $img_inicio_ruta="img/svg/icono_salir.svg";

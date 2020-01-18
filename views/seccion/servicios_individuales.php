@@ -254,7 +254,7 @@
                         $id_servicio = $servicio['id'];
                         $subgrupo_servicios_id = $servicio['subgrupo_servicios_id'];
 
-
+                        
                         ?>
                         <div id="mostrar_id_subgrupo">
 

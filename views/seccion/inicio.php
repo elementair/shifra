@@ -78,17 +78,17 @@
 						    <h4 class="animated fadeInUp"><?php echo $descripcion; ?></h4></br>
 								<!-- <p class="animated fadeInUp"><a style="display: inline-block;" class="btn-transparent btn-rounded btn-large" <?php echo $url; ?> ><?php echo $boton; ?></a></p> -->
 								<!----------------------------------
-											-- Youtube video complete --
-											------------------------------------>
+								-- Youtube video complete --
+								------------------------------------>
 
-											<!-- <h6 style="position:absolute; display:inline-block; margin-left:0px; margin-top:71px;" ></h6> -->
+								<!-- <h6 style="position:absolute; display:inline-block; margin-left:0px; margin-top:71px;" ></h6> -->
 
-											<img class="img_anim_down" src="img/scroll-down.gif" alt=""><br>										<!-- dale un vistaso a nuestro establecimiento -->
-											<a class="btn-transparent btn-rounded btn-large js-video-button titulo_universal" data-video-id='nKqNrpBD4E0'><span syle="margin-bottom:10px; position:absulute;" class="glyphicon glyphicon-facetime-video"> </span> Ver Video</a>
-										
-											<!----------------------------------
-											-- fin --
-											------------------------------------>
+								<img class="img_anim_down" src="img/scroll-down.gif" alt=""><br>										<!-- dale un vistaso a nuestro establecimiento -->
+								<a class="btn-transparent btn-rounded btn-large js-video-button titulo_universal" data-video-id='nKqNrpBD4E0'><span syle="margin-bottom:10px; position:absulute;" class="glyphicon glyphicon-facetime-video"> </span> Ver Video</a>
+							
+								<!----------------------------------
+								-- fin --
+								------------------------------------>
 									
 						</div>
 
@@ -106,11 +106,11 @@
 	                <div class="carousel-caption">
 	                    <h1 class="animated fadeInDown"><?php echo $nombre_si;?></h1></br>
 	                     <h4 class="animated fadeInUp"><?php echo $descripcion; ?></h4></br>
-											<h4 class="animated fadeInUp"><a style="display: inline-block;" class="btn-transparent btn-rounded btn-large" <?php echo $url; ?> ><?php echo $boton; ?></a></h4>
-											
-										
-										</div>
-		            	</div>
+							<h4 class="animated fadeInUp"><a style="display: inline-block;" class="btn-transparent btn-rounded btn-large" <?php echo $url; ?> ><?php echo $boton; ?></a></h4>
+							
+						
+						</div>
+	            	</div>
                 </div>
             <?php } } ?>
                 
@@ -205,10 +205,8 @@
 					  		if ($id==1){
                         	 $itemStatus='active';
 
-
 					  	?>
-					  		
-					  	
+					  						  	
 					    <div class="item <?php echo $itemStatus; ?>">
 					    <h1><?php echo $nombre; ?></h1>
 							<p class="txt_tam_gen_home"><?php echo $descripcion; ?>
@@ -366,16 +364,15 @@
 		<div class="txt_servicios">INSTALACIONES</div>
 		<ul id="flexiselDemo3">
 
-			<?php 
+			<?php
+
 				foreach ($instalaciones as $instalacion) {
 					$id = $instalacion['id'];
                     $nombre = $instalacion['nombre'];
                     $archivo =$ruta_base.$instalacion['archivo'];
                     $dir_img='background-image: url('.$archivo.');';
-
-
-				
-			 ?>
+	
+		 	?>
 
 			<li data-target="#myCarrusel2" data-slide-to="<?php echo $id; ?>">
 				<div data-toggle="modal" data-target="#exampleModal" class="contenedor_inst" style="<?php echo $dir_img; ?>"><div class="sombreado_galeria_instalaciones"><img src="img/lupa-con-un-ojo-blanco.svg"></div></div>
@@ -425,7 +422,8 @@
 		    </div>
 		  	</div>
 
-		  	<a href="#myCarrusel2"  data-slide="prev"> muevete a la izquierda</a>
+
+		  	<!-- <a href="#myCarrusel2"  data-slide="prev"> muevete a la izquierda</a> -->
 		    <a class="carousel-control" href="#myCarrusel2" data-slide="prev">
 			    <span class="glyphicon glyphicon-chevron-left"></span>
 			    <span class="sr-only">Previous</span>
@@ -444,7 +442,6 @@
 		<ul id="flexiselDemo4">
             <?php
             foreach ($promociones as $promo) {
-
             $id = $promo['id'];
             $nombre = $promo['nombre'];
             $descripcion = $promo['descripcion'];

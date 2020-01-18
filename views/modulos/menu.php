@@ -2,7 +2,7 @@
 
 @font-face{
 	font-family: Montserrat-Regular;
-	src: url(../fonts/Montserrat-Regular.otf);
+	src: url(./fonts/Montserrat-Regular.otf);
 }
 a:link {
     text-decoration: none;
@@ -135,7 +135,9 @@ a:link {
 		</div> 
 		<div class="iconos_redes_sociales">
             
-            <a href="https://web.whatsapp.com/send?phone=<?php echo $what; ?>&text=Hola,%20me%20gustaria%20agendar%20una%20cita." class="social-icon whatsapp watsWeb" target="_blank"><img src="img/svg/icono_wats2.svg"></a>
+            <a href="https://api.whatsapp.com/send?phone=<?php echo $what; ?>&text=Hola,%20me%20gustaria%20agendar%20una%20cita." class="social-icon whatsapp watsWeb" target="_blank"><img src="img/svg/icono_wats2.svg"></a>
+
+            <!-- https://api.whatsapp.com/send?phone=56987654321&text=Me%20gustaría%20saber%20el%20precio%20del%20sitio%20web -->
 
 			<a href="https://api.whatsapp.com/send?phone=<?php echo $what; ?>&text=Hola,%20me%20gustaria%20agendar%20una%20cita." class="social-icon whatsapp watsMov" target="_blank"><img src="img/svg/icono_wats2.svg"></a>
 
@@ -193,6 +195,7 @@ a:link {
                                 }
                                 ?>
                             </div>
+                            
                         </div>
                         <li class="desactive"><a href="<?php echo $ruta_base_menu; ?>#indicador_menu_promociones">PROMOCIONES</a></li>
                         <li class="desactive"><a href="<?php echo $ruta_base_menu; ?>#indicador_menu_citas">CITAS</a></li>

@@ -70,6 +70,7 @@ $ajustes=mysqli_query($link,"SELECT id, telefono_1, telefono_2, whatsapp, email_
 	<!-- <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"> -->
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+
 	<link href="css/style.css" rel="stylesheet" type="text/css">
 
 	<link rel="stylesheet" type="text/css" href="css/politicas.css">
@@ -77,8 +78,10 @@ $ajustes=mysqli_query($link,"SELECT id, telefono_1, telefono_2, whatsapp, email_
 
 	<!-- control carrusel -->
 	<link rel="stylesheet" type="text/css" href="css/MyCarrusel.css">
+	<link href="css/modulo_citas.css" rel="stylesheet">
   	<link rel="stylesheet" type="text/css" href="css/animate.css">
   	<link rel="stylesheet" type="text/css" href="css/step_form_style.css">
+
 
 	<!-- Simple Slider -->
 	<link href="css/simple-sidebar.css" rel="stylesheet">
@@ -267,7 +270,7 @@ MOSTRAR MENSAJES DE CONFIRMACION DE ACCIONES
 			include_once 	$base."cita.php";
 			include "views/modulos/modulo_citas.php";
 
-		}
+		} 
 		elseif ($rutas[0] == "finalizar_pago") {
 			include_once 	$base."finalizar.php";
 
@@ -284,8 +287,11 @@ MOSTRAR MENSAJES DE CONFIRMACION DE ACCIONES
 
 		// Inicio
 		}else{
+
 		include_once $base."inicio.php";
 		include "views/modulos/modulo_citas.php";
+
+
 
 		}
 

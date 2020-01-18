@@ -186,20 +186,20 @@ class templates{
     public function acciones($tabla){
         $modifica = array('grupo','seccion_menu','accion','menu','usuario',
             'elemento_lista','grupo_servicios','subgrupo_servicios','servicios','imagen_servicio','promociones', 'servicios_promociones',
-            'empleados', 'servicios_empleados','clientes','control_citas','promociones_tipo','tipo_individual','tipo_grupal','slider_inicio','video_inicio','nosotros','slider_nosotros','instalaciones','cabina','empleados_rol','servicios_cabinas','ajustes');
+            'empleados', 'servicios_empleados','clientes','control_citas','promociones_tipo','tipo_individual','tipo_grupal','slider_inicio','video_inicio','nosotros','slider_nosotros','instalaciones','cabina','empleados_rol','servicios_cabinas','ajustes','prepagos','prepagos_cantidad','prepagos_servicios','tipo_prepago','categoria_prepago');
 
 
         $desactiva_bd = array('grupo','seccion_menu','accion','menu','usuario',
             'elemento_lista','grupo_servicios','subgrupo_servicios','servicios','imagen_servicio','promociones', 'servicios_promociones',
-            'empleados', 'servicios_empleados','clientes','control_citas','promociones_tipo','tipo_individual','tipo_grupal','slider_inicio','video_inicio','nosotros','slider_nosotros','instalaciones','cabina','empleados_rol','servicios_cabinas','ajustes');
+            'empleados', 'servicios_empleados','clientes','control_citas','promociones_tipo','tipo_individual','tipo_grupal','slider_inicio','video_inicio','nosotros','slider_nosotros','instalaciones','cabina','empleados_rol','servicios_cabinas','ajustes','prepagos','prepagos_cantidad','prepagos_servicios','tipo_prepago','categoria_prepago');
 
         $activa_bd = array('grupo','seccion_menu','accion','menu','usuario',
             'elemento_lista','grupo_servicios','subgrupo_servicios','servicios','imagen_servicio','promociones', 'servicios_promociones',
-            'empleados', 'servicios_empleados','clientes','control_citas','promociones_tipo','tipo_individual','tipo_grupal','slider_inicio','video_inicio','nosotros','slider_nosotros','instalaciones','cabina','empleados_rol','servicios_cabinas','ajustes');
+            'empleados', 'servicios_empleados','clientes','control_citas','promociones_tipo','tipo_individual','tipo_grupal','slider_inicio','video_inicio','nosotros','slider_nosotros','instalaciones','cabina','empleados_rol','servicios_cabinas','ajustes','prepagos','prepagos_cantidad','prepagos_servicios','tipo_prepago','categoria_prepago');
 
         $elimina_bd = array('grupo','seccion_menu','accion','menu','usuario',
             'elemento_lista','grupo_servicios','subgrupo_servicios','servicios','imagen_servicio','promociones', 'servicios_promociones',
-            'empleados', 'servicios_empleados','clientes','control_citas','promociones_tipo','tipo_individual','tipo_grupal','slider_inicio','video_inicio','nosotros','slider_nosotros','instalaciones','cabina','empleados_rol','servicios_cabinas','ajustes');
+            'empleados', 'servicios_empleados','clientes','control_citas','promociones_tipo','tipo_individual','tipo_grupal','slider_inicio','video_inicio','nosotros','slider_nosotros','instalaciones','cabina','empleados_rol','servicios_cabinas','ajustes','prepagos','prepagos_cantidad','prepagos_servicios','tipo_prepago','categoria_prepago');
 
         $asigna_accion = array('grupo');
 

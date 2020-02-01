@@ -147,6 +147,7 @@ a:link {
 <!--			<a href="mailto:shifraspa132@gmail.com" target="_blank"><img src="img/svg/icono_gmail.svg"></a>-->
 			
 			<a href="" title="<?php echo $etiqueta; ?>" data-toggle="modal" data-target="<?php echo $SesionModal; ?>"><img src="<?php echo $img_inicio_ruta; ?>" style="border-radius: 50%;"></a>
+            
             <a><img class="call" src="img/svg/icono_call.svg"></a>
             <div class="call_menu">01 (33) <?php echo $tel1.'<br>01 (33) '.$tel2; ?></div>
         </div>

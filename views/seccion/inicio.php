@@ -383,8 +383,8 @@
 		<!-- Imagen Modal -->
 		<div class="modal fade"  id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-		  	<div class="modal-dialog modal-lg"  role="document">
-		    <div class="contedos_galeria_modal">
+		  	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		    <div class="contedos_galeria_modal ">
 
 		    <div class="modal-body">
 		    	<button type="button" class="close" data-dismiss="modal" aria-label="Close">

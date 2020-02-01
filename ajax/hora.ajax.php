@@ -95,7 +95,7 @@ function intervaloHora($hora_inicio, $hora_fin) {
     $periodo   = new DatePeriod($hora_inicio, $intervalo, $hora_fin);
     foreach($periodo as $hora ) {
         // Guardamos las horas intervalos
-        $horas[] =  $hora->format('H:i');
+        $horas[] =  $hora->format('g:i a');
     }
     return $horas;
     }
@@ -123,9 +123,25 @@ function intervaloHora($hora_inicio, $hora_fin) {
     foreach ($rol_salida as $salida) {
         // echo '<option>'.$empleado['entrada'];'</option>';
     }
+    // $entrada['entrada'] =  $salida->format('g:i a');
+    // $salida['salida']= $salida->format('g:i a');
+    // $recibe_h_inicio=$entrada['entrada'];
+    // $recibe_h_fin=$salida['salida'];  
+    
+    
+    // $dateEntrada = $entrada['entrada'];
+
+    
+
+    // $dateEntrada->format('g:i a');
+
+    // $dateSalida = $salida['salida'];
+   
+   
 
     $recibe_h_inicio=$entrada['entrada'];
     $recibe_h_fin=$salida['salida'];
+    // $dateSalida->format('g:i a');
 
     $array=(intervaloHora($recibe_h_inicio , $recibe_h_fin));
     /**===============================
@@ -307,4 +323,3 @@ function intervaloHora($hora_inicio, $hora_fin) {
 //Devolvemos el array pasado a JSON como objeto
 $info = json_encode($datos, JSON_FORCE_OBJECT);
 echo($info);
-?>

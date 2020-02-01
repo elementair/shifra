@@ -1,8 +1,8 @@
 <!-- FORMULARIO INICIAR CITA -->
 <?php
-
-	$display='none';
+	$display='none';				
 ?>
+
 <div class="modal fade" id="Modal_formulario_cita" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg" role="document">
     		<div class="modal-content">
@@ -89,9 +89,56 @@
 								$contador+=1;
 							}
 							?>
-							<li style="background: #cec813;"><a data-toggle="tab" href="#<?php echo 'menu-16'; ?>"><span class="glyphicon glyphicon-asterisk"></span>Certificado|Prepago</a></li>
+							<?php
+
+							if($_SESSION['session_valida'] == 1){
+
+								$tipo_permiso = 1
+								?>
+
+								<li style="background: #cec813;"><a data-toggle="tab" href="#<?php echo 'menu-16'; ?>"><span class="glyphicon glyphicon-asterisk"></span>Certificado|Prepago</a></li>
+								
+								
+								<?php
+							}else{
+								$tipo_permiso = 0;
+							
+							}
+						
+							?>
 						</ul>
 						<div class="tab-content">
+							<?php
+							
+							if($_SESSION['session_valida'] == 1){
+
+								$tipo_permiso = 1;
+								
+								}else{
+
+									?>
+									<div class="input-group verificar_prepago">
+										<input type="search" placeholder="FOLIO del servicio que pagaste o te obsequiaron..." class="form-control" value="0000">
+										<span class="input-group-btn">								
+											<a class="btn btn-default buscar_folio">Verificar</a>
+										</span>
+
+									</div>
+
+
+									<small class="bg-success text-success">FOLIO verificado, puedes seleccionar tu servicio...</small>
+
+									<small class="bg-danger text-danger">FOLIO incorrecto, vuela a intentar...</small>	
+
+									<?php
+								}
+							
+							?>	
+							<?php
+							
+							?>		
+										
+						
 							<div id="Todos" class="tab-pane fade in active">
 						    		<div class="panel-group intervalo" id="accordion1">
 
@@ -764,45 +811,67 @@
 						-->
 						
 						<div class="tab-pane" id="regalo_prepago">
-
-							<div class="card well">
-					            <div class="card-body">
-
-				                  	<div class="row">
-
-				                        <div class="col-md-12">
-				                        	<h3>Comprueba tu saldo disponible</h3>
-				                            <label>
-				                                	Ingresa el Folio del Certificado/Prepago:
-				                            </label>
-				                            <button>Verificar</button>
-				                            <input value="321321" class="form-control" name="name" id="name"  type="text" required>
-				                        </div>
-
-				                        
-				                  	</div>
-				                  	<div class="row">
-				                  		<div class="col-md-12">
-				                  			<br>
-				                  			<h3>RESUMEN</h3>
-				                  			<p><span>Saldo Disponible: </span> $4,000.00</p>
-				                  			<small style="color:red">saldo disponible al 11/11/2019</small>
-				                  			<br>
-				                  			<div class="alert alert-primary" role="alert">
-											  Tienes saldo disponible para cubrir el total de tu servicio elegido. 
-											  <br><span>has clic en continuar para usar tu saldo</span>
-											</div>
-				                  		</div>
-				                  	</div>
-
-				                  
-				                  
-				                </div>
-
-				            </div>
-
-
+						<?php
 							
+							if($_SESSION['session_valida'] == 1){
+
+								$tipo_permiso = 1;
+								?>
+
+								<div class="row">
+									<div class="col-md-4">										
+
+										<div class="card">
+										<div class="card-body">
+											<h4 class="card-title">Certificado Cortesia</h4>
+											<p class="card-text">Emitido por Shifraspa para clientes frecuentes</p>
+											<h3>$1000.00</h3>
+										
+										</div>
+											<a href="#" class="btn btn_format_personal btn-default">Usar Ahora</a>
+										</div>
+
+									</div>
+									<div class="col-md-4">
+										
+
+										<div class="card">
+										<div class="card-body">
+											<h4 class="card-title">Certificado Cortesia</h4>
+											<p class="card-text">Emitido por Shifraspa para clientes frecuentes</p>
+											<h3>$1000.00</h3>
+										
+										</div>
+											<a href="#" class="btn btn_format_personal btn-default">Usar Ahora</a>
+										</div>
+
+
+									</div>
+								</div>
+
+								<?php
+														
+								}else{
+
+									?>
+									<div class="input-group verificar_prepago">
+										<input type="search" placeholder="FOLIO del prepago en cantidad que pagaste o te obsequiaron..." class="form-control" value="0000">
+										<span class="input-group-btn">								
+											<a class="btn btn-default buscar_folio">Verificar</a>
+										</span>
+
+									</div>
+
+
+									<small class="bg-success text-success">FOLIO verificado, puedes seleccionar tu servicio...</small>
+
+									<small class="bg-danger text-danger">FOLIO incorrecto, vuela a intentar...</small>	
+
+									<?php
+								}
+							
+							?>	
+						
 						</div>
 						
 						

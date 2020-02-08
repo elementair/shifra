@@ -18,6 +18,7 @@ $id = $_POST['id'];
 $Dia= $_POST['dia'];
 $obtener_id = $id;
 $obtener_fecha = $Dia;
+
 // ej: $obtener_fecha = 19/06/2019
 
 
@@ -210,14 +211,14 @@ function intervaloHora($hora_inicio, $hora_fin) {
                         }else{
                             // echo '<option>'.$empleado['enombre'].$ocupados['nombre_empleado'].'no son iguales</option>';
 
-                                if($array[$i]>=$iniciof1  AND $array[$i]<$finf1){
-                                    $estado='disabled title="Este horario no está disponible." style="color:red;"';
-                                }else{
+                            if($array[$i]>=$iniciof1  AND $array[$i]<$finf1){
+                                $estado='disabled title="Este horario no está disponible." style="color:red;"';
+                            }else{
 
-                                    $estado='';
-                                }
-                                break 3;
-                                // exit();
+                                $estado='';
+                            }
+                            break 3;
+                            // exit();
                         }
 
                     }else{

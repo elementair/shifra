@@ -10,15 +10,15 @@
         $nombre               = $servicio['nombre_servicio'];
         $archivo_pad          = $servicio['archivo'];
         $descripcion          = $servicio['descripcion'];
-    $descripcion_res      = str_replace(".", ".<br>", $descripcion);
-    $caracteristicas      = $servicio['caracteristicas'];
-            $duracion             = $servicio['duracion'];
+        $descripcion_res      = str_replace(".", ".<br>", $descripcion);
+        $caracteristicas      = $servicio['caracteristicas'];
+        $duracion             = $servicio['duracion'];
         $precio               = $servicio['precio'];
-    $precio_formato_comas = number_format($precio);
+        $precio_formato_comas = number_format($precio);
         $nombre_subgrupo      = $servicio['nombre_subgrupo'];
-    $subgrupo_servicios_id=$servicio['subgrupo_servicios_id'];
-    $nombre_grupo         = $servicio['nombre_grupo'];
-    $grupo_servicio_id    =$servicio['grupo_servicio_id'];
+        $subgrupo_servicios_id=$servicio['subgrupo_servicios_id'];
+        $nombre_grupo         = $servicio['nombre_grupo'];
+        $grupo_servicio_id    =$servicio['grupo_servicio_id'];
     ?>
     <section class="seccion_1_servicios_individual">
 

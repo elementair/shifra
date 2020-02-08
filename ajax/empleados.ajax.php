@@ -2,7 +2,6 @@
 /*************************************************************
 *** CONEXIÓN  Y OBTENCION DE CLASES DE CONEXIÓN
 *************************************************************/
-
 session_start();
 require_once ('../servicio/consulta.php');
 $datos = new consulta();
@@ -102,4 +101,3 @@ header('Content-Type: application/json');
 //Devolvemos el array pasado a JSON como objeto
 $info = json_encode($datos, JSON_FORCE_OBJECT);
 echo($info);
-?>

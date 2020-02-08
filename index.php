@@ -34,7 +34,7 @@ Control session
 require_once ('./servicio/controlSession.php');
 
 $grupo_servicios=mysqli_query($link,"SELECT id, nombre, descripcion, archivo FROM grupo_servicios WHERE status=1;");
-$promociones = mysqli_query($link, "SELECT id,nombre,descripcion,archivo, descuento,promociones_tipo_id,status FROM promociones WHERE status=1");
+$promociones = mysqli_query($link, "SELECT id,nombre,descripcion,archivo, descuento,promociones_tipo_id,status FROM promociones WHERE status=1;");
 
 $slider_inicio=mysqli_query($link,"SELECT id, nombre, descripcion, boton, url, archivo FROM slider_inicio WHERE status=1;");
 $video_inicio=mysqli_query($link,"SELECT archivo FROM video_inicio;");
@@ -54,7 +54,7 @@ $ajustes=mysqli_query($link,"SELECT id, telefono_1, telefono_2, whatsapp, email_
 	<meta name="description" content="Free Web tutorials">
   	<meta name="keywords" content="shifra,shifraspa,shifraspaandares,spa,spa andares,medical center,masajes,tratamientos,spa guadalajara,spa andares">
   	<meta name="author" content="creactiv media">
-  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">   
 	<title>Shifra Spa</title>
 	<!--
 	* 
@@ -295,6 +295,7 @@ MOSTRAR MENSAJES DE CONFIRMACION DE ACCIONES
 
 		}
 
+	
 	include "views/modulos/modulo_login.php";
 	include "views/modulos/modulo_citas_lanzamiento.php";
 
@@ -422,7 +423,7 @@ MOSTRAR MENSAJES DE CONFIRMACION DE ACCIONES
 	</script>
 
 	<script type="text/javascript" src="js/funciones.js"></script>
-
+	<script src="js/verifica_folio.js"></script>
 
 	<script type="text/javascript" src="views/js/registroFacebook.js"></script>
 	<script type="text/javascript" src="js/jquery.flexisel.js"></script>

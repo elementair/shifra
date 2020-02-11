@@ -3,8 +3,7 @@
 $display = 'none';
 ?>
 
-<div class="modal fade" id="Modal_formulario_cita" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="Modal_formulario_cita" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
 
@@ -29,406 +28,427 @@ $display = 'none';
                                 <h3><span>1</span>Selecciona tu servicio:</h3><br>
                                 <!-- 	<div class="col-md-12">
 
-					<div class="anuncio">
+								<div class="anuncio">
 
-						<div class="form-group">
-							<center>
-								<div class="col-xs-12  col-md-6  col-md-offset-3">	
+									<di		v class="form-group">
+										<center>
+											<div class="col-xs-12  col-md-6  col-md-offset-3">	
 
-									<a class="btn_paso1" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><h3>¡Tengo un servicio!<br> <small>Certificado | Prepago</small></h3></a>
-									
-								</div>
-														
-								<div class="col-xs-12 col-md-6 col-md-offset-3">	
-									<a class="btn_paso1"><h3>Escoger un servicio</h3></a>
-								</div>
-
-
-								<div class="row">
-								  <div class="col-md-8 col-md-offset-2">
-								    <div class="collapse multi-collapse" id="multiCollapseExample1">
-								      <div class="card card-body">
-											
-				                            <label>
-				                                	Ingresa el cupon:
-				                            </label>
-				                           
-				                            <div class="input-group">
-												<input type="search" class="form-control">
-												<span class="input-group-btn">
-													<a class="btn buscar">Buscar</a>
-												</span>
+												<a class="btn_paso1" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><h3>¡Tengo un servicio!<br> <small>Certificado | Prepago</small></h3></a>
+												
 											</div>
-				                            						                            
-			                            </div>
-			                        </div>
+																	
+											<div class="col-xs-12 col-md-6 col-md-offset-3">	
+												<a class="btn_paso1"><h3>Escoger un servicio</h3></a>
+											</div>
 
-							      </div>
-							    </div>
-							</center>
-						</div>
-						
-						</div>
-					</div> -->
+
+											<div class="row">
+											<div class="col-md-8 col-md-offset-2">
+												<div class="collapse multi-collapse" id="multiCollapseExample1">
+												<div class="card card-body">
+														
+														<label>
+																Ingresa el cupon:
+														</label>
+													
+														<div class="input-group">
+															<input type="search" class="form-control">
+															<span class="input-group-btn">
+																<a class="btn buscar">Buscar</a>
+															</span>
+														</div>
+																											
+													</div>
+												</div>
+
+											</div>
+											</div>
+										</center>
+									</div>
+									
+									</div>
+								</div> -->
 
                                 <!-- <div class="form-group elige_elprecio"> -->
                                 <ul class="nav nav-tabs opciones">
                                     <li class="active"><a data-toggle="tab" href="#Todos">TODOS</a></li>
                                     <?php
-									$contador = 1;
+                                    $contador = 1;
 
-									foreach ($grupo_servicios as $grupo) {
+                                    foreach ($grupo_servicios as $grupo) {
 
-										$id_grupo_servicios = $grupo["id"];
-										$nombre_grupo_servicio = explode(" ", $grupo['nombre']);
+                                        $id_grupo_servicios = $grupo["id"];
+                                        $nombre_grupo_servicio = explode(" ", $grupo['nombre']);
 
-										if ($contador <= 5) {
-									?>
-                                    <li><a data-toggle="tab"
-                                            href="#<?php echo 'menu-' . $contador; ?>"><?php echo $nombre_grupo_servicio[0]; ?></a>
-                                    </li>
+                                        if ($contador <= 5) {
+                                    ?>
+                                            <li><a data-toggle="tab" href="#<?php echo 'menu-' . $contador; ?>"><?php echo $nombre_grupo_servicio[0]; ?></a>
+                                            </li>
                                     <?php
-										}
+                                        }
 
-										$contador += 1;
-									}
-									?>
+                                        $contador += 1;
+                                    }
+                                    ?>
                                     <?php
 
-									if ($_SESSION['session_valida'] == 1) {
+                                    if ($_SESSION['session_valida'] == 1) {
 
-										$tipo_permiso = 1
-									?>
+                                        $tipo_permiso = 1
+                                    ?>
 
-                                    <li style="background: #cec813;"><a data-toggle="tab"
-                                            href="#<?php echo 'menu-16'; ?>"><span
-                                                class="glyphicon glyphicon-asterisk"></span>Certificado|Prepago</a></li>
+                                        <li style="background: #cec813;"><a data-toggle="tab" href="#<?php echo 'menu-16'; ?>"><span class="glyphicon glyphicon-asterisk"></span>Certificado|Prepago</a></li>
 
 
                                     <?php
-									} else {
-										$tipo_permiso = 0;
-									}
+                                    } else {
+                                        $tipo_permiso = 0;
+                                    }
 
-									?>
+                                    ?>
                                 </ul>
                                 <div class="tab-content">
                                     <?php
 
-									if ($_SESSION['session_valida'] == 1) {
+                                    if ($_SESSION['session_valida'] == 1) {
 
-										$tipo_permiso = 1;
-									} else {
+                                        $tipo_permiso = 1;
+                                    } else {
 
-									?>
-                                    <div class="input-group verificar_prepago">
-                                        <input type="search"
-                                            placeholder="FOLIO del servicio que pagaste o te obsequiaron..."
-                                            class="form-control" value="0000" id="numero_folio">
-                                        <span class="input-group-btn">
-                                            <a id="calc" class="btn btn-default buscar_folio"
-                                                href="#<?php echo 'menu-16'; ?>">Verificar</a>
-                                        </span>
+                                    ?>
+                                        <div class="input-group verificar_prepago">
+                                            <input type="search" placeholder="FOLIO del servicio que pagaste o te obsequiaron..." class="form-control" value="0000" id="numero_folio">
+                                            <span class="input-group-btn">
+                                                <a id="calc" class="btn btn-default buscar_folio" href="#<?php echo 'menu-16'; ?>">Verificar</a>
+                                            </span>
 
-                                    </div>
+                                        </div>
 
                                     <?php
-									}
+                                    }
 
-									?>
+                                    ?>
                                     <?php
 
-									?>
+                                    ?>
 
 
                                     <div id="Todos" class="tab-pane fade in active">
                                         <div class="panel-group intervalo" id="accordion1">
 
-                                            <input type="text" name="intervalo_horas" id="resultado"
-                                                style="display:none">
+                                            <input type="text" name="intervalo_horas" id="resultado" style="display:none">
                                             <div id="resultado_folio"></div>
 
                                             <div class="gifCarga"><img id="loading_spinner" src="img/loading.gif"></div>
                                             <?php
-											$valor_grupo_servicios_id = 0;
+                                            $valor_grupo_servicios_id = 0;
 
-											if ($valor_grupo_servicios_id == 0) {
-												$servicios = mysqli_query($link, "SELECT s.id ,s.nombre AS 'nombre_serv',s.descripcion,s.caracteristicas,s.archivo,s.duracion,s.precio,s.status,s.subgrupo_servicios_id, ss.nombre,
+                                            if ($valor_grupo_servicios_id == 0) {
+                                                $servicios = mysqli_query($link, "SELECT s.id ,s.nombre AS 'nombre_serv',s.descripcion,s.caracteristicas,s.archivo,s.duracion,s.precio,s.status,s.subgrupo_servicios_id, ss.nombre,
 										gs.nombre, gs.id AS 'grupo_servicio_id' from((servicios as s
 										left outer join subgrupo_servicios as ss on subgrupo_servicios_id=ss.id)
 										left outer join grupo_servicios as gs on ss.grupo_servicios_id=gs.id) ");
-											} else {
-												$servicios = mysqli_query($link, "SELECT s.id,s.nombre AS 'nombre_serv',s.descripcion,s.caracteristicas,s.archivo,s.duracion,s.precio,s.status,s.subgrupo_servicios_id, ss.nombre, gs.nombre, gs.id AS 'grupo_servicio_id' from((servicios as s
+                                            } else {
+                                                $servicios = mysqli_query($link, "SELECT s.id,s.nombre AS 'nombre_serv',s.descripcion,s.caracteristicas,s.archivo,s.duracion,s.precio,s.status,s.subgrupo_servicios_id, ss.nombre, gs.nombre, gs.id AS 'grupo_servicio_id' from((servicios as s
 											left outer join subgrupo_servicios as ss on subgrupo_servicios_id=ss.id)
 											left outer join grupo_servicios as gs on ss.grupo_servicios_id=gs.id) where gs.id=$valor_grupo_servicios_id");
-											}
+                                            }
 
-											$cont = 2;
-											foreach ($servicios as $res) {
-											?>
+                                            $cont = 2;
+                                            foreach ($servicios as $res) {
+                                            ?>
 
-                                            <div class="captura" style="display: none;">
+                                                <div class="captura" style="display: none;">
 
-                                                <?php echo $res['duracion']; ?>
-
-                                            </div>
-
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading" style="display: flex;">
-
-                                                    <div class="col-xs-12 col-md-10">
-
-
-                                                        <h5 class="panel-title"><a class="accordion-toggle collapsed"
-                                                                data-toggle="collapse" data-parent="#accordion1"
-                                                                href="#<?php echo 'accordion0_' . $cont; ?>">
-                                                                <?php echo $res['nombre_serv']; ?></a>
-                                                        </h5>
-
-                                                    </div>
+                                                    <?php echo $res['duracion']; ?>
 
                                                 </div>
 
-                                                <div id="<?php echo 'accordion0_' . $cont; ?>"
-                                                    class="panel-collapse collapse">
-                                                    <div class="panel-body desc_individual">
-                                                        <div class="col-md-12">
-                                                            <br>
-                                                            <p><?php echo $res['descripcion']; ?><a
-                                                                    href="index?pagina=servicio_individual&servicio_id=<?php echo  $res['id']; ?>&grupo_servicio_id=<?php echo $res['grupo_servicio_id']; ?>"
-                                                                    title=""> Mas detalles</a>
-                                                            </p>
-                                                            <hr>
-                                                            <div class="col-xs-6 col-md-4">
-                                                                <label>Precio <p>$<?php echo $res['precio']; ?></p>
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading" style="display: flex;">
+
+                                                        <div class="col-xs-12 col-md-10">
+
+
+                                                            <h5 class="panel-title"><a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#<?php echo 'accordion0_' . $cont; ?>">
+                                                                    <?php echo $res['nombre_serv']; ?></a>
+                                                            </h5>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div id="<?php echo 'accordion0_' . $cont; ?>" class="panel-collapse collapse">
+                                                        <div class="panel-body desc_individual">
+                                                            <div class="col-md-12">
+                                                                <br>
+                                                                <p><?php echo $res['descripcion']; ?><a href="index?pagina=servicio_individual&servicio_id=<?php echo  $res['id']; ?>&grupo_servicio_id=<?php echo $res['grupo_servicio_id']; ?>" title=""> Mas detalles</a>
+                                                                </p>
+                                                                <hr>
+                                                                <div class="col-xs-6 col-md-4">
+                                                                    <label>Precio <p>$<?php echo $res['precio']; ?></p>
                                                                     </label>
-                                                            </div>
+                                                                </div>
 
-                                                            <div class="col-xs-6 col-md-4">
-                                                                <label>Duración <p><?php echo $res['duracion']; ?>min
-                                                                    </p></label>
-                                                            </div>
+                                                                <div class="col-xs-6 col-md-4">
+                                                                    <label>Duración <p><?php echo $res['duracion']; ?>min
+                                                                        </p></label>
+                                                                </div>
 
-                                                            <div class="col-xs-12 col-md-4">
+                                                                <div class="col-xs-12 col-md-4">
 
-                                                                <label class="container">
-                                                                    <input type="radio" class="capturar_valor"
-                                                                        name="deacuerdo"
-                                                                        value="<?php echo $res['id']; ?>"
-                                                                        recibe_id="<?php echo $res['id']; ?>"
-                                                                        recibe_precio="<?php echo $res['precio']; ?>"
-                                                                        recibe_nombre="<?php echo $res['nombre_serv']; ?>"
-                                                                        recibe_duracion="<?php echo $res['duracion']; ?>"
-                                                                        required>
+                                                                    <label class="container">
+                                                                        <input type="radio" class="capturar_valor" name="deacuerdo" value="<?php echo $res['id']; ?>" recibe_id="<?php echo $res['id']; ?>" recibe_precio="<?php echo $res['precio']; ?>" recibe_nombre="<?php echo $res['nombre_serv']; ?>" recibe_duracion="<?php echo $res['duracion']; ?>" required>
 
-                                                                    <div class="respuesta">
-                                                                    </div>
-                                                                    <span class="checkmark"
-                                                                        title="seleccionar y continuar">seleccionar</span>
-                                                                </label>
+                                                                        <div class="respuesta">
+                                                                        </div>
+                                                                        <span class="checkmark" title="seleccionar y continuar">seleccionar</span>
+                                                                    </label>
 
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
 
                                             <?php
-												$cont++;
-											}
-											?>
+                                                $cont++;
+                                            }
+                                            ?>
 
                                         </div>
                                         <span class="view-more">ver mas...</span>
                                     </div>
                                     <?php
-									$cont2 = 3;
-									foreach ($grupo_servicios as $grupo) {
-										$id_grupo_servicios = $grupo["id"];
-									?>
-                                    <div id="<?php echo 'menu-' . $id_grupo_servicios ?>" class="tab-pane fade">
-                                        <div class="panel-group intervalo"
-                                            id="accordion<?php echo $id_grupo_servicios . '0'; ?>">
+                                    $cont2 = 3;
+                                    foreach ($grupo_servicios as $grupo) {
+                                        $id_grupo_servicios = $grupo["id"];
+                                    ?>
+                                        <div id="<?php echo 'menu-' . $id_grupo_servicios ?>" class="tab-pane fade">
+                                            <div class="panel-group intervalo" id="accordion<?php echo $id_grupo_servicios . '0'; ?>">
 
-                                            <?php
-												$valor_grupo_servicios_id = $id_grupo_servicios;
-												if ($valor_grupo_servicios_id == -1) {
-													$servicios = mysqli_query($link, "SELECT s.id ,s.nombre AS 'nombre_serv',s.descripcion,s.caracteristicas,s.archivo,s.duracion,s.precio,s.status,s.subgrupo_servicios_id, ss.nombre, gs.nombre, gs.id AS 'grupo_servicio_id' from((servicios as s left outer join subgrupo_servicios as ss on subgrupo_servicios_id=ss.id) left outer join grupo_servicios as gs on ss.grupo_servicios_id=gs.id) ");
-												} else {
-													$servicios = mysqli_query($link, "SELECT s.id,s.nombre AS 'nombre_serv',s.descripcion,s.caracteristicas,s.archivo,s.duracion,s.precio,s.status,s.subgrupo_servicios_id, ss.nombre, gs.nombre, gs.id AS 'grupo_servicio_id' from((servicios as s left outer join subgrupo_servicios as ss on subgrupo_servicios_id=ss.id) left outer join grupo_servicios as gs on ss.grupo_servicios_id=gs.id) where gs.id=$valor_grupo_servicios_id");
-												}
+                                                <?php
+                                                $valor_grupo_servicios_id = $id_grupo_servicios;
+                                                if ($valor_grupo_servicios_id == -1) {
+                                                    $servicios = mysqli_query($link, "SELECT s.id ,s.nombre AS 'nombre_serv',s.descripcion,s.caracteristicas,s.archivo,s.duracion,s.precio,s.status,s.subgrupo_servicios_id, ss.nombre, gs.nombre, gs.id AS 'grupo_servicio_id' from((servicios as s left outer join subgrupo_servicios as ss on subgrupo_servicios_id=ss.id) left outer join grupo_servicios as gs on ss.grupo_servicios_id=gs.id) ");
+                                                } else {
+                                                    $servicios = mysqli_query($link, "SELECT s.id,s.nombre AS 'nombre_serv',s.descripcion,s.caracteristicas,s.archivo,s.duracion,s.precio,s.status,s.subgrupo_servicios_id, ss.nombre, gs.nombre, gs.id AS 'grupo_servicio_id' from((servicios as s left outer join subgrupo_servicios as ss on subgrupo_servicios_id=ss.id) left outer join grupo_servicios as gs on ss.grupo_servicios_id=gs.id) where gs.id=$valor_grupo_servicios_id");
+                                                }
 
-												$cont2 = 2;
-												foreach ($servicios as $res) {
-												?>
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading" style="display: flex;">
+                                                $cont2 = 2;
+                                                foreach ($servicios as $res) {
+                                                ?>
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" style="display: flex;">
 
-                                                    <div class="col-xs-12 col-md-10">
+                                                            <div class="col-xs-12 col-md-10">
 
-                                                        <h5 class="panel-title">
-                                                            <a class="accordion-toggle collapsed" data-toggle="collapse"
-                                                                data-parent="#accordion<?php echo $id_grupo_servicios . '0'; ?>"
-                                                                href="#<?php echo 'accordion' . $id_grupo_servicios . '_' . $cont2; ?>"><?php echo $res['nombre_serv']; ?></a>
+                                                                <h5 class="panel-title">
+                                                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion<?php echo $id_grupo_servicios . '0'; ?>" href="#<?php echo 'accordion' . $id_grupo_servicios . '_' . $cont2; ?>"><?php echo $res['nombre_serv']; ?></a>
 
-                                                        </h5>
-
-                                                    </div>
-
-                                                </div>
-
-                                                <div id="<?php echo 'accordion' . $id_grupo_servicios . '_' . $cont2; ?>"
-                                                    class="panel-collapse collapse">
-
-                                                    <div class="panel-body desc_individual">
-
-                                                        <div class="col-md-12">
-                                                            <br>
-                                                            <p><?php echo $res['descripcion']; ?><a
-                                                                    href="index?pagina=servicio_individual&servicio_id=<?php echo  $res['id']; ?>&grupo_servicio_id=<?php echo $res['grupo_servicio_id']; ?>"
-                                                                    title=""> Mas detalles</a></p>
-                                                            <hr>
-
-                                                            <div class="col-xs-6 col-md-4">
-                                                                <label>Precio <p>$<?php echo $res['precio']; ?></p>
-                                                                    </label>
-                                                            </div>
-
-                                                            <div class="col-xs-6 col-md-4">
-                                                                <label>Duración <p><?php echo $res['duracion']; ?>min
-                                                                    </p></label>
-                                                            </div>
-
-                                                            <div class="col-xs-12 col-md-4">
-
-                                                                <label class="container">
-                                                                    <input type="radio" class="capturar_valor"
-                                                                        name="deacuerdo"
-                                                                        value="<?php echo $res['id']; ?>"
-                                                                        recibe_id="<?php echo $res['id']; ?>"
-                                                                        recibe_precio="<?php echo $res['precio']; ?>"
-                                                                        recibe_nombre="<?php echo $res['nombre_serv']; ?>"
-                                                                        recibe_duracion="<?php echo $res['duracion']; ?>"
-                                                                        required>
-
-                                                                    <div class="respuesta">
-                                                                    </div>
-                                                                    <span class="checkmark"
-                                                                        title="seleccionar y continuar">seleccionar</span>
-                                                                </label>
+                                                                </h5>
 
                                                             </div>
-
 
                                                         </div>
-                                                        <br>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <?php
-													$cont2++;
-												}
-												?>
 
+                                                        <div id="<?php echo 'accordion' . $id_grupo_servicios . '_' . $cont2; ?>" class="panel-collapse collapse">
+
+                                                            <div class="panel-body desc_individual">
+
+                                                                <div class="col-md-12">
+                                                                    <br>
+                                                                    <p><?php echo $res['descripcion']; ?><a href="index?pagina=servicio_individual&servicio_id=<?php echo  $res['id']; ?>&grupo_servicio_id=<?php echo $res['grupo_servicio_id']; ?>" title=""> Mas detalles</a></p>
+                                                                    <hr>
+
+                                                                    <div class="col-xs-6 col-md-4">
+                                                                        <label>Precio <p>$<?php echo $res['precio']; ?></p>
+                                                                        </label>
+                                                                    </div>
+
+                                                                    <div class="col-xs-6 col-md-4">
+                                                                        <label>Duración <p><?php echo $res['duracion']; ?>min
+                                                                            </p></label>
+                                                                    </div>
+
+                                                                    <div class="col-xs-12 col-md-4">
+
+                                                                        <label class="container">
+                                                                            <input type="radio" class="capturar_valor" name="deacuerdo" value="<?php echo $res['id']; ?>" recibe_id="<?php echo $res['id']; ?>" recibe_precio="<?php echo $res['precio']; ?>" recibe_nombre="<?php echo $res['nombre_serv']; ?>" recibe_duracion="<?php echo $res['duracion']; ?>" required>
+
+                                                                            <div class="respuesta">
+                                                                            </div>
+                                                                            <span class="checkmark" title="seleccionar y continuar">seleccionar</span>
+                                                                        </label>
+
+                                                                    </div>
+
+
+                                                                </div>
+                                                                <br>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <?php
+                                                    $cont2++;
+                                                }
+                                                ?>
+
+                                            </div>
                                         </div>
-                                    </div>
                                     <?php
-									}
-									?>
+                                    }
+                                    ?>
                                     <div id="<?php echo 'menu-16' ?>" class="tab-pane fade">
                                         <div class="panel-group intervalo" id="accordion<?php echo '60'; ?>">
 
 
                                             <?php
-											/*
-								* 
-								**************************************
-								*
-								0 = No muestra nada
-								1 = cliente logueado
-								*
-								**************************************
-								*
-								*/
-											// $tipo_permiso = 0;
+                                            /*
+                                            *
+                                            **************************************
+                                            *
+                                            paso1 verificar usuario logueado
+                                            paso2 consultar reguistros de prepagos por servicio del usuario logueado
+                                            paso3 mostrar resultados
+                                            *
+                                            **************************************
+                                            *
+                                            */
+                                            $correo_electronico = "";
+                                            if (isset($_POST["c_electronico"])) {
+                                                $correo_electronico = $_POST["c_electronico"];
+                                            }
+                                            $prepagos_servicios = mysqli_query($link, "SELECT  c.id AS 'c_id', 
+                                                c.nombre AS 'c_nombre', 
+                                                c.c_electronico AS 'c_c_electronico', 
+                                                p.id AS 'p_id', 
+                                                p.clientes_id AS 'p_clientes_id', 
+                                                p.tipo_prepago_id AS 'p_tipo_prepago_id',
+                                                ps.prepagos_id AS 'ps_prepagos_id', 
+                                                ps.folio AS 'ps_folio', 
+                                                ps.cupon AS 'ps_cupon', 
+                                                ps.servicios_id AS 'ps_servicios_id',
+                                                s.id AS 's_id',
+                                                s.nombre AS 's_nombre', 
+                                                s.descripcion AS 's_descripcion', 
+                                                s.archivo AS 's_archivo',
+                                                s.duracion AS 's_duracion',
+                                                s.precio AS 's_precio',
+                                                s.status AS 's_status'
+                                            FROM (((clientes AS c 
+                                            LEFT OUTER JOIN prepagos p ON p.clientes_id=c.id)
+                                            LEFT OUTER JOIN prepagos_servicios ps ON ps.prepagos_id=p.id) 
+                                            LEFT OUTER JOIN servicios s ON s.id=ps.servicios_id)
+                                            WHERE p.tipo_prepago_id=2
+                                            AND c.c_electronico='earias37@yahoo.com.mx';");
 
-											// if($_SESSION['session_valida'] == 1){
-
-											// 	$tipo_permiso = 1
-											// 	}else{
-											// 	$tipo_permiso = 0;
-
-											// }
-
-											$prepagos = mysqli_query($link, "SELECT c.id AS 'cliente_id', c.nombre, c.c_electronico AS 'correo', p.id, p.clientes_id, p.tipo_prepago_id, ps.prepagos_id, ps.folio AS 'folio', ps.cupon AS 'cupon', ps.servicios_id AS 'servicio_id'
+                                            $prepagos = mysqli_query($link, "SELECT c.id AS 'cliente_id', c.nombre, c.c_electronico AS 'correo', p.id, p.clientes_id, p.tipo_prepago_id, ps.prepagos_id, ps.folio AS 'folio', ps.cupon AS 'cupon', ps.servicios_id AS 'servicio_id'
 								 				FROM ((clientes AS c 
 												LEFT OUTER JOIN prepagos p ON p.clientes_id=c.id)
 												LEFT OUTER JOIN prepagos_servicios ps ON ps.prepagos_id=p.id) 
 												WHERE p.tipo_prepago_id=2;");
-									
 
-											$servicios = mysqli_query($link, "SELECT s.id,s.nombre AS 'nombre_serv',s.descripcion,s.caracteristicas,s.archivo,s.duracion,s.precio,s.status,s.subgrupo_servicios_id, ss.nombre, gs.nombre, gs.id AS 'grupo_servicio_id' 
+
+
+                                            $servicios = mysqli_query($link, "SELECT s.id,s.nombre AS 'nombre_serv',s.descripcion,s.caracteristicas,s.archivo,s.duracion,s.precio,s.status,s.subgrupo_servicios_id, ss.nombre, gs.nombre, gs.id AS 'grupo_servicio_id' 
 												FROM((servicios AS s 
 												LEFT OUTER JOIN subgrupo_servicios AS ss ON subgrupo_servicios_id=ss.id) 
 												LEFT OUTER JOIN grupo_servicios AS gs ON ss.grupo_servicios_id=gs.id) 
 												WHERE gs.id=$valor_grupo_servicios_id");
 
-											// $clientes=mysqli_query($link,"SELECT id, nombre, archivo, c_electronico, telefono, modo, fecha FROM clientes");
+                                            // $clientes=mysqli_query($link,"SELECT id, nombre, archivo, c_electronico, telefono, modo, fecha FROM clientes");
 
-											if (isset($_POST["c_electronico"])) {
+                                            if (isset($_POST["c_electronico"])) {
 
-												$servicios_id = "";
-												$folio = "";
-												$cupon = "";
+                                                $servicios_id = "";
+                                                $folio = "";
+                                                $cupon = "";
 
-												foreach ($prepagos as $prepago) {
+                                                foreach ($prepagos_servicios as $prepago) {
 
-													$servicios_id = $prepago["servicio_id"];
-													$folio = $prepago["folio"];
-													$cupon = $prepago["cupon"];
-													$correo = $prepago["correo"];
+                                                    $servicios_id = $prepago["s_id"];
+                                                    $folio = $prepago["ps_folio"];
+                                                    $cupon = $prepago["ps_cupon"];
+                                                    $correo = $prepago["c_c_electronico"];
 
-													if (isset($_POST["c_electronico"]) && isset($_POST["c_electronico"]) == $correo) {
+                                                    if (isset($_POST["c_electronico"]) && isset($_POST["c_electronico"]) == $correo) {
 
-											?>
+                                            ?>
 
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading" style="display: flex;">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-heading" style="display: flex;">
 
-                                                    <div class="col-xs-12 col-md-10">
+                                                                <div class="col-xs-12 col-md-10">
 
-                                                        <h5 class="panel-title">
-                                                            <a class="accordion-toggle collapsed" data-toggle="collapse"
-                                                                data-parent="#accordion<?php echo '60'; ?>"
-                                                                href="#<?php echo 'accordion6_6'; ?>">
-                                                                <?php echo 	$servicios_id . ', ' . $folio . ', ' . $cupon; ?>
-                                                            </a>
+                                                                    <h5 class="panel-title">
+                                                                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion<?php echo '60'; ?>" href="#<?php echo 'accordion890_20'; ?>"><?php echo $prepago['s_nombre']; ?></a>
 
-                                                        </h5>
+                                                                    </h5>
 
-                                                    </div>
+                                                                </div>
 
-                                                </div>
+                                                            </div>
 
-                                            </div>
+                                                            <div id="<?php echo 'accordion890_20' ?>" class="panel-collapse collapse">
+
+                                                                <div class="panel-body desc_individual">
+
+                                                                    <div class="col-md-12">
+                                                                        <br>
+                                                                        <p><?php echo $prepago['s_descripcion']; ?></p>
+                                                                        <hr>
+
+                                                                        <div class="col-xs-6 col-md-4">
+                                                                            <label>Precio <ins><p>$<?php echo $prepago['s_precio']; ?></p></ins>
+                                                                            </label>
+                                                                        </div>
+
+                                                                        <div class="col-xs-6 col-md-4">
+                                                                            <label>Duración <p><?php echo $prepago['s_duracion']; ?>min
+                                                                                </p></label>
+                                                                        </div>
+
+                                                                        <div class="col-xs-12 col-md-4">
+
+                                                                            <label class="container">
+
+                                                                                <input type="radio" class="capturar_valor" name="deacuerdo" value="<?php echo $prepago['s_id']; ?>" recibe_id="<?php echo $prepago['s_id']; ?>" recibe_precio="<?php echo $prepago['s_precio']; ?>" recibe_nombre="<?php echo $prepago['s_nombre']; ?>" recibe_duracion="<?php echo $prepago['s_duracion']; ?>" required>
+
+                                                                                <div class="respuesta">
+
+                                                                                </div>
+
+                                                                                <span class="checkmark" title="seleccionar y continuar">seleccionar</span>
+
+                                                                            </label>
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <br>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <?php
+
+                                                    } else {
+                                                    }
+                                                }
+                                            } else {
+
+                                                ?>
+                                                <p>No tienes servicios por Certificado|prepago</p>
+                                                <small>intenta iniciando sesion</small>
+
+                                                <!-- prueba resultado -->
+
                                             <?php
 
-													} else {
-													}
-												}
-											} else {
+                                            }
 
-												?>
-                                            <p>No tienes servicios por Certificado|prepago</p>
-                                            <small>intenta iniciando sesion</small>
-
-                                            <!-- prueba resultado -->
-
-                                            <?php
-
-											}
-
-											?>
+                                            ?>
 
                                             <!--<div class="panel panel-default">
 											<div class="panel-heading" style="display: flex;">	
@@ -444,7 +464,7 @@ $display = 'none';
 
 											</div>
 								
-									</div> -->
+									    </div> -->
                                         </div>
 
                                     </div>
@@ -459,15 +479,12 @@ $display = 'none';
                                 <h3><span>2</span>Seleccione el Día:</h3><br>
                                 <div class="col-sm-12 col-md-12">
                                     <div class="form-group">
-                                        <input id="idxhora" class="form-control id" name="id_xhora" type="text"
-                                            style="display:<?php echo $display; ?>">
+                                        <input id="idxhora" class="form-control id" name="id_xhora" type="text" style="display:<?php echo $display; ?>">
                                     </div>
                                     <div class="form-group">
                                         <!-- <label><strong>Selecionar el Día:</strong></label> -->
 
-                                        <input class="form-control dia" type="text" placeholder="Selecionar el Día"
-                                            class="form-control date-picker hasDatepicker" name="booking_arrival_date"
-                                            aria-required="true" id="ya" required>
+                                        <input class="form-control dia" type="text" placeholder="Selecionar el Día" class="form-control date-picker hasDatepicker" name="booking_arrival_date" aria-required="true" id="ya" required>
 
                                         <!-- <input class="form-control dia" type="date" placeholder="Selecionar el Día" class="form-control date-picker hasDatepicker" name="booking_arrival_date" aria-required="true" id="ya"  min="2019-03-27" max="2019-03-30" required> -->
                                     </div>
@@ -487,8 +504,7 @@ $display = 'none';
 
                                         <!-- input ocultos -->
                                         <!-- <input type="text" id="id_ser" value=""> -->
-                                        <input type="text" id="dia_cita" value=""
-                                            style="display:<?php echo $display; ?>">
+                                        <input type="text" id="dia_cita" value="" style="display:<?php echo $display; ?>">
                                         <div class="respuestaEmp">
 
                                         </div>
@@ -511,31 +527,29 @@ $display = 'none';
 
                                     <!-- SCRIPT PARA CACHAR LOS DATOS DEL USUARIO LOGUEADO -->
                                     <script>
-                                    function EligeOpcion() {
-                                        var x = document.getElementById('empleado_type');
-                                        document.getElementById('empleado').value = "MAGALYS";
-
-                                        if (x.value == 'aleatorio') {
-                                            //ACTIVAMOS LOS CAMPOS A RELLENAR
-                                            document.getElementById('empleado').disabled = true
-
-                                        } else if (x.value == 'eleccion') {
-                                            //ACTIVAMOS LOS CAMPOS A RELLENAR
-                                            document.getElementById('empleado').disabled = false
-
+                                        function EligeOpcion() {
+                                            var x = document.getElementById('empleado_type');
                                             document.getElementById('empleado').value = "MAGALYS";
+
+                                            if (x.value == 'aleatorio') {
+                                                //ACTIVAMOS LOS CAMPOS A RELLENAR
+                                                document.getElementById('empleado').disabled = true
+
+                                            } else if (x.value == 'eleccion') {
+                                                //ACTIVAMOS LOS CAMPOS A RELLENAR
+                                                document.getElementById('empleado').disabled = false
+
+                                                document.getElementById('empleado').value = "MAGALYS";
+                                            }
                                         }
-                                    }
                                     </script>
 
                                     <div class="form-group">
-                                        <input type="text" id="hora_cita" value=""
-                                            style="display:<?php echo $display; ?>">
+                                        <input type="text" id="hora_cita" value="" style="display:<?php echo $display; ?>">
                                     </div>
 
                                     <div class="form-group">
-                                        <select name="empleado_type" id="empleado_type" class="form-control"
-                                            onchange="EligeOpcion()" required>
+                                        <select name="empleado_type" id="empleado_type" class="form-control" onchange="EligeOpcion()" required>
                                             <option value="aleatorio">Dejar que el sistema lo elija</option>
                                             <option value="eleccion">Escoger terapeuta</option>
                                         </select>
@@ -547,8 +561,7 @@ $display = 'none';
 
                                         </div>
 
-                                        <select name="empleado" id="empleado" class="form-control empleadolista"
-                                            required disabled>
+                                        <select name="empleado" id="empleado" class="form-control empleadolista" required disabled>
                                             <!-- traer consulta de empleados cachados -->
                                             <option value="MAGALYS">MAGALYS</option>
                                             <option value="TETE">TETE</option>
@@ -559,7 +572,7 @@ $display = 'none';
                             </div>
 
 
-							<!-- =============================
+                            <!-- =============================
 								STEP 5 USUARIO
 							===============================-->
 
@@ -569,61 +582,60 @@ $display = 'none';
 
                                     <!-- SCRIPT PARA CACHAR LOS DATOS DEL USUARIO LOGUEADO -->
                                     <script>
-                                    function myFunction() {
+                                        function myFunction() {
 
-                                        var x = document.getElementById('user_type');
-                                        document.getElementById('nombre_user').value = "";
-                                        document.getElementById('email_user').value = "";
-                                        document.getElementById('telefono_user').value = "";
-
-                                        if (x.value == 'usuario' || x.value == 'usuario_logeado') {
-                                            //ACTIVAMOS LOS CAMPOS A RELLENAR
-                                            document.getElementById('nombre_user').disabled = false
-                                            document.getElementById('email_user').disabled = false
-                                            document.getElementById('telefono_user').disabled = false
-                                            //VASIAR LOS CAMPOS
+                                            var x = document.getElementById('user_type');
                                             document.getElementById('nombre_user').value = "";
                                             document.getElementById('email_user').value = "";
                                             document.getElementById('telefono_user').value = "";
 
-                                        } else if (x.value == 'usuario_session_logeado') {
-                                            //ACTIVAMOS LOS CAMPOS A RELLENAR
-                                            document.getElementById('nombre_user').disabled = false
-                                            document.getElementById('email_user').disabled = false
-                                            document.getElementById('telefono_user').disabled = false
-                                            document.getElementById('nombre_user').value = "<?php echo $res_nombre; ?>";
-                                            document.getElementById('email_user').value = "<?php echo $res_email; ?>";
-                                            document.getElementById('telefono_user').value =
-                                            "<?php echo $res_phone; ?>";
+                                            if (x.value == 'usuario' || x.value == 'usuario_logeado') {
+                                                //ACTIVAMOS LOS CAMPOS A RELLENAR
+                                                document.getElementById('nombre_user').disabled = false
+                                                document.getElementById('email_user').disabled = false
+                                                document.getElementById('telefono_user').disabled = false
+                                                //VASIAR LOS CAMPOS
+                                                document.getElementById('nombre_user').value = "";
+                                                document.getElementById('email_user').value = "";
+                                                document.getElementById('telefono_user').value = "";
 
-                                        } else if (x.value == 'usuario_session') {
-                                            //     alert('No has iniciado sesión');
-                                            swal("Algo salio mal", "No has iniciado sesión!", "warning");
-                                            //ACTIVAMOS LOS CAMPOS A RELLENAR
-                                            document.getElementById('nombre_user').disabled = true
-                                            document.getElementById('email_user').disabled = true
-                                            document.getElementById('telefono_user').disabled = true
-                                            document.getElementById('nombre_user').value = "";
-                                            document.getElementById('email_user').value = "";
-                                            document.getElementById('telefono_user').value = "";
+                                            } else if (x.value == 'usuario_session_logeado') {
+                                                //ACTIVAMOS LOS CAMPOS A RELLENAR
+                                                document.getElementById('nombre_user').disabled = false
+                                                document.getElementById('email_user').disabled = false
+                                                document.getElementById('telefono_user').disabled = false
+                                                document.getElementById('nombre_user').value = "<?php echo $res_nombre; ?>";
+                                                document.getElementById('email_user').value = "<?php echo $res_email; ?>";
+                                                document.getElementById('telefono_user').value =
+                                                    "<?php echo $res_phone; ?>";
 
-                                        } else {
-                                            //DESACTIVAMOS LOS CAMPOS A RELLENAR
-                                            document.getElementById('nombre_user').disabled = true
-                                            document.getElementById('email_user').disabled = true
-                                            document.getElementById('telefono_user').disabled = true
-                                            //VASIAR LOS CAMPOS
-                                            document.getElementById('nombre_user').value = "";
-                                            document.getElementById('email_user').value = "";
-                                            document.getElementById('telefono_user').value = "";
+                                            } else if (x.value == 'usuario_session') {
+                                                //     alert('No has iniciado sesión');
+                                                swal("Algo salio mal", "No has iniciado sesión!", "warning");
+                                                //ACTIVAMOS LOS CAMPOS A RELLENAR
+                                                document.getElementById('nombre_user').disabled = true
+                                                document.getElementById('email_user').disabled = true
+                                                document.getElementById('telefono_user').disabled = true
+                                                document.getElementById('nombre_user').value = "";
+                                                document.getElementById('email_user').value = "";
+                                                document.getElementById('telefono_user').value = "";
+
+                                            } else {
+                                                //DESACTIVAMOS LOS CAMPOS A RELLENAR
+                                                document.getElementById('nombre_user').disabled = true
+                                                document.getElementById('email_user').disabled = true
+                                                document.getElementById('telefono_user').disabled = true
+                                                //VASIAR LOS CAMPOS
+                                                document.getElementById('nombre_user').value = "";
+                                                document.getElementById('email_user').value = "";
+                                                document.getElementById('telefono_user').value = "";
+                                            }
                                         }
-                                    }
                                     </script>
 
                                     <div class="form-group">
 
-                                        <select name="usuario" id="user_type" class="form-control"
-                                            onchange="myFunction()" required>
+                                        <select name="usuario" id="user_type" class="form-control" onchange="myFunction()" required>
 
                                             <option value="nada">
                                                 <p>Seleccionar usuario</p>
@@ -640,10 +652,8 @@ $display = 'none';
                                 <div class="col-sm-12 col-md-4">
                                     <div class="form-group">
 
-                                        <input type="text" name="id_cliente" value="<?php echo $res_id; ?> "
-                                            style="display: none;">
-                                        <input type="text" id="nombre_user" name="nombre"
-                                            placeholder="Ingrese  su Nombre/apellidos" required disabled>
+                                        <input type="text" name="id_cliente" value="<?php echo $res_id; ?> " style="display: none;">
+                                        <input type="text" id="nombre_user" name="nombre" placeholder="Ingrese  su Nombre/apellidos" required disabled>
 
                                     </div>
                                 </div>
@@ -651,9 +661,7 @@ $display = 'none';
                                 <div class="col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <!-- <label for="">Coreo electrónico</label> -->
-                                        <input type="email" id="email_user" name="email"
-                                            pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
-                                            placeholder="Ingrese su Coreo electrónico" required disabled>
+                                        <input type="email" id="email_user" name="email" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" placeholder="Ingrese su Coreo electrónico" required disabled>
 
                                     </div>
                                 </div>
@@ -661,8 +669,7 @@ $display = 'none';
                                 <div class="col-sm-12 col-md-4">
                                     <div class="form-group">
                                         <!-- <label for="">Teléfono/móvil</label> -->
-                                        <input type="text" id="telefono_user" name="telefono"
-                                            placeholder="Ingrese su Teléfono/móvil" required disabled>
+                                        <input type="text" id="telefono_user" name="telefono" placeholder="Ingrese su Teléfono/móvil" required disabled>
                                         <input type="text" name="dejarenblanco" value="nada" style="display: none;">
                                         <input type="text" name="nocambiar" value="http://" style="display: none;">
 
@@ -713,21 +720,15 @@ $display = 'none';
                                     <div id="tab" class="btn-group btn-group-justified" data-toggle="buttons">
 
 
-                                        <a style="width: 33.3%;" href="#paypal" class="btn btn-default active"
-                                            data-toggle="tab">
-                                            <input id="metodo_1" type="radio" name="opcion_pago" value="paypal"
-                                                required />PayPal
+                                        <a style="width: 33.3%;" href="#paypal" class="btn btn-default active" data-toggle="tab">
+                                            <input id="metodo_1" type="radio" name="opcion_pago" value="paypal" required />PayPal
                                         </a>
 
-                                        <a style="width: 33.3%;" href="#tarjeta" class="btn btn-default"
-                                            data-toggle="tab">
-                                            <input id="metodo_2" type="radio" name="opcion_pago" value="tarjeta"
-                                                required />Tarjeta
+                                        <a style="width: 33.3%;" href="#tarjeta" class="btn btn-default" data-toggle="tab">
+                                            <input id="metodo_2" type="radio" name="opcion_pago" value="tarjeta" required />Tarjeta
                                         </a>
-                                        <a style="width: 33.3%;" href="#regalo_prepago" class="btn btn-default"
-                                            data-toggle="tab">
-                                            <input id="metodo_3" type="radio" name="opcion_pago" value="regalo_prepago"
-                                                required />C.Regalo | Prepago.
+                                        <a style="width: 33.3%;" href="#regalo_prepago" class="btn btn-default" data-toggle="tab">
+                                            <input id="metodo_3" type="radio" name="opcion_pago" value="regalo_prepago" required />C.Regalo | Prepago.
                                         </a>
 
 
@@ -752,12 +753,10 @@ $display = 'none';
 
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <img style="width: 100%;" src="img/forma_de_pago/credito.jpg"
-                                                            alt="">
+                                                        <img style="width: 100%;" src="img/forma_de_pago/credito.jpg" alt="">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <img style="width: 100%;" src="img/forma_de_pago/debito.jpg"
-                                                            alt="">
+                                                        <img style="width: 100%;" src="img/forma_de_pago/debito.jpg" alt="">
                                                     </div>
                                                 </div>
 
@@ -788,12 +787,10 @@ $display = 'none';
 
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <img style="width: 100%;" src="img/forma_de_pago/credito.jpg"
-                                                            alt="">
+                                                        <img style="width: 100%;" src="img/forma_de_pago/credito.jpg" alt="">
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <img style="width: 100%;" src="img/forma_de_pago/debito.jpg"
-                                                            alt="">
+                                                        <img style="width: 100%;" src="img/forma_de_pago/debito.jpg" alt="">
                                                     </div>
                                                 </div>
 
@@ -813,16 +810,13 @@ $display = 'none';
                                                             <label>
                                                                 Nombre del Tarjeta-habiente
                                                             </label>
-                                                            <input value="Fulanito Pérez" data-conekta="card[name]"
-                                                                class="form-control" name="name" id="name" type="text">
+                                                            <input value="Fulanito Pérez" data-conekta="card[name]" class="form-control" name="name" id="name" type="text">
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label>
                                                                 Número de tarjeta
                                                             </label>
-                                                            <input value="4242424242424242" name="card" id="card"
-                                                                data-conekta="card[number]" class="form-control"
-                                                                type="text" maxlength="16">
+                                                            <input value="4242424242424242" name="card" id="card" data-conekta="card[number]" class="form-control" type="text" maxlength="16">
                                                         </div>
                                                     </div>
 
@@ -831,21 +825,15 @@ $display = 'none';
                                                             <label>
                                                                 CVC
                                                             </label>
-                                                            <input value="399" data-conekta="card[cvc]"
-                                                                class="form-control" type="text" maxlength="4">
+                                                            <input value="399" data-conekta="card[cvc]" class="form-control" type="text" maxlength="4">
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label>
                                                                 Fecha de expiración (MM/AA)
                                                             </label>
                                                             <div>
-                                                                <input style="width:50px; display:inline-block"
-                                                                    value="12" data-conekta="card[exp_month]"
-                                                                    class="form-control" type="text" maxlength="2"> /
-                                                                <input
-                                                                    style="width:50px; display: inline;	splay:inline-block"
-                                                                    value="20" data-conekta="card[exp_year]"
-                                                                    class="form-control" type="text" maxlength="2">
+                                                                <input style="width:50px; display:inline-block" value="12" data-conekta="card[exp_month]" class="form-control" type="text" maxlength="2"> /
+                                                                <input style="width:50px; display: inline;	splay:inline-block" value="20" data-conekta="card[exp_year]" class="form-control" type="text" maxlength="2">
                                                             </div>
                                                         </div>
 
@@ -857,15 +845,11 @@ $display = 'none';
 				                        </div> -->
                                                         <div class="col-md-4">
                                                             <!-- <label>Concepto</label> -->
-                                                            <input class="form-control" type="text" name="description"
-                                                                id="description" maxlength="100" value=""
-                                                                style="display:<?php echo $display; ?>">
+                                                            <input class="form-control" type="text" name="description" id="description" maxlength="100" value="" style="display:<?php echo $display; ?>">
                                                         </div>
                                                         <div class="col-md-4">
                                                             <!-- <label>Monto</label> -->
-                                                            <input class="form-control" type="number" name="total"
-                                                                id="total" value=""
-                                                                style="display:<?php echo $display; ?>">
+                                                            <input class="form-control" type="number" name="total" id="total" value="" style="display:<?php echo $display; ?>">
                                                         </div>
                                                     </div>
                                                     <br>
@@ -894,52 +878,52 @@ $display = 'none';
                                         <div class="tab-pane" id="regalo_prepago">
                                             <?php
 
-											if ($_SESSION['session_valida'] == 1) {
+                                            if ($_SESSION['session_valida'] == 1) {
 
-												$tipo_permiso = 1;
-											?>
+                                                $tipo_permiso = 1;
+                                            ?>
 
-                                            <div class="row">
-                                                <div class="col-md-4">
+                                                <div class="row">
+                                                    <div class="col-md-4">
 
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            <h4 class="card-title">Certificado Cortesia</h4>
-                                                            <p class="card-text">Emitido por Shifraspa para clientes
-                                                                frecuentes</p>
-                                                            <h3>$1000.00</h3>
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <h4 class="card-title">Certificado Cortesia</h4>
+                                                                <p class="card-text">Emitido por Shifraspa para clientes
+                                                                    frecuentes</p>
+                                                                <h3>$1000.00</h3>
 
+                                                            </div>
+                                                            <a href="#" class="btn btn_format_personal btn-default">Usar
+                                                                Ahora</a>
                                                         </div>
-                                                        <a href="#" class="btn btn_format_personal btn-default">Usar
-                                                            Ahora</a>
+
                                                     </div>
-
-                                                </div>
-                                                <div class="col-md-4">
+                                                    <div class="col-md-4">
 
 
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            <h4 class="card-title">Certificado Cortesia</h4>
-                                                            <p class="card-text">Emitido por Shifraspa para clientes
-                                                                frecuentes</p>
-                                                            <h3>$1000.00</h3>
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <h4 class="card-title">Certificado Cortesia</h4>
+                                                                <p class="card-text">Emitido por Shifraspa para clientes
+                                                                    frecuentes</p>
+                                                                <h3>$1000.00</h3>
 
+                                                            </div>
+                                                            <a href="#" class="btn btn_format_personal btn-default">Usar
+                                                                Ahora</a>
                                                         </div>
-                                                        <a href="#" class="btn btn_format_personal btn-default">Usar
-                                                            Ahora</a>
+
+
                                                     </div>
-
-
                                                 </div>
-                                            </div>
 
                                             <?php
 
-											} else {
+                                            } else {
 
-											?>
-                                            <!-- <div class="input-group verificar_prepago">
+                                            ?>
+                                                <!-- <div class="input-group verificar_prepago">
 										<input type="search" placeholder="FOLIO del prepago en cantidad que pagaste o te obsequiaron..." class="form-control" value="0000" id="numero_folio">
 										<span class="input-group-btn">								
 											<a id="calc" class="btn btn-default buscar_folio" >Verificar</a>
@@ -948,16 +932,16 @@ $display = 'none';
 									</div> -->
 
 
-                                            <small class="bg-success text-success">FOLIO verificado, puedes seleccionar
-                                                tu servicio...</small>
+                                                <small class="bg-success text-success">FOLIO verificado, puedes seleccionar
+                                                    tu servicio...</small>
 
-                                            <small class="bg-danger text-danger">FOLIO incorrecto, vuela a
-                                                intentar...</small>
+                                                <small class="bg-danger text-danger">FOLIO incorrecto, vuela a
+                                                    intentar...</small>
 
                                             <?php
-											}
+                                            }
 
-											?>
+                                            ?>
 
                                         </div>
 
@@ -977,23 +961,20 @@ $display = 'none';
 
                                 <div class="col-md-12">
 
-                                    <input class="opcion_factura" style="width: auto !important; margin-right: 5px;"
-                                        type="checkbox" name="c1" onclick="showMe('contenido_factura')">Solicitar
+                                    <input class="opcion_factura" style="width: auto !important; margin-right: 5px;" type="checkbox" name="c1" onclick="showMe('contenido_factura')">Solicitar
                                     Factura
 
                                     <div class="contenido_factura" id="contenido_factura" style="display:none">
 
                                         <div class="col-sm-12 col-md-4">
                                             <div class="form-group">
-                                                <input id="rfc" class="campo rfc" type="text" name="rfc" value="0"
-                                                    placeholder="R.F.C.">
+                                                <input id="rfc" class="campo rfc" type="text" name="rfc" value="0" placeholder="R.F.C.">
                                             </div>
                                         </div>
 
                                         <div class="col-sm-12 col-md-4">
                                             <div class="form-group">
-                                                <input id="razonSocial" class="campo razonSocial" type="text"
-                                                    name="razonSocial" value="0" placeholder="Razón Social">
+                                                <input id="razonSocial" class="campo razonSocial" type="text" name="razonSocial" value="0" placeholder="Razón Social">
                                             </div>
                                         </div>
 
@@ -1056,8 +1037,7 @@ $display = 'none';
                                 <h3><span>7</span>TÉRMINOS Y CONDICIONES: </h3>
                                 <div class="form-group">
 
-                                    <input class="obtube_payment" type="text" id="payment_metod" value=""
-                                        style="display:<?php echo $display; ?>">
+                                    <input class="obtube_payment" type="text" id="payment_metod" value="" style="display:<?php echo $display; ?>">
 
                                 </div>
 
@@ -1066,8 +1046,7 @@ $display = 'none';
 
                                     <h6> RESPONSIVA: </h6>
 
-                                    Por medio de la presente yo: <span
-                                        style="text-decoration: underline; text-transform: uppercase; font-weight: 900;"><?php echo $res_nombre; ?></span>
+                                    Por medio de la presente yo: <span style="text-decoration: underline; text-transform: uppercase; font-weight: 900;"><?php echo $res_nombre; ?></span>
                                     certifico que he manifestado la verdad y además estoy ampliamente informado (a) del
                                     diagnóstico y plan de tratamiento, así como de las modificaciones que se juzgan
                                     necesarias para el mejoramiento del mismo.
@@ -1155,8 +1134,7 @@ $display = 'none';
                         <?php echo $MJEerror; ?>
 
                         <button type="button" class="btn" id="prevBtn" onclick="nextPrev(-1)">Regresar</button>
-                        <button type="button" name="siguiente" class="btn" id="nextBtn"
-                            onclick="nextPrev(1)">Continuar</button>
+                        <button type="button" name="siguiente" class="btn" id="nextBtn" onclick="nextPrev(1)">Continuar</button>
                         <button type="button" class="btn" data-dismiss="modal">Salir</button>
 
                     </div>

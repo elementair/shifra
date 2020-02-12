@@ -1,4 +1,12 @@
-<!-- FORMULARIO INICIAR CITA -->
+<!-- html comment
+|
+|====================================================
+|
+|   FORMULARIO INICIAR CITA
+|
+|====================================================
+|
+-->
 <?php
 $display = 'none';
 ?>
@@ -19,58 +27,19 @@ $display = 'none';
                     <div class="form">
                         <form name="formcitas" id="regForm" action="envio_correo_cita.php" method="POST">
                             <input type="hidden" name="conektaTokenId" id="conektaTokenId" value="">
-
-                            <!-- =============================
-								STEP 1  SELECCIONAR SERVICIO
-							===============================-->
-
+                            <!-- html comment
+                            |
+                            |====================================================
+                            |
+                            |   STEP 1  SELECCIONAR SERVICIO
+                            |
+                            |====================================================
+                            |
+                            -->
                             <div class="tab">
+
                                 <h3><span>1</span>Selecciona tu servicio:</h3><br>
-                                <!-- 	<div class="col-md-12">
-
-								<div class="anuncio">
-
-									<di		v class="form-group">
-										<center>
-											<div class="col-xs-12  col-md-6  col-md-offset-3">	
-
-												<a class="btn_paso1" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><h3>¡Tengo un servicio!<br> <small>Certificado | Prepago</small></h3></a>
-												
-											</div>
-																	
-											<div class="col-xs-12 col-md-6 col-md-offset-3">	
-												<a class="btn_paso1"><h3>Escoger un servicio</h3></a>
-											</div>
-
-
-											<div class="row">
-											<div class="col-md-8 col-md-offset-2">
-												<div class="collapse multi-collapse" id="multiCollapseExample1">
-												<div class="card card-body">
-														
-														<label>
-																Ingresa el cupon:
-														</label>
-													
-														<div class="input-group">
-															<input type="search" class="form-control">
-															<span class="input-group-btn">
-																<a class="btn buscar">Buscar</a>
-															</span>
-														</div>
-																											
-													</div>
-												</div>
-
-											</div>
-											</div>
-										</center>
-									</div>
-									
-									</div>
-								</div> -->
-
-                                <!-- <div class="form-group elige_elprecio"> -->
+                                
                                 <ul class="nav nav-tabs opciones">
                                     <li class="active"><a data-toggle="tab" href="#Todos">TODOS</a></li>
                                     <?php
@@ -98,7 +67,7 @@ $display = 'none';
                                         $tipo_permiso = 1
                                     ?>
 
-                                        <li style="background: #cec813;"><a data-toggle="tab" href="#<?php echo 'menu-16'; ?>"><span class="glyphicon glyphicon-asterisk"></span>Certificado|Prepago</a></li>
+                                        <li style="background: #cec813;"><a data-toggle="tab" href="#<?php echo 'menu-16'; ?>"><span class="glyphicon glyphicon-asterisk"></span> CERTIFICADO/PREPAGO</a></li>
 
 
                                     <?php
@@ -300,26 +269,37 @@ $display = 'none';
                                     <?php
                                     }
                                     ?>
+                                    <!-- html comment
+                                    |
+                                    |====================================================
+                                    |
+                                    |   PREPAGOS SERVICIOS 
+                                    |
+                                    |====================================================
+                                    |
+                                    -->
                                     <div id="<?php echo 'menu-16' ?>" class="tab-pane fade">
+
                                         <div class="panel-group intervalo" id="accordion<?php echo '60'; ?>">
 
-
                                             <?php
-                                            /*
-                                            *
-                                            **************************************
-                                            *
-                                            paso1 verificar usuario logueado
-                                            paso2 consultar reguistros de prepagos por servicio del usuario logueado
-                                            paso3 mostrar resultados
-                                            *
-                                            **************************************
-                                            *
-                                            */
+                                            /* php comment
+                                            |
+                                            |====================================================
+                                            |
+                                            |   CONSULTA PREPAGOS POR SERVICIOS 
+                                            |
+                                            |====================================================
+                                            |   Obtener servicios de los clientes logueados.
+                                            */                                                                                       
                                             $correo_electronico = "";
+
                                             if (isset($_POST["c_electronico"])) {
+
                                                 $correo_electronico = $_POST["c_electronico"];
+
                                             }
+
                                             $prepagos_servicios = mysqli_query($link, "SELECT  c.id AS 'c_id', 
                                                 c.nombre AS 'c_nombre', 
                                                 c.c_electronico AS 'c_c_electronico', 
@@ -342,29 +322,16 @@ $display = 'none';
                                             LEFT OUTER JOIN prepagos_servicios ps ON ps.prepagos_id=p.id) 
                                             LEFT OUTER JOIN servicios s ON s.id=ps.servicios_id)
                                             WHERE p.tipo_prepago_id=2
-                                            AND c.c_electronico='earias37@yahoo.com.mx';");
+                                            AND c.c_electronico='$correo_electronico';");
 
-                                            $prepagos = mysqli_query($link, "SELECT c.id AS 'cliente_id', c.nombre, c.c_electronico AS 'correo', p.id, p.clientes_id, p.tipo_prepago_id, ps.prepagos_id, ps.folio AS 'folio', ps.cupon AS 'cupon', ps.servicios_id AS 'servicio_id'
-								 				FROM ((clientes AS c 
-												LEFT OUTER JOIN prepagos p ON p.clientes_id=c.id)
-												LEFT OUTER JOIN prepagos_servicios ps ON ps.prepagos_id=p.id) 
-												WHERE p.tipo_prepago_id=2;");
-
-
-
-                                            $servicios = mysqli_query($link, "SELECT s.id,s.nombre AS 'nombre_serv',s.descripcion,s.caracteristicas,s.archivo,s.duracion,s.precio,s.status,s.subgrupo_servicios_id, ss.nombre, gs.nombre, gs.id AS 'grupo_servicio_id' 
-												FROM((servicios AS s 
-												LEFT OUTER JOIN subgrupo_servicios AS ss ON subgrupo_servicios_id=ss.id) 
-												LEFT OUTER JOIN grupo_servicios AS gs ON ss.grupo_servicios_id=gs.id) 
-												WHERE gs.id=$valor_grupo_servicios_id");
-
-                                            // $clientes=mysqli_query($link,"SELECT id, nombre, archivo, c_electronico, telefono, modo, fecha FROM clientes");
 
                                             if (isset($_POST["c_electronico"])) {
 
                                                 $servicios_id = "";
                                                 $folio = "";
                                                 $cupon = "";
+
+                                                $cuenta_prepagos = 1;
 
                                                 foreach ($prepagos_servicios as $prepago) {
 
@@ -383,7 +350,7 @@ $display = 'none';
                                                                 <div class="col-xs-12 col-md-10">
 
                                                                     <h5 class="panel-title">
-                                                                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion<?php echo '60'; ?>" href="#<?php echo 'accordion890_20'; ?>"><?php echo $prepago['s_nombre']; ?></a>
+                                                                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion<?php echo '60'; ?>" href="#<?php echo 'accordion890_20'.$cuenta_prepagos; ?>"><?php echo $prepago['s_nombre']; ?></a>
 
                                                                     </h5>
 
@@ -391,7 +358,7 @@ $display = 'none';
 
                                                             </div>
 
-                                                            <div id="<?php echo 'accordion890_20' ?>" class="panel-collapse collapse">
+                                                            <div id="<?php echo 'accordion890_20'.$cuenta_prepagos; ?>" class="panel-collapse collapse">
 
                                                                 <div class="panel-body desc_individual">
 
@@ -401,7 +368,8 @@ $display = 'none';
                                                                         <hr>
 
                                                                         <div class="col-xs-6 col-md-4">
-                                                                            <label>Precio <ins><p>$<?php echo $prepago['s_precio']; ?></p></ins>
+                                                                            <label title="servicio pagado en prepago">Precio<p><strike>$<?php echo $prepago['s_precio']; ?></strike> Pagado</p>
+
                                                                             </label>
                                                                         </div>
 
@@ -429,52 +397,52 @@ $display = 'none';
                                                                     </div>
                                                                     <br>
                                                                 </div>
+
                                                             </div>
+
                                                         </div>
+
                                                     <?php
 
                                                     } else {
+
                                                     }
+                                                    $cuenta_prepagos ++;
+
                                                 }
-                                            } else {
-
-                                                ?>
-                                                <p>No tienes servicios por Certificado|prepago</p>
-                                                <small>intenta iniciando sesion</small>
-
-                                                <!-- prueba resultado -->
-
-                                            <?php
 
                                             }
 
                                             ?>
+                                            <!-- html comment
+                                            |
+                                            |====================================================
+                                            |
+                                            |   Datos Ajax servicio
+                                            |
+                                            |====================================================
+                                            |   obtener datos del servicio por el folio sonsultado.
+                                            -->                                          
+                                            <div class="mostrar_servicios_folio">
+                                                
+                                            </div>
 
-                                            <!--<div class="panel panel-default">
-											<div class="panel-heading" style="display: flex;">	
-
-											<div class="col-xs-12 col-md-10">
-
-													<h5 class="panel-title">
-														<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion<?php echo '60'; ?>" href="#<?php echo 'accordion6_6'; ?>">Servio x de ejemplo</a>
-
-													</h5>
-
-												</div>
-
-											</div>
-								
-									    </div> -->
                                         </div>
 
                                     </div>
+
                                 </div>
+
                             </div>
-
-                            <!-- =============================
-								STEP 2  DIA
-							===============================-->
-
+                            <!-- html comment
+                            |
+                            |====================================================
+                            |
+                            |   STEP 2  DIA
+                            |
+                            |====================================================
+                            |
+                            -->
                             <div class="tab">
                                 <h3><span>2</span>Seleccione el Día:</h3><br>
                                 <div class="col-sm-12 col-md-12">
@@ -482,19 +450,21 @@ $display = 'none';
                                         <input id="idxhora" class="form-control id" name="id_xhora" type="text" style="display:<?php echo $display; ?>">
                                     </div>
                                     <div class="form-group">
-                                        <!-- <label><strong>Selecionar el Día:</strong></label> -->
-
+                                        
                                         <input class="form-control dia" type="text" placeholder="Selecionar el Día" class="form-control date-picker hasDatepicker" name="booking_arrival_date" aria-required="true" id="ya" required>
-
-                                        <!-- <input class="form-control dia" type="date" placeholder="Selecionar el Día" class="form-control date-picker hasDatepicker" name="booking_arrival_date" aria-required="true" id="ya"  min="2019-03-27" max="2019-03-30" required> -->
+                                        
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- =============================
-								STEP 3  HORA
-							===============================-->
-
+                            <!-- html comment
+                            |
+                            |====================================================
+                            |
+                            |   STEP 3  HORA
+                            |
+                            |====================================================
+                            |
+                            -->
                             <div class="tab">
                                 <h3><span>3</span>Selecciona la hora:</h3><br>
 
@@ -517,10 +487,15 @@ $display = 'none';
                                 </div>
 
                             </div>
-                            <!-- =============================
-								STEP 4 EMPLEADO
-							===============================-->
-
+                            <!-- html comment
+                            |
+                            |====================================================
+                            |
+                            |   STEP 4 EMPLEADO
+                            |
+                            |====================================================
+                            |
+                            -->
                             <div class="tab">
                                 <h3><span>4</span>¿Quien te atenderá?:</h3><br>
                                 <div class="col-md-12">
@@ -569,13 +544,16 @@ $display = 'none';
                                     </div>
 
                                 </div>
-                            </div>
-
-
-                            <!-- =============================
-								STEP 5 USUARIO
-							===============================-->
-
+                            </div>                          
+                            <!-- html comment
+                            |
+                            |====================================================
+                            |
+                            |   STEP 5 USUARIO
+                            |
+                            |====================================================
+                            |
+                            -->             
                             <div class="tab">
                                 <h3><span>5</span>Selecciona un usuario:</h3><br>
                                 <div class="col-md-12">
@@ -660,7 +638,7 @@ $display = 'none';
 
                                 <div class="col-sm-12 col-md-4">
                                     <div class="form-group">
-                                        <!-- <label for="">Coreo electrónico</label> -->
+                                       
                                         <input type="email" id="email_user" name="email" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" placeholder="Ingrese su Coreo electrónico" required disabled>
 
                                     </div>
@@ -668,7 +646,7 @@ $display = 'none';
 
                                 <div class="col-sm-12 col-md-4">
                                     <div class="form-group">
-                                        <!-- <label for="">Teléfono/móvil</label> -->
+                                      
                                         <input type="text" id="telefono_user" name="telefono" placeholder="Ingrese su Teléfono/móvil" required disabled>
                                         <input type="text" name="dejarenblanco" value="nada" style="display: none;">
                                         <input type="text" name="nocambiar" value="http://" style="display: none;">
@@ -676,11 +654,15 @@ $display = 'none';
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- =============================
-								STEP 6 RESUMEN
-							===============================-->
-
+                            <!-- html comment
+                            |
+                            |====================================================
+                            |
+                            |   STEP 6 RESUMEN
+                            |
+                            |====================================================
+                            |
+                            -->
                             <div class="tab">
                                 <h3><span>6</span>RESUMEN:</h3>
                                 <div class="col-md-12">
@@ -699,9 +681,9 @@ $display = 'none';
                                                 </tr>
                                             </thead>
                                             <tbody class="respuestaResumen">
-                                                <!-------------------------------------
-							-- Aquí obtenemos los datos desde Ajax --
-							--------------------------------------->
+                                          
+                                                <!-- datos desde Ajax -->
+
                                             </tbody>
 
                                         </table>
@@ -735,20 +717,17 @@ $display = 'none';
                                     </div>
 
                                     <div class="tab-content">
-                                        <!--
-										* 
-										**************************************
-										*
-										Metod de Pago: PAYPAL
-										*
-										**************************************
-										*
-										-->
+                                        <!-- html comment
+                                        |
+                                        |====================================================
+                                        |
+                                        |   Metod de Pago: PAYPAL
+                                        |
+                                        |====================================================
+                                        |
+                                        -->
                                         <div class="tab-pane active" id="paypal">
 
-
-                                            <!-- <div id="paypal" class="tab-pane fade in active"> -->
-
                                             <div class="img_pagos">
 
                                                 <div class="row">
@@ -761,28 +740,19 @@ $display = 'none';
                                                 </div>
 
                                             </div>
-                                            <!-- <div class="radio-inline checMoney">He leído y acepto los términos y condiciones
-											<label class="container" for="paypal">
-													<input type="radio" name="opcion_pago" value="paypal" id="paypal" >
-
-													<span class="checkmark"></span>
-												</label>
-											</div> -->
-
-                                            <!-- </div> -->
+                                            
                                         </div>
-                                        <!--
-										* 
-										**************************************
-										*
-										Metod de Pago: TARJETA
-										*
-										**************************************
-										*
-										-->
+                                        <!-- html comment
+                                        |
+                                        |====================================================
+                                        |
+                                        |   Metod de Pago: TARJETA
+                                        |
+                                        |====================================================
+                                        |
+                                        -->
                                         <div class="tab-pane" id="tarjeta">
-                                            <!-- <div id="tarjeta" class="tab-pane fade"> -->
-
+                                           
                                             <div class="img_pagos">
 
                                                 <div class="row">
@@ -796,10 +766,8 @@ $display = 'none';
 
                                             </div>
 
-                                            <!-------------------------------------
-											-- formulario pagos por targeta --
-											--------------------------------------->
-                                            <!-- <input type="hidden" name="conektaTokenId" id="conektaTokenId" value=""> -->
+                                            <!-- Formulario  Pagos por Tarjeta -->
+
                                             <br>
                                             <div class="card well">
                                                 <div class="card-body">
@@ -833,16 +801,13 @@ $display = 'none';
                                                             </label>
                                                             <div>
                                                                 <input style="width:50px; display:inline-block" value="12" data-conekta="card[exp_month]" class="form-control" type="text" maxlength="2"> /
-                                                                <input style="width:50px; display: inline;	splay:inline-block" value="20" data-conekta="card[exp_year]" class="form-control" type="text" maxlength="2">
+                                                                <input style="width:50px; display:inline; display:inline-block;" value="20" data-conekta="card[exp_year]" class="form-control" type="text" maxlength="2">
                                                             </div>
                                                         </div>
 
                                                     </div>
                                                     <div class="row">
-                                                        <!--  <div class="col-md-4">
-				                            <label><span>Email</span></label>
-				                            <input class="form-control" type="text" name="email" id="email" maxlength="200" value="prueba@gmail.com">
-				                        </div> -->
+
                                                         <div class="col-md-4">
                                                             <!-- <label>Concepto</label> -->
                                                             <input class="form-control" type="text" name="description" id="description" maxlength="100" value="" style="display:<?php echo $display; ?>">
@@ -853,28 +818,20 @@ $display = 'none';
                                                         </div>
                                                     </div>
                                                     <br>
-                                                    <!--  <div class="row">
-				                        <div class="col-md-12" style="text-align:center;">
-				                           <button class="btn btn-success btn-lg">
-				                               <i class="fa fa-check-square"></i> PAGAR
-				                           </button>
-				                        </div>
-				                    </div> -->
 
                                                 </div>
 
                                             </div>
                                         </div>
-                                        <!--
-						* 
-						**************************************
-						*
-						Metod de Pago: CERTIFICADO O PREPAGO
-						*
-						**************************************
-						*
-						-->
-
+                                        <!-- html comment
+                                        |
+                                        |====================================================
+                                        |
+                                        |   Metod de Pago: CERTIFICADO O PREPAGO
+                                        |
+                                        |====================================================
+                                        |
+                                        -->
                                         <div class="tab-pane" id="regalo_prepago">
                                             <?php
 
@@ -923,19 +880,18 @@ $display = 'none';
                                             } else {
 
                                             ?>
-                                                <!-- <div class="input-group verificar_prepago">
-										<input type="search" placeholder="FOLIO del prepago en cantidad que pagaste o te obsequiaron..." class="form-control" value="0000" id="numero_folio">
-										<span class="input-group-btn">								
-											<a id="calc" class="btn btn-default buscar_folio" >Verificar</a>
-										</span>
+                                            <!-- <div class="input-group verificar_prepago">
+                                                <input type="search" placeholder="FOLIO del prepago en cantidad que pagaste o te obsequiaron..." class="form-control" value="0000" id="numero_folio">
+                                                <span class="input-group-btn">								
+                                                    <a id="calc" class="btn btn-default buscar_folio" >Verificar</a>
+                                                </span>
 
-									</div> -->
-
+                                            </div> -->
 
                                                 <small class="bg-success text-success">FOLIO verificado, puedes seleccionar
                                                     tu servicio...</small>
 
-                                                <small class="bg-danger text-danger">FOLIO incorrecto, vuela a
+                                                <small class="bg-danger text-danger">FOLIO incorrecto, vuelva a
                                                     intentar...</small>
 
                                             <?php
@@ -948,17 +904,15 @@ $display = 'none';
 
                                     </div>
                                 </div>
-
-                                <!--
-				* 
-				**************************************
-				*
-				Solicitar Factura
-				*
-				**************************************
-				*
-				-->
-
+                                <!-- html comment
+                                |
+                                |====================================================
+                                |
+                                |   SOLICITAR FACTURA
+                                |
+                                |====================================================
+                                |
+                                -->
                                 <div class="col-md-12">
 
                                     <input class="opcion_factura" style="width: auto !important; margin-right: 5px;" type="checkbox" name="c1" onclick="showMe('contenido_factura')">Solicitar
@@ -1018,21 +972,17 @@ $display = 'none';
                                         </div>
                                     </div>
                                 </div>
-                                <!--
-				* 
-				**************************************
-				*
-				fin solicitud de factura
-				*
-				**************************************
-				*
-				-->
+                                
                             </div>
-
-                            <!-- =============================
-						STEP 7 TÉRMINOS Y CONDICIONES
-			===============================-->
-
+                            <!-- html comment
+                            |
+                            |====================================================
+                            |
+                            |   STEP 7 TÉRMINOS Y CONDICIONES
+                            |
+                            |====================================================
+                            |
+                            -->
                             <div class="tab">
                                 <h3><span>7</span>TÉRMINOS Y CONDICIONES: </h3>
                                 <div class="form-group">
@@ -1094,7 +1044,7 @@ $display = 'none';
                                 </div>
 
                                 <br>
-                                <!-- <input type="radio" name="optradio" placeholder="" style="width: 20px;">He leído y acepto los términos		 -->
+
                                 <div class="radio-inline checTermin"> He leído y acepto los términos
                                     <label for="terminos" class="container">
                                         <input type="radio" name="terminos" id="terminos" value="deacuerdo" required>
@@ -1102,8 +1052,7 @@ $display = 'none';
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
-
-                                <!-- <a class="btnPagar"> pagar</a> -->
+                                
                             </div>
 
                             <!-- INDICADORES DE LOS PASOS: -->

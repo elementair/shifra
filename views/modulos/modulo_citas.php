@@ -73,9 +73,15 @@ $display = 'none';
                                     <?php
                                     } else {
                                         $tipo_permiso = 0;
+                                        ?>
+                                         <li style="background: #cec813;"><a data-toggle="tab" href="#<?php echo 'menu-18'; ?>"><span class="glyphicon glyphicon-asterisk"></span> CERTIFICADO</a></li> 
+                                        <?php
+                                        
                                     }
+                                    
 
                                     ?>
+                                     
                                 </ul>
                                 <div class="tab-content">
                                     <?php
@@ -87,9 +93,9 @@ $display = 'none';
 
                                     ?>
                                         <div class="input-group verificar_prepago">
-                                            <input type="search" placeholder="FOLIO del servicio que pagaste o te obsequiaron..." class="form-control" value="0000" id="numero_folio">
+                                            <input type="search" placeholder="FOLIO del servicio que pagaste o te obsequiaron..." class="form-control" value="CER002" id="numero_folio">
                                             <span class="input-group-btn">
-                                                <a id="calc" class="btn btn-default buscar_folio" href="#<?php echo 'menu-16'; ?>">Verificar</a>
+                                                <a id="calc" class="btn btn-default buscar_folio" href="#<?php echo 'menu-18'; ?>">Verificar</a>
                                             </span>
 
                                         </div>
@@ -110,21 +116,23 @@ $display = 'none';
                                             <div id="resultado_folio"></div>
 
                                             <div class="gifCarga"><img id="loading_spinner" src="img/loading.gif"></div>
+                                            
                                             <?php
                                             $valor_grupo_servicios_id = 0;
 
                                             if ($valor_grupo_servicios_id == 0) {
                                                 $servicios = mysqli_query($link, "SELECT s.id ,s.nombre AS 'nombre_serv',s.descripcion,s.caracteristicas,s.archivo,s.duracion,s.precio,s.status,s.subgrupo_servicios_id, ss.nombre,
-										gs.nombre, gs.id AS 'grupo_servicio_id' from((servicios as s
-										left outer join subgrupo_servicios as ss on subgrupo_servicios_id=ss.id)
-										left outer join grupo_servicios as gs on ss.grupo_servicios_id=gs.id) ");
+                                                gs.nombre, gs.id AS 'grupo_servicio_id' from((servicios as s
+                                                left outer join subgrupo_servicios as ss on subgrupo_servicios_id=ss.id)
+                                                left outer join grupo_servicios as gs on ss.grupo_servicios_id=gs.id) ");
                                             } else {
                                                 $servicios = mysqli_query($link, "SELECT s.id,s.nombre AS 'nombre_serv',s.descripcion,s.caracteristicas,s.archivo,s.duracion,s.precio,s.status,s.subgrupo_servicios_id, ss.nombre, gs.nombre, gs.id AS 'grupo_servicio_id' from((servicios as s
-											left outer join subgrupo_servicios as ss on subgrupo_servicios_id=ss.id)
-											left outer join grupo_servicios as gs on ss.grupo_servicios_id=gs.id) where gs.id=$valor_grupo_servicios_id");
+                                                left outer join subgrupo_servicios as ss on subgrupo_servicios_id=ss.id)
+                                                left outer join grupo_servicios as gs on ss.grupo_servicios_id=gs.id) where gs.id=$valor_grupo_servicios_id");
                                             }
 
                                             $cont = 2;
+
                                             foreach ($servicios as $res) {
                                             ?>
 
@@ -414,6 +422,15 @@ $display = 'none';
                                             }
 
                                             ?>
+                                           
+
+                                        </div>
+
+                                    </div>
+                                        <div id="<?php echo 'menu-18' ?>" class="tab-pane fade">
+
+                                            <div class="panel-group intervalo" id="accordion<?php echo '70'; ?>">
+
                                             <!-- html comment
                                             |
                                             |====================================================
@@ -423,13 +440,12 @@ $display = 'none';
                                             |====================================================
                                             |   obtener datos del servicio por el folio sonsultado.
                                             -->                                          
-                                            <div class="mostrar_servicios_folio">
+                                            <div id="mostrar_servicios_folio">
                                                 
                                             </div>
 
+                                            </div>
                                         </div>
-
-                                    </div>
 
                                 </div>
 

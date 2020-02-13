@@ -110,12 +110,13 @@ $display = 'none';
 
 
                                     <div id="Todos" class="tab-pane fade in active">
-                                        <div class="panel-group intervalo" id="accordion1">
-
-                                            <input type="text" name="intervalo_horas" id="resultado" style="display:none">
-                                            <div id="resultado_folio"></div>
+                                    <input type="text" name="intervalo_horas" id="resultado" style="display:none">
+                                            <div id="resultado_notificacion"></div>
 
                                             <div class="gifCarga"><img id="loading_spinner" src="img/loading.gif"></div>
+                                        <div class="panel-group intervalo" id="accordion1">
+
+                                           
                                             
                                             <?php
                                             $valor_grupo_servicios_id = 0;
@@ -440,9 +441,7 @@ $display = 'none';
                                             |====================================================
                                             |   obtener datos del servicio por el folio sonsultado.
                                             -->                                          
-                                            <div id="mostrar_servicios_folio">
-                                                
-                                            </div>
+                                            <div id="resultado_folio"></div>
 
                                             </div>
                                         </div>

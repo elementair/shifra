@@ -90,11 +90,18 @@ jQuery(document).ready(function() {
                 //escondemos gif
                 jQuery('#loading_spinner').hide();
                 //mostramos salida del PHP
+
                 jQuery("#resultado_folio").html(response);
 
-                // $(".mostrar_servicios_folio").html(response.data);
+                if (response === '') {
 
+                    jQuery("#resultado_notificacion").html("<small class='bg-danger text-danger'>FOLIO incorrecto, vuela a intentar...</small>");
 
+                } else {
+
+                    jQuery("#resultado_notificacion").html("<small class='bg-success text-success'>FOLIO verificado, puedes seleccionar tu servicio en *CERTIFICADO...</small>");
+
+                }
             }
         });
 

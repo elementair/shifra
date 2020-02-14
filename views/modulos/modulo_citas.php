@@ -39,7 +39,7 @@ $display = 'none';
                             <div class="tab">
 
                                 <h3><span>1</span>Selecciona tu servicio:</h3><br>
-                                
+
                                 <ul class="nav nav-tabs opciones">
                                     <li class="active"><a data-toggle="tab" href="#Todos">TODOS</a></li>
                                     <?php
@@ -72,14 +72,14 @@ $display = 'none';
                                     <?php
                                     } else {
                                         $tipo_permiso = 0;
-                                        ?>
-                                         <li style="background: #cec813;"><a data-toggle="tab" href="#<?php echo 'menu-18'; ?>"><span class="glyphicon glyphicon-asterisk"></span> CERTIFICADO</a></li> 
-                                        <?php
-                                        
-                                    }                                    
+                                    ?>
+                                        <li style="background: #cec813;"><a data-toggle="tab" href="#<?php echo 'menu-16'; ?>"><span class="glyphicon glyphicon-asterisk"></span> CERTIFICADO</a></li>
+                                    <?php
+
+                                    }
 
                                     ?>
-                                     
+
                                 </ul>
                                 <div class="tab-content">
                                     <?php
@@ -93,7 +93,7 @@ $display = 'none';
                                         <div class="input-group verificar_prepago">
                                             <input type="search" placeholder="FOLIO del servicio que pagaste o te obsequiaron..." class="form-control" value="CER002" id="numero_folio">
                                             <span class="input-group-btn">
-                                                <a id="calc" class="btn btn-default buscar_folio" href="#<?php echo 'menu-18'; ?>">Verificar</a>
+                                                <a id="calc" class="btn btn-default buscar_folio">Verificar</a>
                                             </span>
 
                                         </div>
@@ -106,16 +106,18 @@ $display = 'none';
 
                                     ?>
 
+                                    
+                                        <div id="mostrar_noficacion"></div>
+                                        <div class="gifCarga"><img id="loading_spinner" src="img/loading.gif"></div>
+
 
                                     <div id="Todos" class="tab-pane fade in active">
                                     <input type="text" name="intervalo_horas" id="resultado" style="display:none">
-                                            <div id="mostrar_noficacion"></div>
-
-                                            <div class="gifCarga"><img id="loading_spinner" src="img/loading.gif"></div>
+                                        
                                         <div class="panel-group intervalo" id="accordion1">
 
-                                           
-                                            
+
+
                                             <?php
                                             $valor_grupo_servicios_id = 0;
 
@@ -284,9 +286,9 @@ $display = 'none';
                                     |====================================================
                                     |
                                     -->
-                                    <div id="<?php echo 'menu-16' ?>" class="tab-pane fade">
+                                    <div id="menu-16" class="tab-pane fade">
 
-                                        <div class="panel-group intervalo" id="accordion<?php echo '60'; ?>">
+                                        <div class="panel-group intervalo" id="accordion60">
 
                                             <?php
                                             /* php comment
@@ -297,13 +299,12 @@ $display = 'none';
                                             |
                                             |====================================================
                                             |   Obtener servicios de los clientes logueados.
-                                            */                                                                                       
+                                            */
                                             $correo_electronico = "";
 
                                             if (isset($_POST["c_electronico"])) {
 
                                                 $correo_electronico = $_POST["c_electronico"];
-
                                             }
 
                                             $prepagos_servicios = mysqli_query($link, "SELECT  c.id AS 'c_id', 
@@ -348,7 +349,7 @@ $display = 'none';
 
                                                     if (isset($_POST["c_electronico"]) && isset($_POST["c_electronico"]) == $correo) {
 
-                                                    ?>
+                                            ?>
 
                                                         <div class="panel panel-default">
                                                             <div class="panel-heading" style="display: flex;">
@@ -356,7 +357,7 @@ $display = 'none';
                                                                 <div class="col-xs-12 col-md-10">
 
                                                                     <h5 class="panel-title">
-                                                                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion<?php echo '60'; ?>" href="#<?php echo 'accordion890_20'.$cuenta_prepagos; ?>"><?php echo $prepago['s_nombre']; ?></a>
+                                                                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion60" href="#<?php echo 'accordion890_20' . $cuenta_prepagos; ?>"><?php echo $prepago['s_nombre']; ?></a>
 
                                                                     </h5>
 
@@ -364,7 +365,7 @@ $display = 'none';
 
                                                             </div>
 
-                                                            <div id="<?php echo 'accordion890_20'.$cuenta_prepagos; ?>" class="panel-collapse collapse">
+                                                            <div id="<?php echo 'accordion890_20' . $cuenta_prepagos; ?>" class="panel-collapse collapse">
 
                                                                 <div class="panel-body desc_individual">
 
@@ -386,7 +387,7 @@ $display = 'none';
 
                                                                         <div class="col-xs-12 col-md-4">
 
-                                                                            <label class="container"> 
+                                                                            <label class="container">
 
                                                                                 <input type="radio" class="capturar_valor" name="deacuerdo" value="<?php echo $prepago['s_id']; ?>" recibe_id="<?php echo $prepago['s_id']; ?>" recibe_precio="<?php echo $prepago['s_precio']; ?>" recibe_nombre="<?php echo $prepago['s_nombre']; ?>" recibe_duracion="<?php echo $prepago['s_duracion']; ?>" required>
 
@@ -408,40 +409,37 @@ $display = 'none';
 
                                                         </div>
 
-                                                    <?php
+                                            <?php
 
                                                     } else {
-
+                                                        ?>
+                                                        <!-- html comment
+                                                        |
+                                                        |====================================================
+                                                        |
+                                                        |   Datos Ajax servicio
+                                                        |
+                                                        |====================================================
+                                                        |   obtener datos del servicio por el folio sonsultado.
+                                                        -->
+                                                       
+                                                                    
+                                                                    
+                                                        <?php
                                                     }
-                                                    $cuenta_prepagos ++;
-
+                                                    $cuenta_prepagos++;
                                                 }
-
                                             }
 
                                             ?>
-                                           
+                                             <div id="mostrar_resultado_prepago"></div>
+
 
                                         </div>
 
                                     </div>
-                                    <div id="<?php echo 'menu-18' ?>" class="tab-pane fade">
+                                   
 
-                                        <div class="panel-group intervalo" id="accordion<?php echo '70'; ?>">
-
-                                        <!-- html comment
-                                        |
-                                        |====================================================
-                                        |
-                                        |   Datos Ajax servicio
-                                        |
-                                        |====================================================
-                                        |   obtener datos del servicio por el folio sonsultado.
-                                        -->                                          
-                                        <div id="resultado_folio"></div>
-
-                                        </div>
-                                    </div>
 
                                 </div>
 
@@ -462,9 +460,9 @@ $display = 'none';
                                         <input id="idxhora" class="form-control id" name="id_xhora" type="text" style="display:<?php echo $display; ?>">
                                     </div>
                                     <div class="form-group">
-                                        
+
                                         <input class="form-control dia" type="text" placeholder="Selecionar el Día" class="form-control date-picker hasDatepicker" name="booking_arrival_date" aria-required="true" id="ya" required>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -556,7 +554,7 @@ $display = 'none';
                                     </div>
 
                                 </div>
-                            </div>                          
+                            </div>
                             <!-- html comment
                             |
                             |====================================================
@@ -565,7 +563,7 @@ $display = 'none';
                             |
                             |====================================================
                             |
-                            -->             
+                            -->
                             <div class="tab">
                                 <h3><span>5</span>Selecciona un usuario:</h3><br>
                                 <div class="col-md-12">
@@ -650,7 +648,7 @@ $display = 'none';
 
                                 <div class="col-sm-12 col-md-4">
                                     <div class="form-group">
-                                       
+
                                         <input type="email" id="email_user" name="email" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" placeholder="Ingrese su Coreo electrónico" required disabled>
 
                                     </div>
@@ -658,7 +656,7 @@ $display = 'none';
 
                                 <div class="col-sm-12 col-md-4">
                                     <div class="form-group">
-                                      
+
                                         <input type="text" id="telefono_user" name="telefono" placeholder="Ingrese su Teléfono/móvil" required disabled>
                                         <input type="text" name="dejarenblanco" value="nada" style="display: none;">
                                         <input type="text" name="nocambiar" value="http://" style="display: none;">
@@ -693,7 +691,7 @@ $display = 'none';
                                                 </tr>
                                             </thead>
                                             <tbody class="respuestaResumen">
-                                          
+
                                                 <!-- datos desde Ajax -->
 
                                             </tbody>
@@ -752,7 +750,7 @@ $display = 'none';
                                                 </div>
 
                                             </div>
-                                            
+
                                         </div>
                                         <!-- html comment
                                         |
@@ -764,7 +762,7 @@ $display = 'none';
                                         |
                                         -->
                                         <div class="tab-pane" id="tarjeta">
-                                           
+
                                             <div class="img_pagos">
 
                                                 <div class="row">
@@ -892,7 +890,7 @@ $display = 'none';
                                             } else {
 
                                             ?>
-                                            <!-- <div class="input-group verificar_prepago">
+                                                <!-- <div class="input-group verificar_prepago">
                                                 <input type="search" placeholder="FOLIO del prepago en cantidad que pagaste o te obsequiaron..." class="form-control" value="0000" id="numero_folio">
                                                 <span class="input-group-btn">								
                                                     <a id="calc" class="btn btn-default buscar_folio" >Verificar</a>
@@ -984,7 +982,7 @@ $display = 'none';
                                         </div>
                                     </div>
                                 </div>
-                                
+
                             </div>
                             <!-- html comment
                             |
@@ -1064,7 +1062,7 @@ $display = 'none';
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
-                                
+
                             </div>
 
                             <!-- INDICADORES DE LOS PASOS: -->

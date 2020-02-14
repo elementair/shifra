@@ -25,14 +25,16 @@ jQuery(document).ready(function() {
                 //mostramos gif "cargando"
                 jQuery('#loading_spinner').show();
                 //antes de enviar la petición al fichero PHP, mostramos mensaje
-                jQuery("#resultado").html("Buscado servicios...");
+                jQuery("#mostrar_noficacion").html("Buscado servicios...");
             },
             success: function(response) {
 
                 //escondemos gif
                 jQuery('#loading_spinner').hide();
                 //mostramos salida del PHP
-                jQuery("#resultado_folio").html(response);
+                // jQuery("#mostrar_resultado_prepago").html(response);
+                $("#mostrar_resultado_prepago").html(response);
+                console.log(response);
 
                 if (response === '') {
 

@@ -41,18 +41,19 @@ $cadena = "";
 $dato = '';
 $cuenta_prepagos2 = 1;
 
+
 foreach ($prepagos_servicios as $prepago){
 
 	$folio = $prepago['ps_folio'];
 	$servicio_id = $prepago['ps_servicios_id'];
-
+	$capturar_valor='capturar_valor';
 	if($num == $folio){
 
 		$dato = '<div class="panel panel-default">';
 		$dato = $dato.'<div class="panel-heading" style="display: flex;">';
 		$dato = $dato.'<div class="col-xs-12 col-md-10">';
 		$dato = $dato.'<h5 class="panel-title">';
-		$dato = $dato.'<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion70" href="#accordion890_30'.$cuenta_prepagos2.'">'.$prepago['s_nombre'].'</a>';
+		$dato = $dato.'<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion60" href="#accordion890_30'.$cuenta_prepagos2.'">'.$prepago['s_nombre'].'</a>';
 		$dato = $dato.'</h5>';
 		$dato = $dato.'</div>';
 		$dato = $dato.'</div>';
@@ -72,7 +73,7 @@ foreach ($prepagos_servicios as $prepago){
 		$dato = $dato.'</div>';
 		$dato = $dato.'<div class="col-xs-12 col-md-4">';
 		$dato = $dato.'<label class="container">';
-		$dato = $dato.'<input type="radio" class="capturar_valor" name="deacuerdo" value="'.$prepago['s_id'].'" recibe_id="'.$prepago['s_id'].'" recibe_precio="'.$prepago['s_precio'].'" recibe_nombre="'.$prepago['s_nombre'].'" recibe_duracion="'.$prepago['s_duracion'].'" required>';
+		$dato = $dato.'<input type="radio" class="'.$capturar_valor.'" name="deacuerdo" value="'.$prepago['s_id'].'" recibe_id="'.$prepago['s_id'].'" recibe_precio="'.$prepago['s_precio'].'" recibe_nombre="'.$prepago['s_nombre'].'" recibe_duracion="'.$prepago['s_duracion'].'" required>';
 		$dato = $dato.'<div class="respuesta">
 			
 		</div>';
@@ -84,6 +85,7 @@ foreach ($prepagos_servicios as $prepago){
 		$dato = $dato.'</div>';
 		$dato = $dato.'</div>';
 		$dato = $dato.'</div>';
+		
 
 	}else{
 		

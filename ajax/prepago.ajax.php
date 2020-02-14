@@ -1,5 +1,4 @@
 <?php
-
 require_once ('../servicio/consulta.php');
 $datos = new consulta();
 $conexion = new Conexion();
@@ -40,7 +39,7 @@ $prepagos_servicios = mysqli_query($link, "SELECT 	s.id AS 's_id',
 
 $cadena = "";
 $dato = '';
-$cuenta_prepagos = 1;
+$cuenta_prepagos2 = 1;
 
 foreach ($prepagos_servicios as $prepago){
 
@@ -49,17 +48,15 @@ foreach ($prepagos_servicios as $prepago){
 
 	if($num == $folio){
 
-		$cadena = "<small class='bg-success text-success'>FOLIO verificado, puedes seleccionar tu servicio...</small>".$servicio_id;
-
 		$dato = '<div class="panel panel-default">';
 		$dato = $dato.'<div class="panel-heading" style="display: flex;">';
 		$dato = $dato.'<div class="col-xs-12 col-md-10">';
 		$dato = $dato.'<h5 class="panel-title">';
-		$dato = $dato.'<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion70" href="#accordion890_20'.$cuenta_prepagos.'">'.$prepago['s_nombre'].'</a>';
+		$dato = $dato.'<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion70" href="#accordion890_30'.$cuenta_prepagos2.'">'.$prepago['s_nombre'].'</a>';
 		$dato = $dato.'</h5>';
 		$dato = $dato.'</div>';
 		$dato = $dato.'</div>';
-		$dato = $dato.'<div id="accordion890_20'.$cuenta_prepagos.'" class="panel-collapse collapse">';
+		$dato = $dato.'<div id="accordion890_30'.$cuenta_prepagos2.'" class="panel-collapse collapse">';
 		$dato = $dato.'<div class="panel-body desc_individual">';
 		$dato = $dato.'<div class="col-md-12">';
 		$dato = $dato.'<br>';
@@ -76,8 +73,9 @@ foreach ($prepagos_servicios as $prepago){
 		$dato = $dato.'<div class="col-xs-12 col-md-4">';
 		$dato = $dato.'<label class="container">';
 		$dato = $dato.'<input type="radio" class="capturar_valor" name="deacuerdo" value="'.$prepago['s_id'].'" recibe_id="'.$prepago['s_id'].'" recibe_precio="'.$prepago['s_precio'].'" recibe_nombre="'.$prepago['s_nombre'].'" recibe_duracion="'.$prepago['s_duracion'].'" required>';
-		$dato = $dato.'<div class="respuesta">';
-		$dato = $dato.'</div>';
+		$dato = $dato.'<div class="respuesta">
+			
+		</div>';
 		$dato = $dato.'<span class="checkmark" title="seleccionar y continuar" >seleccionar</span>';
 		$dato = $dato.'</label>';
 		$dato = $dato.'</div>';
@@ -85,21 +83,17 @@ foreach ($prepagos_servicios as $prepago){
 		$dato = $dato.'<br>';
 		$dato = $dato.'</div>';
 		$dato = $dato.'</div>';
-		$dato = $dato.'</div>';	
+		$dato = $dato.'</div>';
 
 	}else{
-		$dato='';
-	
-		$cadena = "<small class='bg-danger text-danger'>FOLIO incorrecto, vuela a intentar...</small>";
+		
+		$dato = '';
 			
 	}
-	$cuenta_prepagos ++;
+	$cuenta_prepagos2 ++;
 	
 }
 
 echo $dato;
-
-
-
 
 ?>

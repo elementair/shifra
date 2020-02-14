@@ -69,7 +69,6 @@ $display = 'none';
 
                                         <li style="background: #cec813;"><a data-toggle="tab" href="#<?php echo 'menu-16'; ?>"><span class="glyphicon glyphicon-asterisk"></span> CERTIFICADO/PREPAGO</a></li>
 
-
                                     <?php
                                     } else {
                                         $tipo_permiso = 0;
@@ -77,8 +76,7 @@ $display = 'none';
                                          <li style="background: #cec813;"><a data-toggle="tab" href="#<?php echo 'menu-18'; ?>"><span class="glyphicon glyphicon-asterisk"></span> CERTIFICADO</a></li> 
                                         <?php
                                         
-                                    }
-                                    
+                                    }                                    
 
                                     ?>
                                      
@@ -111,7 +109,7 @@ $display = 'none';
 
                                     <div id="Todos" class="tab-pane fade in active">
                                     <input type="text" name="intervalo_horas" id="resultado" style="display:none">
-                                            <div id="resultado_notificacion"></div>
+                                            <div id="mostrar_noficacion"></div>
 
                                             <div class="gifCarga"><img id="loading_spinner" src="img/loading.gif"></div>
                                         <div class="panel-group intervalo" id="accordion1">
@@ -262,7 +260,6 @@ $display = 'none';
 
                                                                     </div>
 
-
                                                                 </div>
                                                                 <br>
                                                             </div>
@@ -351,7 +348,7 @@ $display = 'none';
 
                                                     if (isset($_POST["c_electronico"]) && isset($_POST["c_electronico"]) == $correo) {
 
-                                            ?>
+                                                    ?>
 
                                                         <div class="panel panel-default">
                                                             <div class="panel-heading" style="display: flex;">
@@ -389,7 +386,7 @@ $display = 'none';
 
                                                                         <div class="col-xs-12 col-md-4">
 
-                                                                            <label class="container">
+                                                                            <label class="container"> 
 
                                                                                 <input type="radio" class="capturar_valor" name="deacuerdo" value="<?php echo $prepago['s_id']; ?>" recibe_id="<?php echo $prepago['s_id']; ?>" recibe_precio="<?php echo $prepago['s_precio']; ?>" recibe_nombre="<?php echo $prepago['s_nombre']; ?>" recibe_duracion="<?php echo $prepago['s_duracion']; ?>" required>
 
@@ -428,23 +425,23 @@ $display = 'none';
                                         </div>
 
                                     </div>
-                                        <div id="<?php echo 'menu-18' ?>" class="tab-pane fade">
+                                    <div id="<?php echo 'menu-18' ?>" class="tab-pane fade">
 
-                                            <div class="panel-group intervalo" id="accordion<?php echo '70'; ?>">
+                                        <div class="panel-group intervalo" id="accordion<?php echo '70'; ?>">
 
-                                            <!-- html comment
-                                            |
-                                            |====================================================
-                                            |
-                                            |   Datos Ajax servicio
-                                            |
-                                            |====================================================
-                                            |   obtener datos del servicio por el folio sonsultado.
-                                            -->                                          
-                                            <div id="resultado_folio"></div>
+                                        <!-- html comment
+                                        |
+                                        |====================================================
+                                        |
+                                        |   Datos Ajax servicio
+                                        |
+                                        |====================================================
+                                        |   obtener datos del servicio por el folio sonsultado.
+                                        -->                                          
+                                        <div id="resultado_folio"></div>
 
-                                            </div>
                                         </div>
+                                    </div>
 
                                 </div>
 
